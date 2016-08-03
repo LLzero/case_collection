@@ -10,11 +10,9 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
-<title>欢迎进入智能答疑后台管理系统</title>
+<title>病例收集系统</title>
 <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-<link rel="icon" href="/icon.png" type="image/x-icon" />
-<link rel="SHORTCUT ICON" href="/icon.png"  type="image/x-icon" />
 <link rel="stylesheet"
     href="${ctx}/static/styles/jquery/jquery.gritter.css" />
 <!-- bootstrap & fontawesome -->
@@ -38,29 +36,17 @@
 .widget-box{
     min-height:200px!important;
 }
-.text-color{
-color: #1721D0!important;
-}
 </style>
 </head>
 <body class="login-layout blur-login">
     <div class="main-container" style="margin-top:15px">
         <div class="main-content">
             <h1 class="row text-center" style="margin-top:50px;">
-                <span class="white" id="id-text2">欢迎进入智能答疑后台管理系统</span>
+                <span class="white" id="id-text2">欢迎进入病例收集系统</span>
             </h1>
             <div class="row" style="margin-top:50px;">
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="login-container">
-                        <div class="center">
-<!--                            <h1>
-                                <i class="ace-icon fa fa-leaf green"></i> <span class="red">馔山</span>
-                                <span class="grey" id="id-text2">餐饮管理系统</span>
-                            </h1> -->
-                            <img alt="" src="${ctx}/static/image/logo.png" class="zs_icon">
-                        </div>
-                        <div class="space-10"></div>
-
                         <div class="position-relative">
                             <div id="login-box"
                                 class="login-box visible widget-box no-border" >
@@ -85,15 +71,18 @@ color: #1721D0!important;
                                                         placeholder="密码" /> <i class="ace-icon fa fa-lock"></i>
                                                 </span>
                                                 </label>
-                                                </label>
-                                                    <a href="${ctx}/user/findPassword/toFindPassword">找回密码</a>
-                                                </label>
                                                 <div class="alert alert-danger hidden" role="alert"></div>
                                                 <div class="clearfix">
                                                     <a type="button" id="loginBtn"
-                                                        class="width-100 pull-right btn btn-sm btn-primary">
+                                                        class="width-45 pull-left btn btn-sm btn-primary">
                                                         <i class="ace-icon fa fa-key"></i> <span
-                                                            class="bigger-110">登录</span>
+                                                            class="bigger-45">登录</span>
+                                                    </a>
+
+                                                    <a type="button" id="register"
+                                                       class="width-45 pull-right btn btn-sm btn-success">
+                                                        <i class="ace-icon fa fa-arrow-right icon-on-right"></i> <span
+                                                            class="bigger-45">注册</span>
                                                     </a>
                                                 </div>
                                                 <div class="space-4"></div>
