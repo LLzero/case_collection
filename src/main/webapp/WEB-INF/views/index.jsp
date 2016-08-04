@@ -133,6 +133,7 @@
                                                 </span>
                                             </label>
                                             <div class="alert alert-danger hidden" role="alert" id="signupErrorMsg"></div>
+                                            <div class="alert alert-success hidden" role="alert" id="signupSuccessMsg"></div>
                                             <div class="clearfix">
                                                 <a type="button" data-target="#login-box"
                                                    class="width-45 pull-left btn btn-sm btn-primary back-to-login-link">
@@ -214,8 +215,8 @@
 
             $.post('${ctx}/register', params, function(data){
                 if(data.retCode == 0) {
-                    $("#signupErrorMsg").removeClass("hidden");
-                    $("#signupErrorMsg").html("恭喜注册成功");
+                    $("#signupSuccessMsg").removeClass("hidden");
+                    $("#signupSuccessMsg").html("恭喜注册成功");
                     //window.location.href = "${ctx}/frame";
                 }else {
                     $("#signupErrorMsg").removeClass("hidden");
