@@ -26,6 +26,14 @@ public class User implements Serializable{
 
     private String updateBy;
 
+    private String reportAccount;
+
+    private String queryAccount;
+
+    private Long loginTimes;
+
+    private Integer createType;
+
     public Long getId() {
         return id;
     }
@@ -112,5 +120,37 @@ public class User implements Serializable{
 
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
+    }
+
+    public String getReportAccount() {
+        return reportAccount;
+    }
+
+    public void setReportAccount(String reportAccount) {
+        this.reportAccount = reportAccount;
+    }
+
+    public String getQueryAccount() {
+        return queryAccount;
+    }
+
+    public void setQueryAccount(String queryAccount) {
+        this.queryAccount = queryAccount;
+    }
+
+    public Long getLoginTimes() {
+        return loginTimes;
+    }
+
+    public void setLoginTimes(Long loginTimes) {
+        this.loginTimes = loginTimes;
+    }
+
+    public Integer getCreateType() {
+        return createType;
+    }
+
+    public void setCreateType(Integer createType) {
+        this.createType = createType;
     }
 }

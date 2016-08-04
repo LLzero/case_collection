@@ -1,31 +1,26 @@
 package com.casecollection.backend.controller;
 
-import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.casecollection.backend.constants.MenuConstants;
 import com.casecollection.backend.constants.enums.DataLevelEnum;
+import com.casecollection.backend.framework.bean.UserSession;
 import com.casecollection.backend.model.vo.UserVo;
 import com.casecollection.backend.service.UserService;
+import com.casecollection.backend.system.Menu;
+import com.casecollection.backend.util.DateUtil;
 import com.casecollection.common.Response;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.casecollection.backend.constants.MenuConstants;
-import com.casecollection.backend.framework.bean.UserSession;
-import com.casecollection.backend.model.vo.SysUserVo;
-import com.casecollection.backend.service.SysUserService;
-import com.casecollection.backend.system.Menu;
-import com.casecollection.backend.util.DateUtil;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Desc 首页Controller
@@ -117,7 +112,7 @@ public class FrameController {
     }
 
     /**
-     * 登录
+     * 注册
      * @throws IOException
      */
     @RequestMapping("/register")

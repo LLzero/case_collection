@@ -1,5 +1,7 @@
 package com.casecollection.common.framework.aop;
 
+import com.casecollection.backend.constants.enums.CreateTypeEnum;
+import com.casecollection.backend.framework.bean.UserSession;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +27,13 @@ public class LoginInterceptor implements HandlerInterceptor {
             response.sendRedirect(stringBuffer.toString());
             return false;
         } else {
+            UserSession userSession = (UserSession)session.getAttribute("user");
+            if(userSession.getCreateType() == CreateTypeEnum.INIT.getValue() &&
+                    userSession.getLoginTimes() == 0){
+                StringBuffer stringBuffer = new StringBuffer("http://");
+                stringBuffer.append(request.getHeader("Host")).append("/resetPassword");
+                response.sendRedirect(stringBuffer.toString());
+            }
             return true;
         }
     }

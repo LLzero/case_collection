@@ -26,10 +26,14 @@
 <link rel="stylesheet"
     href="${ctx}/static/styles/jquery/perfect-scrollbar.min.css" />
 
+    <link rel="stylesheet"
+          href="${ctx}/static/styles/tooltip.css" />
+
 <!-- ace settings handler -->
 <script src="${ctx}/static/ace-1.3.4/js/ace-extra.min.js"></script>
 
     <script src="${ctx}/static/jquery/jquery.min.js"></script>
+    <script src="${ctx}/static/scripts/superValidator.js"></script>
 <script src="${ctx}/static/ace-1.3.4/js/bootstrap.min.js"></script>
 <style>
 .widget-box{
@@ -59,12 +63,12 @@
                                         <fieldset>
                                             <label class="block clearfix"> <span
                                                 class="block input-icon input-icon-right"> <input
-                                                    type="text" class="form-control" name="name" id="name"
+                                                    type="text" class="form-control" id="name"
                                                     placeholder="账号" /> <i class="ace-icon fa fa-user"></i>
                                             </span>
                                             </label> <label class="block clearfix"> <span
                                                 class="block input-icon input-icon-right"> <input
-                                                    type="password" class="form-control" name="pass" id="pass"
+                                                    type="password" class="form-control" id="pass"
                                                     placeholder="密码" /> <i class="ace-icon fa fa-lock"></i>
                                             </span>
                                             </label>
@@ -76,7 +80,7 @@
                                                         class="bigger-45">登录</span>
                                                 </a>
 
-                                                <a type="button" id="register" data-target="#signup-box"
+                                                <a type="button" data-target="#signup-box"
                                                    class="width-45 pull-right btn btn-sm btn-success user-signup-link">
                                                     <i class="ace-icon fa fa-arrow-right icon-on-right"></i> <span
                                                         class="bigger-45">去注册</span>
@@ -93,45 +97,61 @@
                                 <div class="widget-body">
                                     <div class="widget-main">
                                         <h4 class="header blue lighter bigger">
-                                            <i class="ace-icon fa fa-users blue"></i> 欢迎注册
+                                            <i class="ace-icon fa fa-users blue"></i> 注册病例收集系统
                                         </h4>
 
                                         <div class="space-3"></div>
 
-                                        <form action="${ctx}/loginForm" method="post" id="form-signup">
-                                            <fieldset>
-                                                <label class="block clearfix"> <span
-                                                        class="block input-icon input-icon-right"> <input
-                                                        type="text" class="form-control" name="name"
-                                                        placeholder="账号" /> <i class="ace-icon fa fa-user"></i>
-                                                </span>
-                                                </label> <label class="block clearfix"> <span
+                                        <fieldset>
+                                            <label class="block clearfix"> <span
                                                     class="block input-icon input-icon-right"> <input
-                                                    type="password" class="form-control" name="pass"
-                                                    placeholder="密码" /> <i class="ace-icon fa fa-lock"></i>
+                                                    type="text" class="form-control" id="sign_name"
+                                                    placeholder="用户名" isNull="false" checkType="empty" /> <i class="ace-icon fa fa-user"></i>
+                                            </span>
+                                            </label> <label class="block clearfix"> <span
+                                                class="block input-icon input-icon-right"> <input
+                                                type="password" class="form-control" id="sign_pass" isNull="false" checkType="empty"
+                                                placeholder="密码" /> <i class="ace-icon fa fa-lock"></i>
+                                            </span>
+                                          </label>
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input type="password" id="sign_repass" isNull="false" checkType="empty" class="form-control" placeholder="确认密码" />
+                                                    <i class="ace-icon fa fa-retweet"></i>
                                                 </span>
-                                              </label>
-                                                <div class="alert alert-danger hidden" role="alert" id="signupErrorMsg"></div>
-                                                <div class="clearfix">
-                                                    <a type="button" id="signupBtn" data-target="#login-box"
-                                                       class="width-45 pull-left btn btn-sm btn-primary back-to-login-link">
-                                                        <i class="ace-icon fa fa-key"></i> <span
-                                                            class="bigger-45">去登录</span>
-                                                    </a>
+                                            </label>
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input type="text" class="form-control" isNull="false" checkType="empty" id="sign_contact" placeholder="联系人" />
+                                                    <i class="ace-icon fa fa-user"></i>
+                                                </span>
+                                            </label>
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input type="text" class="form-control" isNull="false" checkType="empty" id="sign_contactMeans" placeholder="联系方式" />
+                                                    <i class="ace-icon fa fa-envelope"></i>
+                                                </span>
+                                            </label>
+                                            <div class="alert alert-danger hidden" role="alert" id="signupErrorMsg"></div>
+                                            <div class="clearfix">
+                                                <a type="button" data-target="#login-box"
+                                                   class="width-45 pull-left btn btn-sm btn-primary back-to-login-link">
+                                                    <i class="ace-icon fa fa-key"></i> <span
+                                                        class="bigger-45">去登录</span>
+                                                </a>
 
-                                                    <a type="button" id="registerBtn"
-                                                       class="width-45 pull-right btn btn-sm btn-success">
-                                                        <i class="ace-icon fa fa-arrow-right icon-on-right"></i> <span
-                                                            class="bigger-45">注册</span>
-                                                    </a>
-                                                </div>
-                                                <div class="space-4"></div>
-                                            </fieldset>
-                                        </form>
+                                                <a type="button" id="registerBtn"
+                                                   class="width-45 pull-right btn btn-sm btn-success">
+                                                    <i class="ace-icon fa fa-arrow-right icon-on-right"></i> <span
+                                                        class="bigger-45">注册</span>
+                                                </a>
+                                            </div>
+                                            <div class="space-4"></div>
+                                        </fieldset>
+
                                     </div>
                                 </div>
                             </div>
-
 
                         </div>
                     </div>
@@ -162,6 +182,44 @@
                 }else {
                     $("#errorMsg").removeClass("hidden");
                     $("#errorMsg").html(data.msg);
+                }
+            }, 'json');
+        });
+
+        $("#registerBtn").click(function() {
+
+            formValidate();
+            if (validat() == false) {
+                $("#signupErrorMsg").removeClass("hidden");
+                $("#signupErrorMsg").html("清先填写信息");
+                return;
+            }else{
+                $("#signupErrorMsg").addClass("hidden");
+            }
+
+            if ($("#sign_pass").val() != $("#sign_repass").val()) {
+                $("#signupErrorMsg").removeClass("hidden");
+                $("#signupErrorMsg").html("密码确认不一致");
+                return;
+            }else{
+                $("#signupErrorMsg").addClass("hidden");
+            }
+
+            var params = {
+                name : $.trim($("#sign_name").val()),
+                password : $.trim($("#sign_pass").val()),
+                contact : $.trim($("#sign_contact").val()),
+                contactMeans : $.trim($("#sign_contactMeans").val()),
+            };
+
+            $.post('${ctx}/register', params, function(data){
+                if(data.retCode == 0) {
+                    $("#signupErrorMsg").removeClass("hidden");
+                    $("#signupErrorMsg").html("恭喜注册成功");
+                    //window.location.href = "${ctx}/frame";
+                }else {
+                    $("#signupErrorMsg").removeClass("hidden");
+                    $("#signupErrorMsg").html(data.msg);
                 }
             }, 'json');
         });
