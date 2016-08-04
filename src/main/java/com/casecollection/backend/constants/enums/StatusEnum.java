@@ -6,7 +6,7 @@ package com.casecollection.backend.constants.enums;
 public enum StatusEnum {
 
     ENABLE(0,"启用"),
-    DISABLE(1,"警用"),
+    DISABLE(1,"禁用"),
     ;
 
     private int value;
