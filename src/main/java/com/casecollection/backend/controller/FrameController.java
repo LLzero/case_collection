@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.casecollection.backend.constants.enums.DataLevelEnum;
+import com.casecollection.backend.model.vo.UserVo;
+import com.casecollection.backend.service.UserService;
+import com.casecollection.common.Response;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,7 +36,7 @@ import com.casecollection.backend.util.DateUtil;
 public class FrameController {
 
     @Autowired
-    private SysUserService sysUserService;
+    private UserService userService;
 
     @RequestMapping("/")
     public String index() {
@@ -54,17 +57,13 @@ public class FrameController {
      */
     @RequestMapping("/loginForm")
     @ResponseBody
-    public Map<String, Object> loginForm(SysUserVo userVo, HttpServletRequest request,HttpServletResponse response) throws IOException {
-        Map<String, Object> map = new HashMap<>();
+    public Response loginForm(UserVo userVo, HttpServletRequest request,HttpServletResponse response) throws IOException {
         UserSession userSession = new UserSession();
-        String message = sysUserService.login(userVo,userSession);
-        if(StringUtils.isEmpty(message)){
+        Response result = userService.login(userVo,userSession);
+        if(result.getRetCode() == Response.OK_CODE){
             request.getSession().setAttribute("user",userSession);
-            map.put("success", true);
-            return map;
         }
-        map.put("error",message);
-        return map;
+        return result;
     }
 
     /**
@@ -110,6 +109,22 @@ public class FrameController {
         model.addAttribute("user", user);
 		return "/frame";
 	}
+
+    @RequestMapping("/toRegister")
+    public String toRegister(HttpServletRequest request, HttpServletResponse response) {
+        //跳转到注册页面
+        return "/register";
+    }
+
+    /**
+     * 登录
+     * @throws IOException
+     */
+    @RequestMapping("/register")
+    @ResponseBody
+    public Response register(UserVo userVo, HttpServletRequest request,HttpServletResponse response) throws IOException {
+        return userService.insertSelective(userVo, null);
+    }
 	
 	@RequestMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {

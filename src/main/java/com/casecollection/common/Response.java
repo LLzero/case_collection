@@ -8,12 +8,33 @@ package com.casecollection.common;
  */
 public class Response<T> {
 
+    public static final int OK_CODE = 0;
+
+    public static final int ERROR_CODE = -1;
+
 	private T data;
 
     private int retCode;
 
-    private String message;
+    private String msg;
 
+    public Response(){
+
+    }
+
+    public Response(int retCode , String message, T t){
+        this.retCode = retCode;
+        this.msg = message;
+        this.data = t;
+    }
+
+    public static <T> Response<T> getResponseOK(T t){
+        return new Response<>(Response.OK_CODE, null ,t);
+    }
+
+    public static <T> Response<T> getResponseError(T t,String message){
+        return new Response<>(Response.ERROR_CODE, message ,t);
+    }
 
     public int getRetCode(){
         return retCode;
@@ -32,11 +53,11 @@ public class Response<T> {
         this.data = data;
     }
 
-    public String getMessage(){
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message){
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

@@ -60,13 +60,6 @@ public interface SysUserService {
     String resetPassword(SysUserVo userVo,String newPassword);
 
     /**
-     * 登录服务
-     * @param userVo
-     * @return
-     */
-    String login(SysUserVo userVo,UserSession userSession);
-
-    /**
      * 找回用户密码
      * @param userVo
      * @return

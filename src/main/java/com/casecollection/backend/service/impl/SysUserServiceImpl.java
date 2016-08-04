@@ -188,43 +188,6 @@ public class SysUserServiceImpl implements SysUserService{
     }
 
     /**
-     * 登录服务
-     *
-     * @param userVo
-     * @return
-     */
-    @Override
-    public String login(SysUserVo userVo,UserSession userSession) {
-        try {
-            if(StringUtils.isEmpty(userVo.getLoginName()) || StringUtils.isEmpty(userVo.getPassword())){
-                return "请填写用户名或密码";
-            }
-            List<SysUser> sysUsers = sysUserMapper.getUserByName(userVo);
-            if(CollectionUtils.isEmpty(sysUsers)){
-                return "用户名不存在";
-            }
-            SysUser sysUser = sysUsers.get(0);
-            if(!MD5Util.EncoderByMd5(userVo.getPassword()).equals(sysUser.getPassword())){
-                return "用户密码错误";
-            }
-            if(sysUser.getStatus() == 2){
-                return "该账号已被禁用";
-            }
-            userSession.setName(sysUser.getLoginName());
-            userSession.setDataLevel(sysUser.getDataLevel());
-            userSession.setCusLevel(sysUser.getCusLevel());
-            userSession.setIsHandling(sysUser.getIsHandling());
-            userSession.setsCode(sysUser.getSchoolCode());
-            userSession.setId(sysUser.getId());
-            userSession.setHandNum(sysUser.getHandlingNum());
-            userSession.setRealName(sysUser.getRealName());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "";
-    }
-
-    /**
      * 找回用户密码
      *
      * @param userVo

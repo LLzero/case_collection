@@ -20,4 +20,12 @@ public class MD5Util {
         return newstr;
     }
 
+    public static void main(String[] args){
+        try {
+            System.out.println(MD5Util.EncoderByMd5("zuodeng"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

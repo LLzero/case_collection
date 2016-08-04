@@ -71,7 +71,7 @@
                                                         placeholder="密码" /> <i class="ace-icon fa fa-lock"></i>
                                                 </span>
                                                 </label>
-                                                <div class="alert alert-danger hidden" role="alert"></div>
+                                                <div class="alert alert-danger" role="alert" id="errorMsg"></div>
                                                 <div class="clearfix">
                                                     <a type="button" id="loginBtn"
                                                         class="width-45 pull-left btn btn-sm btn-primary">
@@ -103,12 +103,13 @@ $(function() {
     	window.parent.location.href="${ctx}/index";
     }
     $("#loginBtn").click(function() {
-        var params = {loginName : $.trim($("#name").val()), password : $.trim($("#pass").val())};
+        var params = {name : $.trim($("#name").val()), password : $.trim($("#pass").val())};
         $.post('${ctx}/loginForm', params, function(data){
-            if(data.success) {
+            if(data.retCode == 0) {
                 window.location.href = "${ctx}/frame";
             }else {
-                alert(data.error);
+                $("#errorMsg").show();
+                $("#errorMsg").html(data.msg);
             }
         }, 'json');
     });

@@ -60,7 +60,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 			if(dictionary.getId() == null) {
 				if(dictionarys.size() > 0){
 					response.setRetCode(1);//字典已存在
-					response.setMessage("该字典已存在");
+					response.setMsg("该字典已存在");
 				}else{
 					dictionaryMapper.insertSelective(dictionary);
 				}
@@ -70,14 +70,14 @@ public class DictionaryServiceImpl implements DictionaryService {
 					dictionaryMapper.updateByPrimaryKeySelective(dictionary);
 				}else{
 					response.setRetCode(1);//字典已存在
-					response.setMessage("该字典已存在");
+					response.setMsg("该字典已存在");
 				}
 
 			}
 		} catch (RuntimeException e) {
 			e.printStackTrace();
 			response.setRetCode(9009);
-			response.setMessage("操作失败，请联系运营人员");
+			response.setMsg("操作失败，请联系运营人员");
 		}
 		return  response;
 	}
@@ -93,7 +93,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.setRetCode(9009);
-			response.setMessage("操作失败，请联系运营人员");
+			response.setMsg("操作失败，请联系运营人员");
 		}
 
 		return response;

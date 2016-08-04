@@ -9,27 +9,27 @@
             <property name="suppressAllComments" value="true" />
         </commentGenerator>
         <!-- 数据库链接URL、用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://101.201.43.54:3306/intelians" userId="root" password="15935728">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://123.57.51.209:3306/casecollection" userId="root" password="15935728">
             <!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@localhost:1521:orcl" userId="msa" password="msa">-->
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
         <!-- 生成实体类的包名和位置，这里配置将生成的实体类放在me.gacl.domain这个包下 -->
-        <javaModelGenerator targetPackage="com.casecollection.backend.model" targetProject="/Users/zuodeng/develop/workspace/intelians/svn/IntelligentAnswerSys/trunk/inteliAns/src/main/java">
+        <javaModelGenerator targetPackage="com.casecollection.backend.model" targetProject="/Users/zuodeng/develop/github/case_collection/src/main/java">
             <property name="enableSubPackages" value="true" />
             <!--<property name="trimStrings" value="true" />-->
         </javaModelGenerator>
         <!-- 生成的SQL映射文件包名和位置，这里配置将生成的SQL映射文件放在me.gacl.mapping这个包下 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="/Users/zuodeng/develop/workspace/intelians/svn/IntelligentAnswerSys/trunk/inteliAns/src/main/resources">
+        <sqlMapGenerator targetPackage="mapper" targetProject="/Users/zuodeng/develop/github/case_collection/src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置，这里配置将生成的dao类放在me.gacl.dao这个包下 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.casecollection.backend.dao" targetProject="/Users/zuodeng/develop/workspace/intelians/svn/IntelligentAnswerSys/trunk/inteliAns/src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.casecollection.backend.dao" targetProject="/Users/zuodeng/develop/github/case_collection/src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="t_switch" domainObjectName="Switch" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="t_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <!--<property name="useActualColumnNames" value="true" />-->
         </table>
 
