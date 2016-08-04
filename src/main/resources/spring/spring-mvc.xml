@@ -28,10 +28,12 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<mvc:exclude-mapping path="/index/view" />
 			<mvc:exclude-mapping path="/index"/>
-			<mvc:exclude-mapping path="/index/login" />
+			<mvc:exclude-mapping path="/loginForm"/>
+			<mvc:exclude-mapping path="/toRegister"/>
+			<mvc:exclude-mapping path="/register"/>
 			<mvc:exclude-mapping path="/"/>
+			<mvc:exclude-mapping path="/frame"/>
 			<bean class="com.casecollection.common.framework.aop.LoginInterceptor" />
 		</mvc:interceptor>
 

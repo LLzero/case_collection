@@ -19,16 +19,6 @@ public class UserSession implements Serializable {
     private Long id;
     // 姓名
     private String name;
-    // 最后续命时间
-    private Date lastExtension;
-    //登陆ip地址
-    private String ipAddress;
-    //用户类型
-    private Integer userType;
-    
-    private List<Menu> menuList;
-
-    private Set<String> menuUrlSet;
     
     private Integer dataLevel;    //权限级别 1-最高
     
@@ -41,30 +31,9 @@ public class UserSession implements Serializable {
     private Integer handNum;//在线同时服务的用户数量
 
     private String realName;  //真是姓名
-    
-    
-    public List<Menu> getMenuList() {
-        return menuList;
-    }
 
-    public void setMenuList(List<Menu> menuList) {
-        this.menuList = menuList;
-    }
-
-    public Set<String> getMenuUrlSet() {
-        return menuUrlSet;
-    }
-
-    public void setMenuUrlSet(Set<String> menuUrlSet) {
-        this.menuUrlSet = menuUrlSet;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public Long getId() {
@@ -75,28 +44,12 @@ public class UserSession implements Serializable {
         this.id = id;
     }
 
-    public Date getLastExtension() {
-        return lastExtension;
+    public String getName() {
+        return name;
     }
 
-    public void setLastExtension(Date lastExtension) {
-        this.lastExtension = lastExtension;
-    }
-
-    public String getIpAddress() {
-        return ipAddress;
-    }
-
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
-    }
-
-    public Integer getUserType() {
-        return userType;
-    }
-
-    public void setUserType(Integer userType) {
-        this.userType = userType;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getDataLevel() {
@@ -105,6 +58,22 @@ public class UserSession implements Serializable {
 
     public void setDataLevel(Integer dataLevel) {
         this.dataLevel = dataLevel;
+    }
+
+    public Integer getCusLevel() {
+        return cusLevel;
+    }
+
+    public void setCusLevel(Integer cusLevel) {
+        this.cusLevel = cusLevel;
+    }
+
+    public Integer getIsHandling() {
+        return isHandling;
+    }
+
+    public void setIsHandling(Integer isHandling) {
+        this.isHandling = isHandling;
     }
 
     public String getsCode() {
@@ -129,21 +98,5 @@ public class UserSession implements Serializable {
 
     public void setRealName(String realName) {
         this.realName = realName;
-    }
-
-    public Integer getCusLevel() {
-        return cusLevel;
-    }
-
-    public void setCusLevel(Integer cusLevel) {
-        this.cusLevel = cusLevel;
-    }
-
-    public Integer getIsHandling() {
-        return isHandling;
-    }
-
-    public void setIsHandling(Integer isHandling) {
-        this.isHandling = isHandling;
     }
 }

@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.casecollection.backend.constants.enums.DataLevelEnum;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,34 +40,11 @@ public class FrameController {
         return "redirect:/index";
     }
 
-    @RequestMapping("/weixinApi")
-    @ResponseBody
-    public String weixinApi(String signature, Long timestamp, Integer nonce, String echostr) {
-        
-        return "redirect:/index";
-    }
-    
-    @RequestMapping("/videoUploadCallback")
-    @ResponseBody
-    public Map<String, Object> videoUploadCallback(String fileName, String key) {
-        Map<String, Object> map = new HashMap<String, Object>();
-        System.out.println("callback>>>>>>>"+key);
-        map.put("state", "SUCCESS");
-        String urlPrefix = "http://7xtoqx.com2.z0.glb.qiniucdn.com";
-        if(urlPrefix != null && !urlPrefix.endsWith("/")) {
-            urlPrefix += "/";
-        }
-        map.put("url", urlPrefix + key);
-        map.put("title", fileName);
-        map.put("original", fileName);
-        return map;
-    }
-
     /**
      * 后台首页
      */
     @RequestMapping("/index")
-    public String toIndex(Model model) {
+    public String toIndex() {
         return "/index";
     }
     
@@ -82,7 +60,6 @@ public class FrameController {
         String message = sysUserService.login(userVo,userSession);
         if(StringUtils.isEmpty(message)){
             request.getSession().setAttribute("user",userSession);
-            request.getSession().setAttribute("sCode",userSession.getsCode());
             map.put("success", true);
             return map;
         }
@@ -100,10 +77,10 @@ public class FrameController {
     @ResponseBody
     public List<Menu> loadMenu(HttpServletRequest request) {
         UserSession user = (UserSession) request.getSession().getAttribute("user");
-        if(user != null && user.getDataLevel() == -1) {
+        if(user != null && user.getDataLevel() == DataLevelEnum.ADMIN.getValue()) {
             return MenuConstants.getAdminMenus();
         }
-        return MenuConstants.getSchoolMenus();
+        return MenuConstants.getCommonMenus();
     }
 	/**
 	 * 跳转无权限页面
@@ -131,19 +108,12 @@ public class FrameController {
 		model.addAttribute("day", DateUtil.getWeek(new Date()));
 		UserSession user = (UserSession) request.getSession().getAttribute("user");
         model.addAttribute("user", user);
-        boolean isCs = false;
-        //判断是否需要显示在线答疑
-        if(user.getCusLevel() != 0 && user.getIsHandling() != null && user.getIsHandling() == 1){
-            isCs = true;
-        }
-        model.addAttribute("isCs", isCs);
 		return "/frame";
 	}
 	
 	@RequestMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().removeAttribute("user");
-        request.getSession().removeAttribute("sCode");
         //跳转到登录页面
         return "redirect:/index";
     }

@@ -112,6 +112,10 @@ $(function() {
             }
         }, 'json');
     });
+
+    $("#register").click(function() {
+        window.location.href = "${ctx}/register"
+    });
 });
 </script>
 </body>
