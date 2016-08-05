@@ -28,7 +28,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             return false;
         } else {
             UserSession userSession = (UserSession)session.getAttribute("user");
-            if(request.getRequestURL().indexOf("/toResetPassword") == -1 &&
+            if(request.getRequestURL().indexOf("esetPassword") == -1 &&
                     userSession.getCreateType() != CreateTypeEnum.REGISTER.getValue() &&
                     userSession.getLoginTimes() == 0){
                 StringBuffer stringBuffer = new StringBuffer("http://");

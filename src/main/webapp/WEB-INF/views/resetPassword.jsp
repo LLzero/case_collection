@@ -137,10 +137,8 @@
             $.ajax({
                 type: "POST",
                 url: "/user/resetPassword",
-                data: "oldPassword="+$.trim($("#oldPassword").val())+"&newPassword="+$.trim($("#newPassword").val()),
-                dataType:"json"
+                data: "oldPassword="+$.trim($("#oldPassword").val())+"&newPassword="+$.trim($("#newPassword").val())
             }).done(function (data) {
-                alert(data.retCode);
                 if(data.retCode == 0) {
                     $("#successMsg").removeClass("hidden");
                     $("#successMsg").html("修改成功，请返回重新登录");
