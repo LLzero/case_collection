@@ -212,6 +212,7 @@ public class UserServiceImpl implements UserService {
         try {
             User updateUser = new User();
             //密码更新次数
+            updateUser.setId(id);
             updateUser.setPassword(MD5Util.EncoderByMd5("000000"));
             updateUser.setLoginTimes(0l);
             updateUser.setCreateType(CreateTypeEnum.RESET.getValue());

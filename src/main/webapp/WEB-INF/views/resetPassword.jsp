@@ -111,6 +111,10 @@
 </div>
 <script type="text/javascript">
     $(function () {
+        if(frameElement && frameElement.tagName == 'IFRAME') {
+            window.parent.location.href="${ctx}/index";
+        }
+
         $("#resetPassword").click(function () {
 
             formValidate();
@@ -130,13 +134,13 @@
                 $("#errorMsg").addClass("hidden");
             }
 
-            var params = {
-                oldPassword : $.trim($("#oldPassword").val()),
-                newPassword : $.trim($("#newPassword").val())
-            };
-
-            $.post('${ctx}/user/resetPassword', params, function(data){
-                alert(data+"ok");
+            $.ajax({
+                type: "POST",
+                url: "/user/resetPassword",
+                data: "oldPassword="+$.trim($("#oldPassword").val())+"&newPassword="+$.trim($("#newPassword").val()),
+                dataType:"json"
+            }).done(function (data) {
+                alert(data.retCode);
                 if(data.retCode == 0) {
                     $("#successMsg").removeClass("hidden");
                     $("#successMsg").html("修改成功，请返回重新登录");
@@ -144,7 +148,9 @@
                     $("#errorMsg").removeClass("hidden");
                     $("#errorMsg").html(data.msg);
                 }
-            }, 'json');
+            }).always(function () {
+                //$("#submitBtn").removeClass("disabled");
+            });
 
         });
 

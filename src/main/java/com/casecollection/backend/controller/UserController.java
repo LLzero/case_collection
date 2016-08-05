@@ -69,7 +69,7 @@ public class UserController {
         return "/backend/user/resetPassword";
     }
 
-    @RequestMapping(value = "/resetPassword",method = RequestMethod.POST)
+    @RequestMapping(value = "/resetPassword",method = RequestMethod.POST,produces = "application/json")
     @ResponseBody
     public Response resetPassword(String oldPassword,String newPassword,HttpServletRequest request){
         UserSession userSession = (UserSession)request.getSession().getAttribute("user");

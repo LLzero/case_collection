@@ -6,7 +6,7 @@ import com.casecollection.backend.model.vo.UserVo;
 import java.util.List;
 
 public interface UserMapper {
-    int deleteByIds(List<Long> ids);
+    int deleteByIds(List<Long> list);
 
     int insert(User record);
 

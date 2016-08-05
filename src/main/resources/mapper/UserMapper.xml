@@ -28,9 +28,12 @@
     from t_user
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByIds" >
     delete from t_user
-    where id = #{id,jdbcType=BIGINT}
+    where id IN
+    <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+      #{item}
+    </foreach>
   </delete>
   <insert id="insert" parameterType="com.casecollection.backend.model.User" >
     insert into t_user (id, name, password, 
@@ -206,7 +209,7 @@
   </select>
 
   <sql id="findWhere">
-    where
+    where 1=1
     <if test="name != null and name !=''">
       and  name like CONCAT('%',#{name,jdbcType=VARCHAR},'%')
     </if>
@@ -214,10 +217,10 @@
       and  contact like CONCAT('%',#{contact,jdbcType=VARCHAR},'%')
     </if>
     <if test="reportAccount != null and reportAccount !=''">
-      and  report_account like CONCAT('%',#{report_account,jdbcType=VARCHAR},'%')
+      and  report_account like CONCAT('%',#{reportAccount,jdbcType=VARCHAR},'%')
     </if>
     <if test="queryAccount != null and queryAccount !=''">
-      and  queryAccount like CONCAT('%',#{queryAccount,jdbcType=VARCHAR},'%')
+      and  query_account like CONCAT('%',#{queryAccount,jdbcType=VARCHAR},'%')
     </if>
   </sql>
 

@@ -25,9 +25,9 @@ public class MenuConstants {
         int commonLevel2Count = 0;
         int adminLevel2Count = 0;
         adminMenus.get(adminLevel1Count).getChildMenu().add(new Menu("用户管理", "/user/toList", "", 0L, 2, adminLevel2Count++));
-        adminMenus.get(adminLevel1Count).getChildMenu().add(new Menu("密码修改", "/user/resetPassword", "", 0L, 2, adminLevel2Count++));
+        adminMenus.get(adminLevel1Count).getChildMenu().add(new Menu("密码修改", "/user/toResetPassword", "", 0L, 2, adminLevel2Count++));
         commonMenus.get(commonLevel1Count).getChildMenu().add(new Menu("信息修改", "/user/toManager", "", 0L, 2, commonLevel2Count++));
-        commonMenus.get(commonLevel1Count).getChildMenu().add(new Menu("密码修改", "/user/resetPassword", "", 0L, 2, commonLevel2Count++));
+        commonMenus.get(commonLevel1Count).getChildMenu().add(new Menu("密码修改", "/user/toResetPassword", "", 0L, 2, commonLevel2Count++));
 
         commonLevel1Count++;
         adminLevel1Count++;
