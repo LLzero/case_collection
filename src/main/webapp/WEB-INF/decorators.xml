@@ -14,7 +14,6 @@
         <pattern>/user/toUpdate</pattern>
         <pattern>/user/manager</pattern>
         <pattern>/user/toResetPassword</pattern>
-        <pattern>/user/findPassword/toFindPassword</pattern>
 
         <!--字典维护-->
         <pattern>/dictionary/toList</pattern>

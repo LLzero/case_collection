@@ -160,6 +160,9 @@
       <if test="loginTimes != null" >
         login_times = #{loginTimes,jdbcType=BIGINT},
       </if>
+      <if test="createType != null" >
+        create_type = #{createType,jdbcType=BIGINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -187,5 +190,35 @@
       and id != #{id,jdbcType=BIGINT}
     </if>
   </select>
+
+  <select id="findUserCount" resultType="java.lang.Integer" parameterType="com.casecollection.backend.model.vo.UserVo" >
+    select
+    count(*)
+    from t_user
+    <include refid="findWhere" />
+  </select>
+
+  <select id="findUser" resultMap="BaseResultMap" parameterType="com.casecollection.backend.model.vo.UserVo" >
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    <include refid="findWhere" />
+  </select>
+
+  <sql id="findWhere">
+    where
+    <if test="name != null and name !=''">
+      and  name like CONCAT('%',#{name,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="contact != null and contact !=''">
+      and  contact like CONCAT('%',#{contact,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="reportAccount != null and reportAccount !=''">
+      and  report_account like CONCAT('%',#{report_account,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="queryAccount != null and queryAccount !=''">
+      and  queryAccount like CONCAT('%',#{queryAccount,jdbcType=VARCHAR},'%')
+    </if>
+  </sql>
 
 </mapper>

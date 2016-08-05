@@ -1,5 +1,6 @@
 package com.casecollection.backend.service.impl;
 
+import com.casecollection.backend.constants.enums.CreateTypeEnum;
 import com.casecollection.backend.constants.enums.StatusEnum;
 import com.casecollection.backend.dao.UserMapper;
 import com.casecollection.backend.framework.bean.UserSession;
@@ -7,6 +8,7 @@ import com.casecollection.backend.model.User;
 import com.casecollection.backend.model.vo.UserVo;
 import com.casecollection.backend.service.UserService;
 import com.casecollection.backend.util.MD5Util;
+import com.casecollection.backend.util.Pagination;
 import com.casecollection.common.Response;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -108,6 +111,115 @@ public class UserServiceImpl implements UserService {
             BeanUtils.copyProperties(user,userSession);
             return  Response.getResponseOK(Boolean.TRUE);
         } catch (Exception e) {
+            e.printStackTrace();
+            return Response.getResponseError(Boolean.FALSE,"系统错误");
+        }
+    }
+
+    /**
+     * 修改密码
+     *
+     * @param userSession
+     * @param newPassword
+     * @param oldPassword
+     * @return
+     */
+    @Override
+    public Response<Boolean> resetPassword(UserSession userSession, String newPassword, String oldPassword) {
+        try {
+            User user = userMapper.selectByPrimaryKey(userSession.getId());
+            if(!MD5Util.EncoderByMd5(oldPassword).equals(user.getPassword())){
+                return Response.getResponseError(Boolean.FALSE,"原始密码输入不正确");
+            }
+            User updateUser = new User();
+            //密码更新次数
+            updateUser.setId(userSession.getId());
+            updateUser.setLoginTimes(user.getLoginTimes() + 1);
+            updateUser.setPassword(MD5Util.EncoderByMd5(newPassword));
+            updateUser.setUpdateTime(new Date());
+            updateUser.setUpdateBy(userSession.getName());
+            userMapper.updateByPrimaryKeySelective(updateUser);
+            //重置session
+            userSession.setLoginTimes(user.getLoginTimes() + 1);
+            userSession.setPassword(MD5Util.EncoderByMd5(newPassword));
+            return Response.getResponseOK(Boolean.TRUE);
+        }catch (Exception e){
+            e.printStackTrace();
+            return Response.getResponseError(Boolean.FALSE,"系统错误");
+        }
+    }
+
+    /**
+     * 删除用户
+     *
+     * @param ids
+     * @return
+     */
+    @Override
+    public Response<Boolean> deleteByIds(String ids) {
+        try {
+            List<Long> idList = new ArrayList<>();
+            String[] strs = ids.split(",");
+            for(String str : strs){
+                idList.add(Long.parseLong(str));
+            }
+            userMapper.deleteByIds(idList);
+            return Response.getResponseOK(Boolean.TRUE);
+        }catch (Exception e){
+            e.printStackTrace();
+            return Response.getResponseError(Boolean.FALSE,"系统错误");
+        }
+    }
+
+    /**
+     * 分页查询用户列表
+     *
+     * @param userVo
+     * @param pg
+     * @return
+     */
+    @Override
+    public Pagination<UserVo> findUser(UserVo userVo, Pagination<UserVo> pg) {
+        try {
+            int count = userMapper.findUserCount(userVo);
+            if(count <= 0){
+                return pg;
+            }
+            List<UserVo> userVoList = new ArrayList<>();
+            List<User> userList = userMapper.findUser(userVo);
+            for(User user : userList){
+                UserVo sysUserVo = new UserVo();
+                BeanUtils.copyProperties(user, sysUserVo);
+                userVoList.add(sysUserVo);
+            }
+            pg.setData(userVoList);
+            pg.setTotalRows(count);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return pg;
+    }
+
+    /**
+     * 初始化用户密码
+     *
+     * @param userSession
+     * @param id
+     * @return
+     */
+    @Override
+    public Response<Boolean> initPassword(UserSession userSession, Long id) {
+        try {
+            User updateUser = new User();
+            //密码更新次数
+            updateUser.setPassword(MD5Util.EncoderByMd5("000000"));
+            updateUser.setLoginTimes(0l);
+            updateUser.setCreateType(CreateTypeEnum.RESET.getValue());
+            updateUser.setUpdateTime(new Date());
+            updateUser.setUpdateBy(userSession.getName());
+            userMapper.updateByPrimaryKeySelective(updateUser);
+            return Response.getResponseOK(Boolean.TRUE);
+        }catch (Exception e){
             e.printStackTrace();
             return Response.getResponseError(Boolean.FALSE,"系统错误");
         }

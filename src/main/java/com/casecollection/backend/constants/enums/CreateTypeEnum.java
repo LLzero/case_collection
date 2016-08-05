@@ -7,6 +7,7 @@ public enum  CreateTypeEnum {
 
     INIT(0,"初始化"),
     REGISTER(1,"注册"),
+    RESET(2,"重置"),
             ;
 
     private int value;

@@ -6,7 +6,7 @@ import com.casecollection.backend.model.vo.UserVo;
 import java.util.List;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(Long id);
+    int deleteByIds(List<Long> ids);
 
     int insert(User record);
 
@@ -24,4 +24,18 @@ public interface UserMapper {
      * @return
      */
     List<User> findByName(UserVo userVo);
+
+    /**
+     * 查询用户数量
+     * @param userVo
+     * @return
+     */
+    int findUserCount(UserVo userVo);
+
+    /**
+     * 查询用户列表
+     * @param userVo
+     * @return
+     */
+    List<User> findUser(UserVo userVo);
 }
