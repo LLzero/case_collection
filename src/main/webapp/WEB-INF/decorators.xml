@@ -10,13 +10,7 @@
     <decorator name="default" page="include.jsp">
         <!-- 用户基本信息 -->
         <pattern>/user/toList</pattern>
-        <pattern>/user/toAdd</pattern>
-        <pattern>/user/toUpdate</pattern>
-        <pattern>/user/manager</pattern>
+        <pattern>/user/toManager</pattern>
         <pattern>/user/toResetPassword</pattern>
-
-        <!--字典维护-->
-        <pattern>/dictionary/toList</pattern>
-        <pattern>/dictionary/toEdit</pattern>
         </decorator>
 </decorators>

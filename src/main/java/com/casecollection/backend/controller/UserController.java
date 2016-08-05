@@ -43,7 +43,7 @@ public class UserController {
         return userService.findUser(vo, pg);
     }
 
-    @RequestMapping(value = "/manager",method = RequestMethod.GET)
+    @RequestMapping(value = "/toManager",method = RequestMethod.GET)
     public String manager(Model model,HttpServletRequest request){
         UserSession userSession = (UserSession)request.getSession().getAttribute("user");
         model.addAttribute("user", userSession);
