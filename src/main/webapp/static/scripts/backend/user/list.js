@@ -28,7 +28,7 @@ var userFacade = {
             _this.detailsGrid = $(grid_selector).jqGrid({
                 url : userFacade.url+'?'+params,
                 datatype : 'json',
-                colNames : ['ID', '用户名', '联系人', '联系方式','填报账号','查询账号','密码','用户类型','操作'],
+                colNames : ['ID', '用户名', '联系人', '联系电话','填报账号','查询账号','密码','用户类型','操作'],
                 jsonReader : {  
                     root: "data",  
                     page: "curPage",  

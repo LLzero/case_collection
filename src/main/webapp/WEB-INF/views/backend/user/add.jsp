@@ -27,7 +27,7 @@
         </div>
 
         <div class="singleContent">
-            <div class="left">联系方式：</div>
+            <div class="left">联系电话：</div>
             <div class="right">
                 <input type="text" id="contactMeans" name="contactMeans" isNull="false" checkType="empty"/><i class="ace-icon fa fa-envelope"></i>
                 <span style="color: red;margin-left: 5px">*</span>

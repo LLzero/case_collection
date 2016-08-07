@@ -128,7 +128,7 @@
                                             </label>
                                             <label class="block clearfix">
                                                 <span class="block input-icon input-icon-right">
-                                                    <input type="text" class="form-control" isNull="false" checkType="empty" id="sign_contactMeans" placeholder="联系方式" />
+                                                    <input type="text" class="form-control" isNull="false" checkType="empty" id="sign_contactMeans" placeholder="联系电话" />
                                                     <i class="ace-icon fa fa-envelope"></i>
                                                 </span>
                                             </label>

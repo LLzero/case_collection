@@ -22,15 +22,15 @@
             <div class="left">联系人：</div>
             <div class="right">
                 <input type="text" id="contact" name="contact" value="${user.contact}" isNull="false" checkType="empty" />
-                <span style="color: red">*</span>
+                <span style="color: red;margin-left: 5px;">*</span>
             </div>
         </div>
 
         <div class="singleContent">
-            <div class="left">联系方式：</div>
+            <div class="left">联系电话：</div>
             <div class="right">
                 <input type="text" id="contactMeans" value="${user.contactMeans}" name="contactMeans" isNull="false" checkType="empty" />
-                <span style="color: red">*</span>
+                <span style="color: red;margin-left: 5px">*</span>
             </div>
         </div>
 
@@ -81,7 +81,8 @@
             }).done(function (data) {
                 if (data.retCode == 0) {
                     $("#submitBtn").removeClass("disabled");
-                    $.dialog({title: '提示', content: "操作成功", icon: 'success.gif',lock:true ,ok: '确定'});
+                    $.dialog({title: '提示', content: "修改成功", icon: 'success.gif',lock:true ,ok: '确定'});
+                    //window.location.href = "${ctx}/user/toManager";
                 } else {
                     $("#submitBtn").removeClass("disabled");
                     $.dialog({title: '提示', content: data.msg, icon: 'error.gif',lock:true , ok: '确定'});
