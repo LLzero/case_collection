@@ -1,5 +1,6 @@
 package com.casecollection.backend.controller;
 
+import com.casecollection.backend.dao.UserMapper;
 import com.casecollection.backend.framework.bean.UserSession;
 import com.casecollection.backend.model.vo.UserVo;
 import com.casecollection.backend.service.UserService;
@@ -23,6 +24,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserMapper userMapper;
 
     @RequestMapping(value = "/toList",method = RequestMethod.GET)
     public String toList(Model model,HttpServletRequest request){
@@ -46,8 +49,20 @@ public class UserController {
     @RequestMapping(value = "/toManager",method = RequestMethod.GET)
     public String manager(Model model,HttpServletRequest request){
         UserSession userSession = (UserSession)request.getSession().getAttribute("user");
-        model.addAttribute("user", userSession);
+        model.addAttribute("user", userMapper.selectByPrimaryKey(userSession.getId()));
         return "/backend/user/manager";
+    }
+
+    @RequestMapping(value = "/toAdd",method = RequestMethod.GET)
+    public String toAdd(Model model,HttpServletRequest request){
+        return "/backend/user/add";
+    }
+
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @ResponseBody
+    public Response add(UserVo vo,HttpServletRequest request){
+        UserSession userSession = (UserSession)request.getSession().getAttribute("user");
+        return userService.insertSelective(vo, userSession);
     }
 
 

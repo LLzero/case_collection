@@ -45,7 +45,8 @@
                        placeholder="输入查询账号" />
               </div>
               <div class="param_field_short">
-                <a id="searchBtn" class="btn btn-primary btn-sm">查询</a>&nbsp;&nbsp;
+                <a id="addBtn" class="btn btn-primary btn-sm">注册用户</a>&nbsp;&nbsp;
+                <a id="searchBtn" class="btn btn-primary btn-sm">查询</a>
               </div>
             </form>
           </div>

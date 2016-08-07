@@ -63,7 +63,7 @@
                                         <fieldset>
                                             <label class="block clearfix"> <span
                                                 class="block input-icon input-icon-right"> <input
-                                                    type="text" class="form-control" id="name"
+                                                    type="text" class="form-control" id="account"
                                                     placeholder="账号" /> <i class="ace-icon fa fa-user"></i>
                                             </span>
                                             </label> <label class="block clearfix"> <span
@@ -75,16 +75,16 @@
                                             <div class="alert alert-danger hidden" role="alert" id="errorMsg"></div>
                                             <div class="clearfix">
                                                 <a type="button" id="loginBtn"
-                                                    class="width-45 pull-left btn btn-sm btn-primary">
+                                                    class="width-100 pull-left btn btn-sm btn-primary">
                                                     <i class="ace-icon fa fa-key"></i> <span
-                                                        class="bigger-45">登录</span>
+                                                        class="bigger-110">登录</span>
                                                 </a>
 
-                                                <a type="button" data-target="#signup-box"
-                                                   class="width-45 pull-right btn btn-sm btn-success user-signup-link">
-                                                    <i class="ace-icon fa fa-arrow-right icon-on-right"></i> <span
-                                                        class="bigger-45">去注册</span>
-                                                </a>
+                                                <%--<a type="button" data-target="#signup-box"--%>
+                                                   <%--class="width-45 pull-right btn btn-sm btn-success user-signup-link">--%>
+                                                    <%--<i class="ace-icon fa fa-arrow-right icon-on-right"></i> <span--%>
+                                                        <%--class="bigger-45">去注册</span>--%>
+                                                <%--</a>--%>
                                             </div>
                                             <div class="space-4"></div>
                                         </fieldset>
@@ -128,7 +128,7 @@
                                             </label>
                                             <label class="block clearfix">
                                                 <span class="block input-icon input-icon-right">
-                                                    <input type="text" class="form-control" isNull="false" checkType="empty" id="sign_contactMeans" placeholder="联系方式" />
+                                                    <input type="text" class="form-control" isNull="false" checkType="empty" id="sign_contactMeans" placeholder="联系电话" />
                                                     <i class="ace-icon fa fa-envelope"></i>
                                                 </span>
                                             </label>
@@ -176,7 +176,7 @@
             window.parent.location.href="${ctx}/index";
         }
         $("#loginBtn").click(function() {
-            var params = {name : $.trim($("#name").val()), password : $.trim($("#pass").val())};
+            var params = {account : $.trim($("#account").val()), password : $.trim($("#pass").val())};
             $.post('${ctx}/loginForm', params, function(data){
                 if(data.retCode == 0) {
                     window.location.href = "${ctx}/frame";

@@ -14,8 +14,8 @@
     <div class="singleContent">
       <div class="left">旧密码：</div>
       <div class="right">
-        <input type="text" id="password" name="password" isNull="false" checkType="empty" />
-        <span style="color: red">*</span>
+        <input type="text" id="oldPassword" name="oldPassword" isNull="false" checkType="empty" />
+        <span style="color: red;margin-left: 5px">*</span>
       </div>
     </div>
 
@@ -23,12 +23,12 @@
       <div class="left">新密码：</div>
       <div class="right">
         <input type="text" id="newPassword" name="newPassword" isNull="false" checkType="empty" />
-        <span style="color: red">(密码为包含数字字母特殊字符的6-15位长度)*</span>
+        <span style="color: red;margin-left: 5px">*</span>
       </div>
     </div>
 
     <div class="singleContent">
-      <div class="alert alert-danger hidden" role="alert"></div>
+      <div class="alert alert-danger hidden" role="alert" id="errorMsg"></div>
     </div>
     <div class="singleContent">
       <div class="left"></div>
@@ -50,24 +50,15 @@
   } catch (e) {
   }
 
-  function extValidate(){
-    var regex = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{6,15}');
-    if(!regex.test($("#newPassword").val())){
-      return false;
-    }
-    return true;
-  }
-
   $(function () {
     $("#submitBtn").click(function (e) {
       formValidate();
       if (validat() == false) {
-        alert("请先填写参数");
+        $("#errorMsg").removeClass("hidden");
+        $("#errorMsg").html("请先填写信息");
         return false;
-      }
-      if(!extValidate()){
-        alert("密码为包含数字字母特殊字符的6-15位长度");
-        return false;
+      }else{
+        $("#errorMsg").addClass("hidden");
       }
 
       var params = $("#form-school").serialize();
@@ -79,12 +70,12 @@
         url: "/user/resetPassword",
         data: params
       }).done(function (data) {
-        if (data.success) {
+        if (data.retCode == 0) {
           $("#submitBtn").removeClass("disabled");
           $.dialog({title: '提示', content: "操作成功", icon: 'success.gif',lock:true ,ok: '确定'});
         } else {
           $("#submitBtn").removeClass("disabled");
-          $.dialog({title: '提示', content: data.error, icon: 'error.gif',lock:true , ok: '确定'});
+          $.dialog({title: '提示', content: data.msg, icon: 'error.gif',lock:true , ok: '确定'});
         }
       }).always(function () {
         $("#submitBtn").removeClass("disabled");

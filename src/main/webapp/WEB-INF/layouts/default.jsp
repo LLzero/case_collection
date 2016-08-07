@@ -15,9 +15,7 @@
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-<title>智能答疑后台管理系统<sitemesh:title /></title>
-<link rel="icon" href="/icon.png" type="image/x-icon" />
-<link rel="SHORTCUT ICON" href="/icon.png"  type="image/x-icon" />
+<title>病例收集系统<sitemesh:title /></title>
 
 <style type="text/css">
 .no-skin .nav-list > li.active::after {right: 0px;}
