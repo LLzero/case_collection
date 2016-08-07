@@ -15,5 +15,14 @@ import com.casecollection.backend.system.Menu;
  */
 public class UserSession extends User implements Serializable {
 
+    private Integer accountType ;     //0-管理员  1-填报账号  2-查询账号
+
+    public Integer getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(Integer accountType) {
+        this.accountType = accountType;
+    }
 
 }

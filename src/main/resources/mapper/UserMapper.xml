@@ -87,6 +87,9 @@
       <if test="queryAccount != null" >
         query_account,
       </if>
+      <if test="createType != null" >
+        create_type,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -127,6 +130,9 @@
       </if>
       <if test="queryAccount != null" >
         #{queryAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="createType != null" >
+        #{createType,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -206,6 +212,7 @@
     <include refid="Base_Column_List" />
     from t_user
     <include refid="findWhere" />
+    order by id desc
   </select>
 
   <sql id="findWhere">
@@ -223,5 +230,13 @@
       and  query_account like CONCAT('%',#{queryAccount,jdbcType=VARCHAR},'%')
     </if>
   </sql>
+
+  <select id="findByAccount" resultMap="BaseResultMap" parameterType="com.casecollection.backend.model.vo.UserVo" >
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where query_account = #{account,jdbcType=VARCHAR}
+    or report_account = #{account,jdbcType=VARCHAR}
+  </select>
 
 </mapper>

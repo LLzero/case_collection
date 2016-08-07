@@ -10,6 +10,7 @@
     <decorator name="default" page="include.jsp">
         <!-- 用户基本信息 -->
         <pattern>/user/toList</pattern>
+        <pattern>/user/toAdd</pattern>
         <pattern>/user/toManager</pattern>
         <pattern>/user/toResetPassword</pattern>
         </decorator>

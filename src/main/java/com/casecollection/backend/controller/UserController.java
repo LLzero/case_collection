@@ -50,6 +50,18 @@ public class UserController {
         return "/backend/user/manager";
     }
 
+    @RequestMapping(value = "/toAdd",method = RequestMethod.GET)
+    public String toAdd(Model model,HttpServletRequest request){
+        return "/backend/user/add";
+    }
+
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @ResponseBody
+    public Response add(UserVo vo,HttpServletRequest request){
+        UserSession userSession = (UserSession)request.getSession().getAttribute("user");
+        return userService.insertSelective(vo,userSession);
+    }
+
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody

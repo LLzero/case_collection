@@ -38,4 +38,11 @@ public interface UserMapper {
      * @return
      */
     List<User> findUser(UserVo userVo);
+
+    /**
+     * 根据账号查询用户
+     * @param userVo
+     * @return
+     */
+    List<User> findByAccount(UserVo userVo);
 }
