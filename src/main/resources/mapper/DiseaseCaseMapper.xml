@@ -1,0 +1,1657 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.DiseaseCaseMapper" >
+  <resultMap id="BaseResultMap" type="com.casecollection.backend.model.DiseaseCase" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="depart_id" property="departId" jdbcType="BIGINT" />
+    <result column="depart_name" property="departName" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="is_married" property="isMarried" jdbcType="INTEGER" />
+    <result column="profession" property="profession" jdbcType="VARCHAR" />
+    <result column="birth_address" property="birthAddress" jdbcType="VARCHAR" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="nationality" property="nationality" jdbcType="VARCHAR" />
+    <result column="identity_number" property="identityNumber" jdbcType="VARCHAR" />
+    <result column="contact_address" property="contactAddress" jdbcType="VARCHAR" />
+    <result column="contact_name" property="contactName" jdbcType="VARCHAR" />
+    <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="in_hospital_date" property="inHospitalDate" jdbcType="TIMESTAMP" />
+    <result column="out_hospital_date" property="outHospitalDate" jdbcType="TIMESTAMP" />
+    <result column="in_hospital_office" property="inHospitalOffice" jdbcType="VARCHAR" />
+    <result column="out_hospital_office" property="outHospitalOffice" jdbcType="VARCHAR" />
+    <result column="hospital_days" property="hospitalDays" jdbcType="INTEGER" />
+    <result column="in_diagnose" property="inDiagnose" jdbcType="VARCHAR" />
+    <result column="out_diagnose" property="outDiagnose" jdbcType="VARCHAR" />
+    <result column="diagnoseDetail" property="diagnosedetail" jdbcType="VARCHAR" />
+    <result column="other_diagnose1" property="otherDiagnose1" jdbcType="VARCHAR" />
+    <result column="other_diagnose2" property="otherDiagnose2" jdbcType="VARCHAR" />
+    <result column="other_diagnose3" property="otherDiagnose3" jdbcType="VARCHAR" />
+    <result column="other_diagnose4" property="otherDiagnose4" jdbcType="VARCHAR" />
+    <result column="other_diagnose5" property="otherDiagnose5" jdbcType="VARCHAR" />
+    <result column="medical_history" property="medicalHistory" jdbcType="VARCHAR" />
+    <result column="medical_history1" property="medicalHistory1" jdbcType="VARCHAR" />
+    <result column="medical_history2" property="medicalHistory2" jdbcType="VARCHAR" />
+    <result column="medical_history3" property="medicalHistory3" jdbcType="VARCHAR" />
+    <result column="medical_history4" property="medicalHistory4" jdbcType="VARCHAR" />
+    <result column="medical_history5" property="medicalHistory5" jdbcType="INTEGER" />
+    <result column="medical_history6" property="medicalHistory6" jdbcType="INTEGER" />
+    <result column="medical_history7" property="medicalHistory7" jdbcType="VARCHAR" />
+    <result column="medical_history8" property="medicalHistory8" jdbcType="VARCHAR" />
+    <result column="medical_history9" property="medicalHistory9" jdbcType="VARCHAR" />
+    <result column="medical_history10" property="medicalHistory10" jdbcType="VARCHAR" />
+    <result column="medical_history11" property="medicalHistory11" jdbcType="VARCHAR" />
+    <result column="medical_history12" property="medicalHistory12" jdbcType="VARCHAR" />
+    <result column="medical_history13" property="medicalHistory13" jdbcType="VARCHAR" />
+    <result column="medical_history14" property="medicalHistory14" jdbcType="VARCHAR" />
+    <result column="physical_examine1" property="physicalExamine1" jdbcType="VARCHAR" />
+    <result column="physical_examine2" property="physicalExamine2" jdbcType="VARCHAR" />
+    <result column="physical_examine3" property="physicalExamine3" jdbcType="VARCHAR" />
+    <result column="physical_examine4" property="physicalExamine4" jdbcType="VARCHAR" />
+    <result column="physical_examine5" property="physicalExamine5" jdbcType="VARCHAR" />
+    <result column="physical_examine6" property="physicalExamine6" jdbcType="VARCHAR" />
+    <result column="physical_examine7" property="physicalExamine7" jdbcType="VARCHAR" />
+    <result column="physical_examine8" property="physicalExamine8" jdbcType="VARCHAR" />
+    <result column="physical_examine9" property="physicalExamine9" jdbcType="VARCHAR" />
+    <result column="blood_routine1" property="bloodRoutine1" jdbcType="VARCHAR" />
+    <result column="blood_routine2" property="bloodRoutine2" jdbcType="VARCHAR" />
+    <result column="blood_routine3" property="bloodRoutine3" jdbcType="VARCHAR" />
+    <result column="blood_routine4" property="bloodRoutine4" jdbcType="VARCHAR" />
+    <result column="blood_routine5" property="bloodRoutine5" jdbcType="VARCHAR" />
+    <result column="blood_routine6" property="bloodRoutine6" jdbcType="VARCHAR" />
+    <result column="blood_routine7" property="bloodRoutine7" jdbcType="VARCHAR" />
+    <result column="blood_routine8" property="bloodRoutine8" jdbcType="VARCHAR" />
+    <result column="blood_routine9" property="bloodRoutine9" jdbcType="VARCHAR" />
+    <result column="blood_routine10" property="bloodRoutine10" jdbcType="VARCHAR" />
+    <result column="blood_routine11" property="bloodRoutine11" jdbcType="VARCHAR" />
+    <result column="blood_routine12" property="bloodRoutine12" jdbcType="VARCHAR" />
+    <result column="blood_routine13" property="bloodRoutine13" jdbcType="VARCHAR" />
+    <result column="blood_routine14" property="bloodRoutine14" jdbcType="VARCHAR" />
+    <result column="blood_routine15" property="bloodRoutine15" jdbcType="VARCHAR" />
+    <result column="blood_routine16" property="bloodRoutine16" jdbcType="VARCHAR" />
+    <result column="blood_routine17" property="bloodRoutine17" jdbcType="VARCHAR" />
+    <result column="blood_routine18" property="bloodRoutine18" jdbcType="VARCHAR" />
+    <result column="blood_routine19" property="bloodRoutine19" jdbcType="VARCHAR" />
+    <result column="blood_routine20" property="bloodRoutine20" jdbcType="VARCHAR" />
+    <result column="blood_routine21" property="bloodRoutine21" jdbcType="VARCHAR" />
+    <result column="blood_routine22" property="bloodRoutine22" jdbcType="VARCHAR" />
+    <result column="blood_routine23" property="bloodRoutine23" jdbcType="VARCHAR" />
+    <result column="blood_routine24" property="bloodRoutine24" jdbcType="VARCHAR" />
+    <result column="blood_routine25" property="bloodRoutine25" jdbcType="VARCHAR" />
+    <result column="blood_routine26" property="bloodRoutine26" jdbcType="VARCHAR" />
+    <result column="blood_routine27" property="bloodRoutine27" jdbcType="VARCHAR" />
+    <result column="blood_routine28" property="bloodRoutine28" jdbcType="VARCHAR" />
+    <result column="blood_routine29" property="bloodRoutine29" jdbcType="VARCHAR" />
+    <result column="blood_routine30" property="bloodRoutine30" jdbcType="VARCHAR" />
+    <result column="blood_routine31" property="bloodRoutine31" jdbcType="VARCHAR" />
+    <result column="blood_routine32" property="bloodRoutine32" jdbcType="VARCHAR" />
+    <result column="blood_routine33" property="bloodRoutine33" jdbcType="VARCHAR" />
+    <result column="blood_routine34" property="bloodRoutine34" jdbcType="VARCHAR" />
+    <result column="blood_routine35" property="bloodRoutine35" jdbcType="VARCHAR" />
+    <result column="blood_routine36" property="bloodRoutine36" jdbcType="VARCHAR" />
+    <result column="blood_routine37" property="bloodRoutine37" jdbcType="VARCHAR" />
+    <result column="blood_routine38" property="bloodRoutine38" jdbcType="VARCHAR" />
+    <result column="blood_routine39" property="bloodRoutine39" jdbcType="VARCHAR" />
+    <result column="blood_routine40" property="bloodRoutine40" jdbcType="VARCHAR" />
+    <result column="blood_routine41" property="bloodRoutine41" jdbcType="VARCHAR" />
+    <result column="blood_routine42" property="bloodRoutine42" jdbcType="VARCHAR" />
+    <result column="blood_routine43" property="bloodRoutine43" jdbcType="VARCHAR" />
+    <result column="blood_routine44" property="bloodRoutine44" jdbcType="VARCHAR" />
+    <result column="blood_routine45" property="bloodRoutine45" jdbcType="VARCHAR" />
+    <result column="blood_routine46" property="bloodRoutine46" jdbcType="VARCHAR" />
+    <result column="blood_routine47" property="bloodRoutine47" jdbcType="VARCHAR" />
+    <result column="ogit1" property="ogit1" jdbcType="VARCHAR" />
+    <result column="ogit2" property="ogit2" jdbcType="VARCHAR" />
+    <result column="ogit3" property="ogit3" jdbcType="VARCHAR" />
+    <result column="ogit4" property="ogit4" jdbcType="VARCHAR" />
+    <result column="ogit5" property="ogit5" jdbcType="VARCHAR" />
+    <result column="ogit6" property="ogit6" jdbcType="VARCHAR" />
+    <result column="ogit7" property="ogit7" jdbcType="VARCHAR" />
+    <result column="ogit8" property="ogit8" jdbcType="VARCHAR" />
+    <result column="ogit9" property="ogit9" jdbcType="VARCHAR" />
+    <result column="ogit10" property="ogit10" jdbcType="VARCHAR" />
+    <result column="ogit11" property="ogit11" jdbcType="VARCHAR" />
+    <result column="ogit12" property="ogit12" jdbcType="VARCHAR" />
+    <result column="ogit13" property="ogit13" jdbcType="VARCHAR" />
+    <result column="ogit14" property="ogit14" jdbcType="VARCHAR" />
+    <result column="ogit15" property="ogit15" jdbcType="VARCHAR" />
+    <result column="ogit16" property="ogit16" jdbcType="VARCHAR" />
+    <result column="ogit17" property="ogit17" jdbcType="VARCHAR" />
+    <result column="ogit18" property="ogit18" jdbcType="INTEGER" />
+    <result column="ogit19" property="ogit19" jdbcType="INTEGER" />
+    <result column="ogit20" property="ogit20" jdbcType="INTEGER" />
+    <result column="ogit21" property="ogit21" jdbcType="VARCHAR" />
+    <result column="ogit22" property="ogit22" jdbcType="INTEGER" />
+    <result column="special_examine1" property="specialExamine1" jdbcType="VARCHAR" />
+    <result column="special_examine2" property="specialExamine2" jdbcType="VARCHAR" />
+    <result column="special_examine3" property="specialExamine3" jdbcType="VARCHAR" />
+    <result column="special_examine4" property="specialExamine4" jdbcType="VARCHAR" />
+    <result column="special_examine5" property="specialExamine5" jdbcType="VARCHAR" />
+    <result column="special_examine6" property="specialExamine6" jdbcType="VARCHAR" />
+    <result column="special_examine7" property="specialExamine7" jdbcType="VARCHAR" />
+    <result column="special_examine8" property="specialExamine8" jdbcType="VARCHAR" />
+    <result column="treatment_medicine" property="treatmentMedicine" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="modify_by" property="modifyBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, depart_id, depart_name, name, age, sex, is_married, profession, birth_address, 
+    nation, nationality, identity_number, contact_address, contact_name, contact_phone, 
+    in_hospital_date, out_hospital_date, in_hospital_office, out_hospital_office, hospital_days, 
+    in_diagnose, out_diagnose, diagnoseDetail, other_diagnose1, other_diagnose2, other_diagnose3, 
+    other_diagnose4, other_diagnose5, medical_history, medical_history1, medical_history2, 
+    medical_history3, medical_history4, medical_history5, medical_history6, medical_history7, 
+    medical_history8, medical_history9, medical_history10, medical_history11, medical_history12, 
+    medical_history13, medical_history14, physical_examine1, physical_examine2, physical_examine3, 
+    physical_examine4, physical_examine5, physical_examine6, physical_examine7, physical_examine8, 
+    physical_examine9, blood_routine1, blood_routine2, blood_routine3, blood_routine4, 
+    blood_routine5, blood_routine6, blood_routine7, blood_routine8, blood_routine9, blood_routine10, 
+    blood_routine11, blood_routine12, blood_routine13, blood_routine14, blood_routine15, 
+    blood_routine16, blood_routine17, blood_routine18, blood_routine19, blood_routine20, 
+    blood_routine21, blood_routine22, blood_routine23, blood_routine24, blood_routine25, 
+    blood_routine26, blood_routine27, blood_routine28, blood_routine29, blood_routine30, 
+    blood_routine31, blood_routine32, blood_routine33, blood_routine34, blood_routine35, 
+    blood_routine36, blood_routine37, blood_routine38, blood_routine39, blood_routine40, 
+    blood_routine41, blood_routine42, blood_routine43, blood_routine44, blood_routine45, 
+    blood_routine46, blood_routine47, ogit1, ogit2, ogit3, ogit4, ogit5, ogit6, ogit7, 
+    ogit8, ogit9, ogit10, ogit11, ogit12, ogit13, ogit14, ogit15, ogit16, ogit17, ogit18, 
+    ogit19, ogit20, ogit21, ogit22, special_examine1, special_examine2, special_examine3, 
+    special_examine4, special_examine5, special_examine6, special_examine7, special_examine8, 
+    treatment_medicine, is_delete, create_time, create_by, modify_time, modify_by
+  </sql>
+
+  <resultMap id="VoResultMap" type="com.casecollection.backend.model.vo.DiseaseCaseVo" extends="BaseResultMap"></resultMap>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_disease_case
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_disease_case
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.casecollection.backend.model.DiseaseCase" >
+    insert into t_disease_case (id, depart_id, depart_name, 
+      name, age, sex, is_married, 
+      profession, birth_address, nation, 
+      nationality, identity_number, contact_address, 
+      contact_name, contact_phone, in_hospital_date, 
+      out_hospital_date, in_hospital_office, out_hospital_office, 
+      hospital_days, in_diagnose, out_diagnose, 
+      diagnoseDetail, other_diagnose1, other_diagnose2, 
+      other_diagnose3, other_diagnose4, other_diagnose5, 
+      medical_history, medical_history1, medical_history2, 
+      medical_history3, medical_history4, medical_history5, 
+      medical_history6, medical_history7, medical_history8, 
+      medical_history9, medical_history10, medical_history11, 
+      medical_history12, medical_history13, medical_history14, 
+      physical_examine1, physical_examine2, physical_examine3, 
+      physical_examine4, physical_examine5, physical_examine6, 
+      physical_examine7, physical_examine8, physical_examine9, 
+      blood_routine1, blood_routine2, blood_routine3, 
+      blood_routine4, blood_routine5, blood_routine6, 
+      blood_routine7, blood_routine8, blood_routine9, 
+      blood_routine10, blood_routine11, blood_routine12, 
+      blood_routine13, blood_routine14, blood_routine15, 
+      blood_routine16, blood_routine17, blood_routine18, 
+      blood_routine19, blood_routine20, blood_routine21, 
+      blood_routine22, blood_routine23, blood_routine24, 
+      blood_routine25, blood_routine26, blood_routine27, 
+      blood_routine28, blood_routine29, blood_routine30, 
+      blood_routine31, blood_routine32, blood_routine33, 
+      blood_routine34, blood_routine35, blood_routine36, 
+      blood_routine37, blood_routine38, blood_routine39, 
+      blood_routine40, blood_routine41, blood_routine42, 
+      blood_routine43, blood_routine44, blood_routine45, 
+      blood_routine46, blood_routine47, ogit1, 
+      ogit2, ogit3, ogit4, 
+      ogit5, ogit6, ogit7, 
+      ogit8, ogit9, ogit10, 
+      ogit11, ogit12, ogit13, 
+      ogit14, ogit15, ogit16, 
+      ogit17, ogit18, ogit19, 
+      ogit20, ogit21, ogit22, 
+      special_examine1, special_examine2, special_examine3, 
+      special_examine4, special_examine5, special_examine6, 
+      special_examine7, special_examine8, treatment_medicine, 
+      is_delete, create_time, create_by, 
+      modify_time, modify_by)
+    values (#{id,jdbcType=BIGINT}, #{departId,jdbcType=BIGINT}, #{departName,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, #{isMarried,jdbcType=INTEGER}, 
+      #{profession,jdbcType=VARCHAR}, #{birthAddress,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, 
+      #{nationality,jdbcType=VARCHAR}, #{identityNumber,jdbcType=VARCHAR}, #{contactAddress,jdbcType=VARCHAR}, 
+      #{contactName,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, #{inHospitalDate,jdbcType=TIMESTAMP}, 
+      #{outHospitalDate,jdbcType=TIMESTAMP}, #{inHospitalOffice,jdbcType=VARCHAR}, #{outHospitalOffice,jdbcType=VARCHAR}, 
+      #{hospitalDays,jdbcType=INTEGER}, #{inDiagnose,jdbcType=VARCHAR}, #{outDiagnose,jdbcType=VARCHAR}, 
+      #{diagnosedetail,jdbcType=VARCHAR}, #{otherDiagnose1,jdbcType=VARCHAR}, #{otherDiagnose2,jdbcType=VARCHAR}, 
+      #{otherDiagnose3,jdbcType=VARCHAR}, #{otherDiagnose4,jdbcType=VARCHAR}, #{otherDiagnose5,jdbcType=VARCHAR}, 
+      #{medicalHistory,jdbcType=VARCHAR}, #{medicalHistory1,jdbcType=VARCHAR}, #{medicalHistory2,jdbcType=VARCHAR}, 
+      #{medicalHistory3,jdbcType=VARCHAR}, #{medicalHistory4,jdbcType=VARCHAR}, #{medicalHistory5,jdbcType=INTEGER}, 
+      #{medicalHistory6,jdbcType=INTEGER}, #{medicalHistory7,jdbcType=VARCHAR}, #{medicalHistory8,jdbcType=VARCHAR}, 
+      #{medicalHistory9,jdbcType=VARCHAR}, #{medicalHistory10,jdbcType=VARCHAR}, #{medicalHistory11,jdbcType=VARCHAR}, 
+      #{medicalHistory12,jdbcType=VARCHAR}, #{medicalHistory13,jdbcType=VARCHAR}, #{medicalHistory14,jdbcType=VARCHAR}, 
+      #{physicalExamine1,jdbcType=VARCHAR}, #{physicalExamine2,jdbcType=VARCHAR}, #{physicalExamine3,jdbcType=VARCHAR}, 
+      #{physicalExamine4,jdbcType=VARCHAR}, #{physicalExamine5,jdbcType=VARCHAR}, #{physicalExamine6,jdbcType=VARCHAR}, 
+      #{physicalExamine7,jdbcType=VARCHAR}, #{physicalExamine8,jdbcType=VARCHAR}, #{physicalExamine9,jdbcType=VARCHAR}, 
+      #{bloodRoutine1,jdbcType=VARCHAR}, #{bloodRoutine2,jdbcType=VARCHAR}, #{bloodRoutine3,jdbcType=VARCHAR}, 
+      #{bloodRoutine4,jdbcType=VARCHAR}, #{bloodRoutine5,jdbcType=VARCHAR}, #{bloodRoutine6,jdbcType=VARCHAR}, 
+      #{bloodRoutine7,jdbcType=VARCHAR}, #{bloodRoutine8,jdbcType=VARCHAR}, #{bloodRoutine9,jdbcType=VARCHAR}, 
+      #{bloodRoutine10,jdbcType=VARCHAR}, #{bloodRoutine11,jdbcType=VARCHAR}, #{bloodRoutine12,jdbcType=VARCHAR}, 
+      #{bloodRoutine13,jdbcType=VARCHAR}, #{bloodRoutine14,jdbcType=VARCHAR}, #{bloodRoutine15,jdbcType=VARCHAR}, 
+      #{bloodRoutine16,jdbcType=VARCHAR}, #{bloodRoutine17,jdbcType=VARCHAR}, #{bloodRoutine18,jdbcType=VARCHAR}, 
+      #{bloodRoutine19,jdbcType=VARCHAR}, #{bloodRoutine20,jdbcType=VARCHAR}, #{bloodRoutine21,jdbcType=VARCHAR}, 
+      #{bloodRoutine22,jdbcType=VARCHAR}, #{bloodRoutine23,jdbcType=VARCHAR}, #{bloodRoutine24,jdbcType=VARCHAR}, 
+      #{bloodRoutine25,jdbcType=VARCHAR}, #{bloodRoutine26,jdbcType=VARCHAR}, #{bloodRoutine27,jdbcType=VARCHAR}, 
+      #{bloodRoutine28,jdbcType=VARCHAR}, #{bloodRoutine29,jdbcType=VARCHAR}, #{bloodRoutine30,jdbcType=VARCHAR}, 
+      #{bloodRoutine31,jdbcType=VARCHAR}, #{bloodRoutine32,jdbcType=VARCHAR}, #{bloodRoutine33,jdbcType=VARCHAR}, 
+      #{bloodRoutine34,jdbcType=VARCHAR}, #{bloodRoutine35,jdbcType=VARCHAR}, #{bloodRoutine36,jdbcType=VARCHAR}, 
+      #{bloodRoutine37,jdbcType=VARCHAR}, #{bloodRoutine38,jdbcType=VARCHAR}, #{bloodRoutine39,jdbcType=VARCHAR}, 
+      #{bloodRoutine40,jdbcType=VARCHAR}, #{bloodRoutine41,jdbcType=VARCHAR}, #{bloodRoutine42,jdbcType=VARCHAR}, 
+      #{bloodRoutine43,jdbcType=VARCHAR}, #{bloodRoutine44,jdbcType=VARCHAR}, #{bloodRoutine45,jdbcType=VARCHAR}, 
+      #{bloodRoutine46,jdbcType=VARCHAR}, #{bloodRoutine47,jdbcType=VARCHAR}, #{ogit1,jdbcType=VARCHAR}, 
+      #{ogit2,jdbcType=VARCHAR}, #{ogit3,jdbcType=VARCHAR}, #{ogit4,jdbcType=VARCHAR}, 
+      #{ogit5,jdbcType=VARCHAR}, #{ogit6,jdbcType=VARCHAR}, #{ogit7,jdbcType=VARCHAR}, 
+      #{ogit8,jdbcType=VARCHAR}, #{ogit9,jdbcType=VARCHAR}, #{ogit10,jdbcType=VARCHAR}, 
+      #{ogit11,jdbcType=VARCHAR}, #{ogit12,jdbcType=VARCHAR}, #{ogit13,jdbcType=VARCHAR}, 
+      #{ogit14,jdbcType=VARCHAR}, #{ogit15,jdbcType=VARCHAR}, #{ogit16,jdbcType=VARCHAR}, 
+      #{ogit17,jdbcType=VARCHAR}, #{ogit18,jdbcType=INTEGER}, #{ogit19,jdbcType=INTEGER}, 
+      #{ogit20,jdbcType=INTEGER}, #{ogit21,jdbcType=VARCHAR}, #{ogit22,jdbcType=INTEGER}, 
+      #{specialExamine1,jdbcType=VARCHAR}, #{specialExamine2,jdbcType=VARCHAR}, #{specialExamine3,jdbcType=VARCHAR}, 
+      #{specialExamine4,jdbcType=VARCHAR}, #{specialExamine5,jdbcType=VARCHAR}, #{specialExamine6,jdbcType=VARCHAR}, 
+      #{specialExamine7,jdbcType=VARCHAR}, #{specialExamine8,jdbcType=VARCHAR}, #{treatmentMedicine,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.casecollection.backend.model.DiseaseCase" >
+    insert into t_disease_case
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="departId != null" >
+        depart_id,
+      </if>
+      <if test="departName != null" >
+        depart_name,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="isMarried != null" >
+        is_married,
+      </if>
+      <if test="profession != null" >
+        profession,
+      </if>
+      <if test="birthAddress != null" >
+        birth_address,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="nationality != null" >
+        nationality,
+      </if>
+      <if test="identityNumber != null" >
+        identity_number,
+      </if>
+      <if test="contactAddress != null" >
+        contact_address,
+      </if>
+      <if test="contactName != null" >
+        contact_name,
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone,
+      </if>
+      <if test="inHospitalDate != null" >
+        in_hospital_date,
+      </if>
+      <if test="outHospitalDate != null" >
+        out_hospital_date,
+      </if>
+      <if test="inHospitalOffice != null" >
+        in_hospital_office,
+      </if>
+      <if test="outHospitalOffice != null" >
+        out_hospital_office,
+      </if>
+      <if test="hospitalDays != null" >
+        hospital_days,
+      </if>
+      <if test="inDiagnose != null" >
+        in_diagnose,
+      </if>
+      <if test="outDiagnose != null" >
+        out_diagnose,
+      </if>
+      <if test="diagnosedetail != null" >
+        diagnoseDetail,
+      </if>
+      <if test="otherDiagnose1 != null" >
+        other_diagnose1,
+      </if>
+      <if test="otherDiagnose2 != null" >
+        other_diagnose2,
+      </if>
+      <if test="otherDiagnose3 != null" >
+        other_diagnose3,
+      </if>
+      <if test="otherDiagnose4 != null" >
+        other_diagnose4,
+      </if>
+      <if test="otherDiagnose5 != null" >
+        other_diagnose5,
+      </if>
+      <if test="medicalHistory != null" >
+        medical_history,
+      </if>
+      <if test="medicalHistory1 != null" >
+        medical_history1,
+      </if>
+      <if test="medicalHistory2 != null" >
+        medical_history2,
+      </if>
+      <if test="medicalHistory3 != null" >
+        medical_history3,
+      </if>
+      <if test="medicalHistory4 != null" >
+        medical_history4,
+      </if>
+      <if test="medicalHistory5 != null" >
+        medical_history5,
+      </if>
+      <if test="medicalHistory6 != null" >
+        medical_history6,
+      </if>
+      <if test="medicalHistory7 != null" >
+        medical_history7,
+      </if>
+      <if test="medicalHistory8 != null" >
+        medical_history8,
+      </if>
+      <if test="medicalHistory9 != null" >
+        medical_history9,
+      </if>
+      <if test="medicalHistory10 != null" >
+        medical_history10,
+      </if>
+      <if test="medicalHistory11 != null" >
+        medical_history11,
+      </if>
+      <if test="medicalHistory12 != null" >
+        medical_history12,
+      </if>
+      <if test="medicalHistory13 != null" >
+        medical_history13,
+      </if>
+      <if test="medicalHistory14 != null" >
+        medical_history14,
+      </if>
+      <if test="physicalExamine1 != null" >
+        physical_examine1,
+      </if>
+      <if test="physicalExamine2 != null" >
+        physical_examine2,
+      </if>
+      <if test="physicalExamine3 != null" >
+        physical_examine3,
+      </if>
+      <if test="physicalExamine4 != null" >
+        physical_examine4,
+      </if>
+      <if test="physicalExamine5 != null" >
+        physical_examine5,
+      </if>
+      <if test="physicalExamine6 != null" >
+        physical_examine6,
+      </if>
+      <if test="physicalExamine7 != null" >
+        physical_examine7,
+      </if>
+      <if test="physicalExamine8 != null" >
+        physical_examine8,
+      </if>
+      <if test="physicalExamine9 != null" >
+        physical_examine9,
+      </if>
+      <if test="bloodRoutine1 != null" >
+        blood_routine1,
+      </if>
+      <if test="bloodRoutine2 != null" >
+        blood_routine2,
+      </if>
+      <if test="bloodRoutine3 != null" >
+        blood_routine3,
+      </if>
+      <if test="bloodRoutine4 != null" >
+        blood_routine4,
+      </if>
+      <if test="bloodRoutine5 != null" >
+        blood_routine5,
+      </if>
+      <if test="bloodRoutine6 != null" >
+        blood_routine6,
+      </if>
+      <if test="bloodRoutine7 != null" >
+        blood_routine7,
+      </if>
+      <if test="bloodRoutine8 != null" >
+        blood_routine8,
+      </if>
+      <if test="bloodRoutine9 != null" >
+        blood_routine9,
+      </if>
+      <if test="bloodRoutine10 != null" >
+        blood_routine10,
+      </if>
+      <if test="bloodRoutine11 != null" >
+        blood_routine11,
+      </if>
+      <if test="bloodRoutine12 != null" >
+        blood_routine12,
+      </if>
+      <if test="bloodRoutine13 != null" >
+        blood_routine13,
+      </if>
+      <if test="bloodRoutine14 != null" >
+        blood_routine14,
+      </if>
+      <if test="bloodRoutine15 != null" >
+        blood_routine15,
+      </if>
+      <if test="bloodRoutine16 != null" >
+        blood_routine16,
+      </if>
+      <if test="bloodRoutine17 != null" >
+        blood_routine17,
+      </if>
+      <if test="bloodRoutine18 != null" >
+        blood_routine18,
+      </if>
+      <if test="bloodRoutine19 != null" >
+        blood_routine19,
+      </if>
+      <if test="bloodRoutine20 != null" >
+        blood_routine20,
+      </if>
+      <if test="bloodRoutine21 != null" >
+        blood_routine21,
+      </if>
+      <if test="bloodRoutine22 != null" >
+        blood_routine22,
+      </if>
+      <if test="bloodRoutine23 != null" >
+        blood_routine23,
+      </if>
+      <if test="bloodRoutine24 != null" >
+        blood_routine24,
+      </if>
+      <if test="bloodRoutine25 != null" >
+        blood_routine25,
+      </if>
+      <if test="bloodRoutine26 != null" >
+        blood_routine26,
+      </if>
+      <if test="bloodRoutine27 != null" >
+        blood_routine27,
+      </if>
+      <if test="bloodRoutine28 != null" >
+        blood_routine28,
+      </if>
+      <if test="bloodRoutine29 != null" >
+        blood_routine29,
+      </if>
+      <if test="bloodRoutine30 != null" >
+        blood_routine30,
+      </if>
+      <if test="bloodRoutine31 != null" >
+        blood_routine31,
+      </if>
+      <if test="bloodRoutine32 != null" >
+        blood_routine32,
+      </if>
+      <if test="bloodRoutine33 != null" >
+        blood_routine33,
+      </if>
+      <if test="bloodRoutine34 != null" >
+        blood_routine34,
+      </if>
+      <if test="bloodRoutine35 != null" >
+        blood_routine35,
+      </if>
+      <if test="bloodRoutine36 != null" >
+        blood_routine36,
+      </if>
+      <if test="bloodRoutine37 != null" >
+        blood_routine37,
+      </if>
+      <if test="bloodRoutine38 != null" >
+        blood_routine38,
+      </if>
+      <if test="bloodRoutine39 != null" >
+        blood_routine39,
+      </if>
+      <if test="bloodRoutine40 != null" >
+        blood_routine40,
+      </if>
+      <if test="bloodRoutine41 != null" >
+        blood_routine41,
+      </if>
+      <if test="bloodRoutine42 != null" >
+        blood_routine42,
+      </if>
+      <if test="bloodRoutine43 != null" >
+        blood_routine43,
+      </if>
+      <if test="bloodRoutine44 != null" >
+        blood_routine44,
+      </if>
+      <if test="bloodRoutine45 != null" >
+        blood_routine45,
+      </if>
+      <if test="bloodRoutine46 != null" >
+        blood_routine46,
+      </if>
+      <if test="bloodRoutine47 != null" >
+        blood_routine47,
+      </if>
+      <if test="ogit1 != null" >
+        ogit1,
+      </if>
+      <if test="ogit2 != null" >
+        ogit2,
+      </if>
+      <if test="ogit3 != null" >
+        ogit3,
+      </if>
+      <if test="ogit4 != null" >
+        ogit4,
+      </if>
+      <if test="ogit5 != null" >
+        ogit5,
+      </if>
+      <if test="ogit6 != null" >
+        ogit6,
+      </if>
+      <if test="ogit7 != null" >
+        ogit7,
+      </if>
+      <if test="ogit8 != null" >
+        ogit8,
+      </if>
+      <if test="ogit9 != null" >
+        ogit9,
+      </if>
+      <if test="ogit10 != null" >
+        ogit10,
+      </if>
+      <if test="ogit11 != null" >
+        ogit11,
+      </if>
+      <if test="ogit12 != null" >
+        ogit12,
+      </if>
+      <if test="ogit13 != null" >
+        ogit13,
+      </if>
+      <if test="ogit14 != null" >
+        ogit14,
+      </if>
+      <if test="ogit15 != null" >
+        ogit15,
+      </if>
+      <if test="ogit16 != null" >
+        ogit16,
+      </if>
+      <if test="ogit17 != null" >
+        ogit17,
+      </if>
+      <if test="ogit18 != null" >
+        ogit18,
+      </if>
+      <if test="ogit19 != null" >
+        ogit19,
+      </if>
+      <if test="ogit20 != null" >
+        ogit20,
+      </if>
+      <if test="ogit21 != null" >
+        ogit21,
+      </if>
+      <if test="ogit22 != null" >
+        ogit22,
+      </if>
+      <if test="specialExamine1 != null" >
+        special_examine1,
+      </if>
+      <if test="specialExamine2 != null" >
+        special_examine2,
+      </if>
+      <if test="specialExamine3 != null" >
+        special_examine3,
+      </if>
+      <if test="specialExamine4 != null" >
+        special_examine4,
+      </if>
+      <if test="specialExamine5 != null" >
+        special_examine5,
+      </if>
+      <if test="specialExamine6 != null" >
+        special_examine6,
+      </if>
+      <if test="specialExamine7 != null" >
+        special_examine7,
+      </if>
+      <if test="specialExamine8 != null" >
+        special_examine8,
+      </if>
+      <if test="treatmentMedicine != null" >
+        treatment_medicine,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="modifyBy != null" >
+        modify_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="departId != null" >
+        #{departId,jdbcType=BIGINT},
+      </if>
+      <if test="departName != null" >
+        #{departName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="isMarried != null" >
+        #{isMarried,jdbcType=INTEGER},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="birthAddress != null" >
+        #{birthAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null" >
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="identityNumber != null" >
+        #{identityNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddress != null" >
+        #{contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="inHospitalDate != null" >
+        #{inHospitalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outHospitalDate != null" >
+        #{outHospitalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inHospitalOffice != null" >
+        #{inHospitalOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="outHospitalOffice != null" >
+        #{outHospitalOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalDays != null" >
+        #{hospitalDays,jdbcType=INTEGER},
+      </if>
+      <if test="inDiagnose != null" >
+        #{inDiagnose,jdbcType=VARCHAR},
+      </if>
+      <if test="outDiagnose != null" >
+        #{outDiagnose,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosedetail != null" >
+        #{diagnosedetail,jdbcType=VARCHAR},
+      </if>
+      <if test="otherDiagnose1 != null" >
+        #{otherDiagnose1,jdbcType=VARCHAR},
+      </if>
+      <if test="otherDiagnose2 != null" >
+        #{otherDiagnose2,jdbcType=VARCHAR},
+      </if>
+      <if test="otherDiagnose3 != null" >
+        #{otherDiagnose3,jdbcType=VARCHAR},
+      </if>
+      <if test="otherDiagnose4 != null" >
+        #{otherDiagnose4,jdbcType=VARCHAR},
+      </if>
+      <if test="otherDiagnose5 != null" >
+        #{otherDiagnose5,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory != null" >
+        #{medicalHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory1 != null" >
+        #{medicalHistory1,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory2 != null" >
+        #{medicalHistory2,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory3 != null" >
+        #{medicalHistory3,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory4 != null" >
+        #{medicalHistory4,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory5 != null" >
+        #{medicalHistory5,jdbcType=INTEGER},
+      </if>
+      <if test="medicalHistory6 != null" >
+        #{medicalHistory6,jdbcType=INTEGER},
+      </if>
+      <if test="medicalHistory7 != null" >
+        #{medicalHistory7,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory8 != null" >
+        #{medicalHistory8,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory9 != null" >
+        #{medicalHistory9,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory10 != null" >
+        #{medicalHistory10,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory11 != null" >
+        #{medicalHistory11,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory12 != null" >
+        #{medicalHistory12,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory13 != null" >
+        #{medicalHistory13,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory14 != null" >
+        #{medicalHistory14,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine1 != null" >
+        #{physicalExamine1,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine2 != null" >
+        #{physicalExamine2,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine3 != null" >
+        #{physicalExamine3,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine4 != null" >
+        #{physicalExamine4,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine5 != null" >
+        #{physicalExamine5,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine6 != null" >
+        #{physicalExamine6,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine7 != null" >
+        #{physicalExamine7,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine8 != null" >
+        #{physicalExamine8,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine9 != null" >
+        #{physicalExamine9,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine1 != null" >
+        #{bloodRoutine1,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine2 != null" >
+        #{bloodRoutine2,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine3 != null" >
+        #{bloodRoutine3,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine4 != null" >
+        #{bloodRoutine4,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine5 != null" >
+        #{bloodRoutine5,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine6 != null" >
+        #{bloodRoutine6,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine7 != null" >
+        #{bloodRoutine7,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine8 != null" >
+        #{bloodRoutine8,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine9 != null" >
+        #{bloodRoutine9,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine10 != null" >
+        #{bloodRoutine10,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine11 != null" >
+        #{bloodRoutine11,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine12 != null" >
+        #{bloodRoutine12,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine13 != null" >
+        #{bloodRoutine13,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine14 != null" >
+        #{bloodRoutine14,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine15 != null" >
+        #{bloodRoutine15,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine16 != null" >
+        #{bloodRoutine16,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine17 != null" >
+        #{bloodRoutine17,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine18 != null" >
+        #{bloodRoutine18,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine19 != null" >
+        #{bloodRoutine19,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine20 != null" >
+        #{bloodRoutine20,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine21 != null" >
+        #{bloodRoutine21,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine22 != null" >
+        #{bloodRoutine22,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine23 != null" >
+        #{bloodRoutine23,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine24 != null" >
+        #{bloodRoutine24,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine25 != null" >
+        #{bloodRoutine25,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine26 != null" >
+        #{bloodRoutine26,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine27 != null" >
+        #{bloodRoutine27,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine28 != null" >
+        #{bloodRoutine28,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine29 != null" >
+        #{bloodRoutine29,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine30 != null" >
+        #{bloodRoutine30,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine31 != null" >
+        #{bloodRoutine31,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine32 != null" >
+        #{bloodRoutine32,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine33 != null" >
+        #{bloodRoutine33,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine34 != null" >
+        #{bloodRoutine34,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine35 != null" >
+        #{bloodRoutine35,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine36 != null" >
+        #{bloodRoutine36,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine37 != null" >
+        #{bloodRoutine37,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine38 != null" >
+        #{bloodRoutine38,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine39 != null" >
+        #{bloodRoutine39,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine40 != null" >
+        #{bloodRoutine40,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine41 != null" >
+        #{bloodRoutine41,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine42 != null" >
+        #{bloodRoutine42,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine43 != null" >
+        #{bloodRoutine43,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine44 != null" >
+        #{bloodRoutine44,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine45 != null" >
+        #{bloodRoutine45,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine46 != null" >
+        #{bloodRoutine46,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine47 != null" >
+        #{bloodRoutine47,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit1 != null" >
+        #{ogit1,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit2 != null" >
+        #{ogit2,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit3 != null" >
+        #{ogit3,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit4 != null" >
+        #{ogit4,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit5 != null" >
+        #{ogit5,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit6 != null" >
+        #{ogit6,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit7 != null" >
+        #{ogit7,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit8 != null" >
+        #{ogit8,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit9 != null" >
+        #{ogit9,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit10 != null" >
+        #{ogit10,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit11 != null" >
+        #{ogit11,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit12 != null" >
+        #{ogit12,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit13 != null" >
+        #{ogit13,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit14 != null" >
+        #{ogit14,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit15 != null" >
+        #{ogit15,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit16 != null" >
+        #{ogit16,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit17 != null" >
+        #{ogit17,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit18 != null" >
+        #{ogit18,jdbcType=INTEGER},
+      </if>
+      <if test="ogit19 != null" >
+        #{ogit19,jdbcType=INTEGER},
+      </if>
+      <if test="ogit20 != null" >
+        #{ogit20,jdbcType=INTEGER},
+      </if>
+      <if test="ogit21 != null" >
+        #{ogit21,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit22 != null" >
+        #{ogit22,jdbcType=INTEGER},
+      </if>
+      <if test="specialExamine1 != null" >
+        #{specialExamine1,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine2 != null" >
+        #{specialExamine2,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine3 != null" >
+        #{specialExamine3,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine4 != null" >
+        #{specialExamine4,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine5 != null" >
+        #{specialExamine5,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine6 != null" >
+        #{specialExamine6,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine7 != null" >
+        #{specialExamine7,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine8 != null" >
+        #{specialExamine8,jdbcType=VARCHAR},
+      </if>
+      <if test="treatmentMedicine != null" >
+        #{treatmentMedicine,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        #{modifyBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.casecollection.backend.model.DiseaseCase" >
+    update t_disease_case
+    <set >
+      <if test="departId != null" >
+        depart_id = #{departId,jdbcType=BIGINT},
+      </if>
+      <if test="departName != null" >
+        depart_name = #{departName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="isMarried != null" >
+        is_married = #{isMarried,jdbcType=INTEGER},
+      </if>
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="birthAddress != null" >
+        birth_address = #{birthAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null" >
+        nationality = #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="identityNumber != null" >
+        identity_number = #{identityNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddress != null" >
+        contact_address = #{contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="inHospitalDate != null" >
+        in_hospital_date = #{inHospitalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outHospitalDate != null" >
+        out_hospital_date = #{outHospitalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inHospitalOffice != null" >
+        in_hospital_office = #{inHospitalOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="outHospitalOffice != null" >
+        out_hospital_office = #{outHospitalOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalDays != null" >
+        hospital_days = #{hospitalDays,jdbcType=INTEGER},
+      </if>
+      <if test="inDiagnose != null" >
+        in_diagnose = #{inDiagnose,jdbcType=VARCHAR},
+      </if>
+      <if test="outDiagnose != null" >
+        out_diagnose = #{outDiagnose,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosedetail != null" >
+        diagnoseDetail = #{diagnosedetail,jdbcType=VARCHAR},
+      </if>
+      <if test="otherDiagnose1 != null" >
+        other_diagnose1 = #{otherDiagnose1,jdbcType=VARCHAR},
+      </if>
+      <if test="otherDiagnose2 != null" >
+        other_diagnose2 = #{otherDiagnose2,jdbcType=VARCHAR},
+      </if>
+      <if test="otherDiagnose3 != null" >
+        other_diagnose3 = #{otherDiagnose3,jdbcType=VARCHAR},
+      </if>
+      <if test="otherDiagnose4 != null" >
+        other_diagnose4 = #{otherDiagnose4,jdbcType=VARCHAR},
+      </if>
+      <if test="otherDiagnose5 != null" >
+        other_diagnose5 = #{otherDiagnose5,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory != null" >
+        medical_history = #{medicalHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory1 != null" >
+        medical_history1 = #{medicalHistory1,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory2 != null" >
+        medical_history2 = #{medicalHistory2,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory3 != null" >
+        medical_history3 = #{medicalHistory3,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory4 != null" >
+        medical_history4 = #{medicalHistory4,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory5 != null" >
+        medical_history5 = #{medicalHistory5,jdbcType=INTEGER},
+      </if>
+      <if test="medicalHistory6 != null" >
+        medical_history6 = #{medicalHistory6,jdbcType=INTEGER},
+      </if>
+      <if test="medicalHistory7 != null" >
+        medical_history7 = #{medicalHistory7,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory8 != null" >
+        medical_history8 = #{medicalHistory8,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory9 != null" >
+        medical_history9 = #{medicalHistory9,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory10 != null" >
+        medical_history10 = #{medicalHistory10,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory11 != null" >
+        medical_history11 = #{medicalHistory11,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory12 != null" >
+        medical_history12 = #{medicalHistory12,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory13 != null" >
+        medical_history13 = #{medicalHistory13,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalHistory14 != null" >
+        medical_history14 = #{medicalHistory14,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine1 != null" >
+        physical_examine1 = #{physicalExamine1,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine2 != null" >
+        physical_examine2 = #{physicalExamine2,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine3 != null" >
+        physical_examine3 = #{physicalExamine3,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine4 != null" >
+        physical_examine4 = #{physicalExamine4,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine5 != null" >
+        physical_examine5 = #{physicalExamine5,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine6 != null" >
+        physical_examine6 = #{physicalExamine6,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine7 != null" >
+        physical_examine7 = #{physicalExamine7,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine8 != null" >
+        physical_examine8 = #{physicalExamine8,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamine9 != null" >
+        physical_examine9 = #{physicalExamine9,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine1 != null" >
+        blood_routine1 = #{bloodRoutine1,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine2 != null" >
+        blood_routine2 = #{bloodRoutine2,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine3 != null" >
+        blood_routine3 = #{bloodRoutine3,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine4 != null" >
+        blood_routine4 = #{bloodRoutine4,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine5 != null" >
+        blood_routine5 = #{bloodRoutine5,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine6 != null" >
+        blood_routine6 = #{bloodRoutine6,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine7 != null" >
+        blood_routine7 = #{bloodRoutine7,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine8 != null" >
+        blood_routine8 = #{bloodRoutine8,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine9 != null" >
+        blood_routine9 = #{bloodRoutine9,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine10 != null" >
+        blood_routine10 = #{bloodRoutine10,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine11 != null" >
+        blood_routine11 = #{bloodRoutine11,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine12 != null" >
+        blood_routine12 = #{bloodRoutine12,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine13 != null" >
+        blood_routine13 = #{bloodRoutine13,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine14 != null" >
+        blood_routine14 = #{bloodRoutine14,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine15 != null" >
+        blood_routine15 = #{bloodRoutine15,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine16 != null" >
+        blood_routine16 = #{bloodRoutine16,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine17 != null" >
+        blood_routine17 = #{bloodRoutine17,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine18 != null" >
+        blood_routine18 = #{bloodRoutine18,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine19 != null" >
+        blood_routine19 = #{bloodRoutine19,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine20 != null" >
+        blood_routine20 = #{bloodRoutine20,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine21 != null" >
+        blood_routine21 = #{bloodRoutine21,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine22 != null" >
+        blood_routine22 = #{bloodRoutine22,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine23 != null" >
+        blood_routine23 = #{bloodRoutine23,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine24 != null" >
+        blood_routine24 = #{bloodRoutine24,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine25 != null" >
+        blood_routine25 = #{bloodRoutine25,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine26 != null" >
+        blood_routine26 = #{bloodRoutine26,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine27 != null" >
+        blood_routine27 = #{bloodRoutine27,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine28 != null" >
+        blood_routine28 = #{bloodRoutine28,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine29 != null" >
+        blood_routine29 = #{bloodRoutine29,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine30 != null" >
+        blood_routine30 = #{bloodRoutine30,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine31 != null" >
+        blood_routine31 = #{bloodRoutine31,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine32 != null" >
+        blood_routine32 = #{bloodRoutine32,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine33 != null" >
+        blood_routine33 = #{bloodRoutine33,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine34 != null" >
+        blood_routine34 = #{bloodRoutine34,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine35 != null" >
+        blood_routine35 = #{bloodRoutine35,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine36 != null" >
+        blood_routine36 = #{bloodRoutine36,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine37 != null" >
+        blood_routine37 = #{bloodRoutine37,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine38 != null" >
+        blood_routine38 = #{bloodRoutine38,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine39 != null" >
+        blood_routine39 = #{bloodRoutine39,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine40 != null" >
+        blood_routine40 = #{bloodRoutine40,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine41 != null" >
+        blood_routine41 = #{bloodRoutine41,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine42 != null" >
+        blood_routine42 = #{bloodRoutine42,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine43 != null" >
+        blood_routine43 = #{bloodRoutine43,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine44 != null" >
+        blood_routine44 = #{bloodRoutine44,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine45 != null" >
+        blood_routine45 = #{bloodRoutine45,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine46 != null" >
+        blood_routine46 = #{bloodRoutine46,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodRoutine47 != null" >
+        blood_routine47 = #{bloodRoutine47,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit1 != null" >
+        ogit1 = #{ogit1,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit2 != null" >
+        ogit2 = #{ogit2,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit3 != null" >
+        ogit3 = #{ogit3,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit4 != null" >
+        ogit4 = #{ogit4,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit5 != null" >
+        ogit5 = #{ogit5,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit6 != null" >
+        ogit6 = #{ogit6,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit7 != null" >
+        ogit7 = #{ogit7,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit8 != null" >
+        ogit8 = #{ogit8,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit9 != null" >
+        ogit9 = #{ogit9,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit10 != null" >
+        ogit10 = #{ogit10,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit11 != null" >
+        ogit11 = #{ogit11,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit12 != null" >
+        ogit12 = #{ogit12,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit13 != null" >
+        ogit13 = #{ogit13,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit14 != null" >
+        ogit14 = #{ogit14,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit15 != null" >
+        ogit15 = #{ogit15,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit16 != null" >
+        ogit16 = #{ogit16,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit17 != null" >
+        ogit17 = #{ogit17,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit18 != null" >
+        ogit18 = #{ogit18,jdbcType=INTEGER},
+      </if>
+      <if test="ogit19 != null" >
+        ogit19 = #{ogit19,jdbcType=INTEGER},
+      </if>
+      <if test="ogit20 != null" >
+        ogit20 = #{ogit20,jdbcType=INTEGER},
+      </if>
+      <if test="ogit21 != null" >
+        ogit21 = #{ogit21,jdbcType=VARCHAR},
+      </if>
+      <if test="ogit22 != null" >
+        ogit22 = #{ogit22,jdbcType=INTEGER},
+      </if>
+      <if test="specialExamine1 != null" >
+        special_examine1 = #{specialExamine1,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine2 != null" >
+        special_examine2 = #{specialExamine2,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine3 != null" >
+        special_examine3 = #{specialExamine3,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine4 != null" >
+        special_examine4 = #{specialExamine4,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine5 != null" >
+        special_examine5 = #{specialExamine5,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine6 != null" >
+        special_examine6 = #{specialExamine6,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine7 != null" >
+        special_examine7 = #{specialExamine7,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExamine8 != null" >
+        special_examine8 = #{specialExamine8,jdbcType=VARCHAR},
+      </if>
+      <if test="treatmentMedicine != null" >
+        treatment_medicine = #{treatmentMedicine,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        modify_by = #{modifyBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.casecollection.backend.model.DiseaseCase" >
+    update t_disease_case
+    set depart_id = #{departId,jdbcType=BIGINT},
+      depart_name = #{departName,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      is_married = #{isMarried,jdbcType=INTEGER},
+      profession = #{profession,jdbcType=VARCHAR},
+      birth_address = #{birthAddress,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      nationality = #{nationality,jdbcType=VARCHAR},
+      identity_number = #{identityNumber,jdbcType=VARCHAR},
+      contact_address = #{contactAddress,jdbcType=VARCHAR},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      in_hospital_date = #{inHospitalDate,jdbcType=TIMESTAMP},
+      out_hospital_date = #{outHospitalDate,jdbcType=TIMESTAMP},
+      in_hospital_office = #{inHospitalOffice,jdbcType=VARCHAR},
+      out_hospital_office = #{outHospitalOffice,jdbcType=VARCHAR},
+      hospital_days = #{hospitalDays,jdbcType=INTEGER},
+      in_diagnose = #{inDiagnose,jdbcType=VARCHAR},
+      out_diagnose = #{outDiagnose,jdbcType=VARCHAR},
+      diagnoseDetail = #{diagnosedetail,jdbcType=VARCHAR},
+      other_diagnose1 = #{otherDiagnose1,jdbcType=VARCHAR},
+      other_diagnose2 = #{otherDiagnose2,jdbcType=VARCHAR},
+      other_diagnose3 = #{otherDiagnose3,jdbcType=VARCHAR},
+      other_diagnose4 = #{otherDiagnose4,jdbcType=VARCHAR},
+      other_diagnose5 = #{otherDiagnose5,jdbcType=VARCHAR},
+      medical_history = #{medicalHistory,jdbcType=VARCHAR},
+      medical_history1 = #{medicalHistory1,jdbcType=VARCHAR},
+      medical_history2 = #{medicalHistory2,jdbcType=VARCHAR},
+      medical_history3 = #{medicalHistory3,jdbcType=VARCHAR},
+      medical_history4 = #{medicalHistory4,jdbcType=VARCHAR},
+      medical_history5 = #{medicalHistory5,jdbcType=INTEGER},
+      medical_history6 = #{medicalHistory6,jdbcType=INTEGER},
+      medical_history7 = #{medicalHistory7,jdbcType=VARCHAR},
+      medical_history8 = #{medicalHistory8,jdbcType=VARCHAR},
+      medical_history9 = #{medicalHistory9,jdbcType=VARCHAR},
+      medical_history10 = #{medicalHistory10,jdbcType=VARCHAR},
+      medical_history11 = #{medicalHistory11,jdbcType=VARCHAR},
+      medical_history12 = #{medicalHistory12,jdbcType=VARCHAR},
+      medical_history13 = #{medicalHistory13,jdbcType=VARCHAR},
+      medical_history14 = #{medicalHistory14,jdbcType=VARCHAR},
+      physical_examine1 = #{physicalExamine1,jdbcType=VARCHAR},
+      physical_examine2 = #{physicalExamine2,jdbcType=VARCHAR},
+      physical_examine3 = #{physicalExamine3,jdbcType=VARCHAR},
+      physical_examine4 = #{physicalExamine4,jdbcType=VARCHAR},
+      physical_examine5 = #{physicalExamine5,jdbcType=VARCHAR},
+      physical_examine6 = #{physicalExamine6,jdbcType=VARCHAR},
+      physical_examine7 = #{physicalExamine7,jdbcType=VARCHAR},
+      physical_examine8 = #{physicalExamine8,jdbcType=VARCHAR},
+      physical_examine9 = #{physicalExamine9,jdbcType=VARCHAR},
+      blood_routine1 = #{bloodRoutine1,jdbcType=VARCHAR},
+      blood_routine2 = #{bloodRoutine2,jdbcType=VARCHAR},
+      blood_routine3 = #{bloodRoutine3,jdbcType=VARCHAR},
+      blood_routine4 = #{bloodRoutine4,jdbcType=VARCHAR},
+      blood_routine5 = #{bloodRoutine5,jdbcType=VARCHAR},
+      blood_routine6 = #{bloodRoutine6,jdbcType=VARCHAR},
+      blood_routine7 = #{bloodRoutine7,jdbcType=VARCHAR},
+      blood_routine8 = #{bloodRoutine8,jdbcType=VARCHAR},
+      blood_routine9 = #{bloodRoutine9,jdbcType=VARCHAR},
+      blood_routine10 = #{bloodRoutine10,jdbcType=VARCHAR},
+      blood_routine11 = #{bloodRoutine11,jdbcType=VARCHAR},
+      blood_routine12 = #{bloodRoutine12,jdbcType=VARCHAR},
+      blood_routine13 = #{bloodRoutine13,jdbcType=VARCHAR},
+      blood_routine14 = #{bloodRoutine14,jdbcType=VARCHAR},
+      blood_routine15 = #{bloodRoutine15,jdbcType=VARCHAR},
+      blood_routine16 = #{bloodRoutine16,jdbcType=VARCHAR},
+      blood_routine17 = #{bloodRoutine17,jdbcType=VARCHAR},
+      blood_routine18 = #{bloodRoutine18,jdbcType=VARCHAR},
+      blood_routine19 = #{bloodRoutine19,jdbcType=VARCHAR},
+      blood_routine20 = #{bloodRoutine20,jdbcType=VARCHAR},
+      blood_routine21 = #{bloodRoutine21,jdbcType=VARCHAR},
+      blood_routine22 = #{bloodRoutine22,jdbcType=VARCHAR},
+      blood_routine23 = #{bloodRoutine23,jdbcType=VARCHAR},
+      blood_routine24 = #{bloodRoutine24,jdbcType=VARCHAR},
+      blood_routine25 = #{bloodRoutine25,jdbcType=VARCHAR},
+      blood_routine26 = #{bloodRoutine26,jdbcType=VARCHAR},
+      blood_routine27 = #{bloodRoutine27,jdbcType=VARCHAR},
+      blood_routine28 = #{bloodRoutine28,jdbcType=VARCHAR},
+      blood_routine29 = #{bloodRoutine29,jdbcType=VARCHAR},
+      blood_routine30 = #{bloodRoutine30,jdbcType=VARCHAR},
+      blood_routine31 = #{bloodRoutine31,jdbcType=VARCHAR},
+      blood_routine32 = #{bloodRoutine32,jdbcType=VARCHAR},
+      blood_routine33 = #{bloodRoutine33,jdbcType=VARCHAR},
+      blood_routine34 = #{bloodRoutine34,jdbcType=VARCHAR},
+      blood_routine35 = #{bloodRoutine35,jdbcType=VARCHAR},
+      blood_routine36 = #{bloodRoutine36,jdbcType=VARCHAR},
+      blood_routine37 = #{bloodRoutine37,jdbcType=VARCHAR},
+      blood_routine38 = #{bloodRoutine38,jdbcType=VARCHAR},
+      blood_routine39 = #{bloodRoutine39,jdbcType=VARCHAR},
+      blood_routine40 = #{bloodRoutine40,jdbcType=VARCHAR},
+      blood_routine41 = #{bloodRoutine41,jdbcType=VARCHAR},
+      blood_routine42 = #{bloodRoutine42,jdbcType=VARCHAR},
+      blood_routine43 = #{bloodRoutine43,jdbcType=VARCHAR},
+      blood_routine44 = #{bloodRoutine44,jdbcType=VARCHAR},
+      blood_routine45 = #{bloodRoutine45,jdbcType=VARCHAR},
+      blood_routine46 = #{bloodRoutine46,jdbcType=VARCHAR},
+      blood_routine47 = #{bloodRoutine47,jdbcType=VARCHAR},
+      ogit1 = #{ogit1,jdbcType=VARCHAR},
+      ogit2 = #{ogit2,jdbcType=VARCHAR},
+      ogit3 = #{ogit3,jdbcType=VARCHAR},
+      ogit4 = #{ogit4,jdbcType=VARCHAR},
+      ogit5 = #{ogit5,jdbcType=VARCHAR},
+      ogit6 = #{ogit6,jdbcType=VARCHAR},
+      ogit7 = #{ogit7,jdbcType=VARCHAR},
+      ogit8 = #{ogit8,jdbcType=VARCHAR},
+      ogit9 = #{ogit9,jdbcType=VARCHAR},
+      ogit10 = #{ogit10,jdbcType=VARCHAR},
+      ogit11 = #{ogit11,jdbcType=VARCHAR},
+      ogit12 = #{ogit12,jdbcType=VARCHAR},
+      ogit13 = #{ogit13,jdbcType=VARCHAR},
+      ogit14 = #{ogit14,jdbcType=VARCHAR},
+      ogit15 = #{ogit15,jdbcType=VARCHAR},
+      ogit16 = #{ogit16,jdbcType=VARCHAR},
+      ogit17 = #{ogit17,jdbcType=VARCHAR},
+      ogit18 = #{ogit18,jdbcType=INTEGER},
+      ogit19 = #{ogit19,jdbcType=INTEGER},
+      ogit20 = #{ogit20,jdbcType=INTEGER},
+      ogit21 = #{ogit21,jdbcType=VARCHAR},
+      ogit22 = #{ogit22,jdbcType=INTEGER},
+      special_examine1 = #{specialExamine1,jdbcType=VARCHAR},
+      special_examine2 = #{specialExamine2,jdbcType=VARCHAR},
+      special_examine3 = #{specialExamine3,jdbcType=VARCHAR},
+      special_examine4 = #{specialExamine4,jdbcType=VARCHAR},
+      special_examine5 = #{specialExamine5,jdbcType=VARCHAR},
+      special_examine6 = #{specialExamine6,jdbcType=VARCHAR},
+      special_examine7 = #{specialExamine7,jdbcType=VARCHAR},
+      special_examine8 = #{specialExamine8,jdbcType=VARCHAR},
+      treatment_medicine = #{treatmentMedicine,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+
+  <select id="getCount" resultType="java.lang.Integer"
+          parameterType="com.casecollection.backend.model.vo.DiseaseCaseVo">
+    select count(1) from t_disease_case
+    <include refid="findWhere" />
+  </select>
+
+  <select id="findByPage" resultMap="VoResultMap"
+          parameterType="com.casecollection.backend.model.vo.DiseaseCaseVo">
+    select count(1) from t_disease_case
+    <include refid="findWhere" />
+  </select>
+
+  <update id="deleteById" parameterType="com.casecollection.backend.model.DiseaseCase">
+    update t_disease_case
+    set is_delete = 1, modify_by=#{modifyBy}, modify_time = now()
+  </update>
+
+  <sql id="findWhere">
+    where 1=1
+    and is_delete = 0
+  </sql>
+</mapper>

@@ -12,5 +12,8 @@
         <pattern>/user/toList</pattern>
         <pattern>/user/toManager</pattern>
         <pattern>/user/toResetPassword</pattern>
+
+        <!-- 病例信息 -->
+        <pattern>/disease/case/*</pattern>
         </decorator>
 </decorators>
