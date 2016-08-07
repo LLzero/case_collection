@@ -34,8 +34,8 @@ public class MenuConstants {
         adminLevel1Count++;
         commonLevel2Count = 0;
         adminLevel2Count = 0;
-        adminMenus.get(adminLevel1Count).getChildMenu().add(new Menu("病例信息", "/disease/case/manage", "", 0L, 2, adminLevel2Count++));
-        commonMenus.get(commonLevel1Count).getChildMenu().add(new Menu("病例信息", "/disease/case/manage", "", 0L, 2, commonLevel2Count++));
+        adminMenus.get(adminLevel1Count).getChildMenu().add(new Menu("病例信息", "/diseaseCase/manage", "", 0L, 2, adminLevel2Count++));
+        commonMenus.get(commonLevel1Count).getChildMenu().add(new Menu("病例信息", "/diseaseCase/manage", "", 0L, 2, commonLevel2Count++));
 
     }
 

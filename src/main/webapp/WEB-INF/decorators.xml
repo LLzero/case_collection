@@ -15,6 +15,6 @@
         <pattern>/user/toResetPassword</pattern>
 
         <!-- 病例信息 -->
-        <pattern>/disease/case/*</pattern>
+        <pattern>/diseaseCase/*</pattern>
         </decorator>
 </decorators>

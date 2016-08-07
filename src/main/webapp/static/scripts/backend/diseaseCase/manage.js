@@ -63,7 +63,7 @@ var diseaseCaseFacade = {
             _this.detailsGrid = $(grid_selector).jqGrid({
                 url : diseaseCaseFacade.url+'?'+queryString,
                 datatype : 'json',
-                rownumbers: true,
+                //rownumbers: true,
                 colNames : ['病例号', '收集单位', '姓名', '年龄', '性别', '婚姻', '职业', '民族', '国籍', '入院日期', '入院日期', '入院科室','出院科室','住院天数', '操作'],
                 jsonReader : {
                     root: "data",
@@ -75,7 +75,6 @@ var diseaseCaseFacade = {
                 cmTemplate: {sortable:true},
                 colModel : [ {
                     name : 'id',
-                    width: 20,
                     align :'center'
 
                 }, {
@@ -86,16 +85,13 @@ var diseaseCaseFacade = {
                     }
                 }, {
                     name : 'name',
-                    width: 100,
                     align:'center'
                 }, {
                     name : 'age',
-                    width: 80,
                     align:'center'
 
                 }, {
                     name : 'sex',
-                    width: 100,
                     align:'center',
                     formatter : function(cellvalue, options, rowObject) {
                         if(cellvalue == '0'){
@@ -105,7 +101,6 @@ var diseaseCaseFacade = {
                     }
                 }, {
                     name : 'isMarried',
-                    width: 100,
                     align:'center',
                     formatter : function(cellvalue, options, rowObject) {
                         if(cellvalue == '0'){
@@ -115,14 +110,12 @@ var diseaseCaseFacade = {
                     }
                 }, {
                     name : 'profession',
-                    width: 80,
                     align:'center'
                 }, {
                     name : 'nation',
                     align:'center'
                 }, {
                     name : 'nationality',
-                    width: 80,
                     align:'center'
                 }, {
                     name : 'inHospitalDate',
@@ -152,12 +145,12 @@ var diseaseCaseFacade = {
                         var retVal = '';
                         if(rowObject.status == '10' || rowObject.status == '30') {
                             if (rowObject.caseStatus == '10' || rowObject.caseStatus == '20') {
-                                retVal = ' <button class="btn btn-minier btn-white btn-warning btn-bold zs-auth" permission="/diseaseCase/toEdit" onclick="diseaseCaseFacade.showCommonEditDialog(\'/diseaseCase/toEdit?id=' + rowObject.id + '\',\'修改详情\',1200,600);">' +
+                                retVal = ' <button class="btn btn-minier btn-white btn-warning btn-bold" onclick="diseaseCaseFacade.showCommonEditDialog(\'/diseaseCase/toEdit?id=' + rowObject.id + '\',\'修改详情\',800,450);">' +
                                     '<i class="ace-icon fa fa-pencil-square-o orange"></i>修改</button>';
                             }
                         }
                         if(rowObject.status == 10 && rowObject.sourceType == 1){
-                            retVal += ' <button class="btn btn-minier btn-white btn-danger btn-bold zs-auth" permission="/diseaseCase/delete" onclick="diseaseCaseFacade.delete('+ rowObject.id +');">' +
+                            retVal += ' <button class="btn btn-minier btn-white btn-danger btn-bold"  onclick="diseaseCaseFacade.delete('+ rowObject.id +');">' +
                                 '<i class="ace-icon fa fa-trash-o bigger-120 red2"></i>删除</button>';
                         }
                         return retVal;
@@ -209,7 +202,7 @@ var diseaseCaseFacade = {
 
     add : function(){
         var url = diseaseCaseFacade.addUrl;
-        diseaseCaseFacade.showCommonEditDialog(url, "新增病例", "1200", "600");
+        diseaseCaseFacade.showCommonEditDialog(url, "新增病例", 850, 580);
     },
 
     showCommonEditDialog : function(url, title, width, height){

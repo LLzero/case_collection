@@ -7,7 +7,7 @@
 <ul class="breadcrumb">
   <li><i class="ace-icon fa fa-home home-icon"></i> <a href="javascript:void(0);">首页</a></li>
   <li><i></i> <a href="javascript:void(0);">数据填报</a></li>
-  <li><i></i> <a href="javascript:void(0);">病例信息</a></li>
+  <li class="active">病例信息</li>
 </ul>
 <div class="widget-body">
   <div class="widget-main">

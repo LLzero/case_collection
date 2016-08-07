@@ -7,7 +7,7 @@
       <div class="col-sm-3 param_field" id="typeDiv" >
         <label class="text-right form-label" >收集单位：</label>
                 <span class="input-icon input-icon-right">
-                    <input type="hidden" autocomplete="off" name="departName" id="departName" placeholder="请输入手机单位"/>
+                    <input type="text"  name="departName" id="departName" placeholder="请输入手机单位"/>
                 </span>
       </div>
       <div class="col-sm-3 param_field" id="codeDiv" >
@@ -19,7 +19,7 @@
       <div class="col-sm-3 param_field" id="" >
         <label class="text-right form-label" >姓名：</label>
                 <span class="input-icon input-icon-right">
-                    <input id="id" name="id" class="form-control" style="width:150px;" placeholder="请输入姓名"/>
+                    <input id="name" name="name" class="form-control" style="width:150px;" placeholder="请输入姓名"/>
                 </span>
       </div>
       <div class="col-sm-3 param_field" id="codeDiv" >
@@ -27,7 +27,7 @@
                 <span class="input-icon input-icon-right">
                     <input id="ageStart" name="ageStart" class="form-control" style="width:60px;" placeholder=""/>
                   至
-                  <input id="ageEnd" name="ageEnd" class="form-control" style="width:50px;" placeholder=""/>
+                  <input id="ageEnd" name="ageEnd" class="form-control" style="width:60px;" placeholder=""/>
                 </span>
       </div>
       <div class="col-sm-3 param_field" id="statusDiv">
