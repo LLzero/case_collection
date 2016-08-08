@@ -46,7 +46,8 @@
               </div>
               <div class="param_field_short">
                 <a id="addBtn" class="btn btn-primary btn-sm">注册用户</a>&nbsp;&nbsp;
-                <a id="searchBtn" class="btn btn-primary btn-sm">查询</a>
+                <a id="searchBtn" class="btn btn-primary btn-sm">查询</a>&nbsp;&nbsp;
+                <a id="delBtn" class="btn btn-primary btn-sm">批量删除</a>
               </div>
             </form>
           </div>

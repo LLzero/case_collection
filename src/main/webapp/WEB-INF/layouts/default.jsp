@@ -88,6 +88,17 @@
 				if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
 			})
 		}
+
+		function styleCheckbox(table) {
+		 $(table).find('input:checkbox').addClass('ace')
+		 .wrap('<label />')
+		 .after('<span class="lbl align-top" />');
+
+		 $('.ui-jqgrid-labels th[id*="_cb"]:first-child')
+		 .find('input.cbox[type=checkbox]').addClass('ace')
+		 .wrap('<label />').after('<span class="lbl align-top" />');
+		}
+
     </script>
 </body>
 </html>

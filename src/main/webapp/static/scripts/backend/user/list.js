@@ -95,6 +95,7 @@ var userFacade = {
                 pagerpos : 'left',
                 viewrecords : true,
                 height : 'auto',
+                multiselect: true,
                 loadComplete : function() {
                     var table = this;
                     setTimeout(function() {
@@ -106,9 +107,24 @@ var userFacade = {
         // 自适应宽度
         $.resizeGrid(grid_selector);
     }
+};
+
+function multiDel(){
+    var ids = "";
+    $("input:checkbox:checked").each(function(){
+        var id = $(this).attr("id");
+        var str = id.split("_")[2];
+        ids +=str+",";
+    });
+    if(ids == ""){
+        $.dialog({title: '提示', content: "请选择需要删除的记录", icon: 'error.gif',lock:true, ok: '确定'});
+        return ;
+    }
+    deleteUser(ids);
 }
+
 function deleteUser(id){
-    bootbox.confirm("您确定删除该记录?", function(result) {
+    bootbox.confirm("您确定删除选中记录?", function(result) {
         if(result) {
             $.ajax({
                 type: "POST",
@@ -156,4 +172,10 @@ $(function() {
     $("#addBtn").click(function(){
         $.showCommonEditDialog("/user/toAdd","注册用户",500,250);
     });
+
+    $("#delBtn").click(
+        function(){
+            multiDel();
+        }
+    )
 });
