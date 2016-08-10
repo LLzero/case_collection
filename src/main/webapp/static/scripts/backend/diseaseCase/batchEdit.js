@@ -1,7 +1,7 @@
 /**
  * Created by luqq on 16/8/6.
  */
-var diseaseCaseEdit = {
+var diseaseCaseBatchEdit = {
 
     init : function(){
         //初始化日期控件
@@ -23,13 +23,13 @@ var diseaseCaseEdit = {
             $(this).val(picker.startDate.format('YYYY-MM-DD'));
         });
 
-        diseaseCaseEdit.aceFileInput(".file-panel");
-        diseaseCaseEdit.initOperator();
+        diseaseCaseBatchEdit.aceFileInput(".file-panel");
+        diseaseCaseBatchEdit.initOperator();
     },
 
     initOperator : function(){
         $('#saveBtn').click(function(){
-            diseaseCaseEdit.save();
+            diseaseCaseBatchEdit.save();
         });
 
         $('#cancelBtn').click(function(){
@@ -40,14 +40,16 @@ var diseaseCaseEdit = {
     save : function(){
         $('#saveBtn').addClass("disabled");
         $('#saveBtn').attr("disabled", "disabled");
-        var params = diseaseCaseEdit.getParams();
+        var params = diseaseCaseBatchEdit.getParams();
+        var ids = $("#ids").val();
+        params += '&ids=' + ids;
         if(!params){
             $('#saveBtn').removeClass("disabled");
             $('#saveBtn').removeAttr("disabled");
             return;
         }
         $.ajax({
-            url: "/diseaseCase/save",
+            url: "/diseaseCase/batchModify",
             type: "POST",
             data: params,
             dataType: "json",
@@ -77,7 +79,7 @@ var diseaseCaseEdit = {
         var params = $("#form").serialize();
 
         //诊断结果
-        var diagnoseDetail = diseaseCaseEdit.buildDiagnoseDetail();
+        var diagnoseDetail = diseaseCaseBatchEdit.buildDiagnoseDetail();
         params += '&diagnoseDetail='+diagnoseDetail;
 
         //既往史
@@ -122,7 +124,7 @@ var diseaseCaseEdit = {
         params += '&medicalHistory11='+medicalHistory11;
 
         //治疗药物
-        var treatmentMedicine = diseaseCaseEdit.buildTreatmentMedicine();
+        var treatmentMedicine = diseaseCaseBatchEdit.buildTreatmentMedicine();
         params += '&treatmentMedicine='+ treatmentMedicine;
 
         return params;
@@ -231,6 +233,6 @@ var diseaseCaseEdit = {
 }
 
 $(function(){
-    diseaseCaseEdit.init();
+    diseaseCaseBatchEdit.init();
 
 });

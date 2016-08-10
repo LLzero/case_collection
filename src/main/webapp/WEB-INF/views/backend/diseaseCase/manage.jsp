@@ -29,6 +29,20 @@
     </div>
   </div>
 </div>
+<style>
+  .close{
+    display: none;
+  }
+  .open{
+    display: block;
+  }
+</style>
 
 <!-- Tabs init js -->
 <script src="${ctx}/static/scripts/backend/diseaseCase/manage.js"></script>
+<script>
+  $(document).on('click', '.show-details-btn',function(e) {
+    e.preventDefault();
+    $('#extend-query-item').toggleClass('close');
+    $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+  });

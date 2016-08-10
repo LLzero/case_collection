@@ -28,10 +28,15 @@ var diseaseCaseFacade = {
         $("#addBtn").click(function(){
             diseaseCaseFacade.add();
         });
-
-        /*$("#exportBtn").click(function(){
+        $("#batchModifyBtn").click(function(){
+            diseaseCaseFacade.batchModify();
+        });
+        $("#batchDelBtn").click(function(){
+            diseaseCaseFacade.batchDel();
+        });
+        $("#exportBtn").click(function(){
             diseaseCaseFacade.export();
-        });*/
+        });
     },
 
     initLoad : function(){
@@ -64,7 +69,7 @@ var diseaseCaseFacade = {
                 url : diseaseCaseFacade.url+'?'+queryString,
                 datatype : 'json',
                 //rownumbers: true,
-                colNames : ['病例号', '收集单位', '姓名', '年龄', '性别', '婚姻', '职业', '民族', '国籍', '入院日期', '入院日期', '入院科室','出院科室','住院天数', '操作'],
+                colNames : ['病例号', '收集单位', '姓名', '年龄', '性别', '婚姻', '入院日期', '入院日期', '入院科室','出院科室','住院天数', '操作'],
                 jsonReader : {
                     root: "data",
                     page: "curPage",
@@ -76,13 +81,9 @@ var diseaseCaseFacade = {
                 colModel : [ {
                     name : 'id',
                     align :'center'
-
                 }, {
                     name : 'departName',
-                    align :'center',
-                    formatter : function(cellvalue, options, rowObject) {
-                        return $.dateFormat(cellvalue, 'yyyy-MM-dd');
-                    }
+                    align :'center'
                 }, {
                     name : 'name',
                     align:'center'
@@ -109,15 +110,6 @@ var diseaseCaseFacade = {
                         return "已婚";
                     }
                 }, {
-                    name : 'profession',
-                    align:'center'
-                }, {
-                    name : 'nation',
-                    align:'center'
-                }, {
-                    name : 'nationality',
-                    align:'center'
-                }, {
                     name : 'inHospitalDate',
                     align:'center',
                     formatter : function(cellvalue, options, rowObject) {
@@ -141,33 +133,30 @@ var diseaseCaseFacade = {
                 }, {
                     name : "id",
                     align:'center',
+                    width:150,
                     formatter : function(cellvalue, options, rowObject) {
                         var retVal = '';
-                        if(rowObject.status == '10' || rowObject.status == '30') {
-                            if (rowObject.caseStatus == '10' || rowObject.caseStatus == '20') {
-                                retVal = ' <button class="btn btn-minier btn-white btn-warning btn-bold" onclick="diseaseCaseFacade.showCommonEditDialog(\'/diseaseCase/toEdit?id=' + rowObject.id + '\',\'修改详情\',800,450);">' +
-                                    '<i class="ace-icon fa fa-pencil-square-o orange"></i>修改</button>';
-                            }
-                        }
-                        if(rowObject.status == 10 && rowObject.sourceType == 1){
-                            retVal += ' <button class="btn btn-minier btn-white btn-danger btn-bold"  onclick="diseaseCaseFacade.delete('+ rowObject.id +');">' +
-                                '<i class="ace-icon fa fa-trash-o bigger-120 red2"></i>删除</button>';
-                        }
+                        retVal = ' <button class="btn btn-minier btn-white btn-warning btn-bold" onclick="diseaseCaseFacade.showCommonEditDialog(\'/diseaseCase/toEdit?id=' + rowObject.id + '\',\'修改详情\',850,580);">' +
+                            '<i class="ace-icon fa fa-pencil-square-o orange"></i>修改</button>';
+                        retVal = ' <button class="btn btn-minier btn-white btn-warning btn-bold" onclick="diseaseCaseFacade.viewDetail(\'/diseaseCase/toDetail?id=' + rowObject.id + '\',\'查看详情\',850,580);">' +
+                            '<i class="ace-icon fa fa-list blue"></i>查看</button>';
+                        retVal += ' <button class="btn btn-minier btn-white btn-danger btn-bold"  onclick="diseaseCaseFacade.delete('+ rowObject.id +');">' +
+                            '<i class="ace-icon fa fa-trash-o bigger-120 red2"></i>删除</button>';
                         return retVal;
                     }
                 }],
                 rowNum : 30,
                 rowList : [ 10, 30, 50 ],
                 pager : pager_selector,
-                pagerdiseaseCases : 'left',
+                pagerpos : 'left',
                 viewrecords : true,
+                multiselect: true,
                 height : 350,
                 loadComplete : function() {
                     var table = this;
                     setTimeout(function() {
                         updatePagerIcons(table);
                     }, 0);
-                    $.authenticate();
                 }
             });
         }
@@ -189,7 +178,7 @@ var diseaseCaseFacade = {
             url: "/diseaseCase/delete",
             data: "id="+id
         }).done(function (data) {
-            if (data.data) {
+            if (data && data.retCode == 0) {
                 $.dialog({title: '提示', content: "删除成功", icon: 'success.gif',lock:true ,ok: '确定'});
                 diseaseCaseFacade.query();
             } else {
@@ -200,9 +189,83 @@ var diseaseCaseFacade = {
         });
     },
 
+    /**
+     * 批量删除
+     */
+    batchDel : function(){
+        var ids = "";
+        $("input:checkbox:checked").each(function(){
+            var id = $(this).attr("id");
+            var str = id.split("_")[2];
+            ids +=str+",";
+        });
+        if(ids == ""){
+            $.dialog({title: '提示', content: "请选择需要删除的记录", icon: 'error.gif',lock:true, ok: '确定'});
+            return ;
+        }
+        $.dialog.confirm('您确定删除选中的记录吗？', function(){
+            $.ajax({
+                type: "POST",
+                url: "/diseaseCase/batchDelete",
+                data: "ids="+ids+""
+            }).done(function (data) {
+                if (data && data.retCode == 0) {
+                    $.dialog({title: '提示', content: "删除成功", icon: 'success.gif',lock:true ,ok: '确定'});
+                    userFacade.query();
+                } else {
+                    $.dialog({title: '提示', content: "删除失败", icon: 'error.gif',lock:true, ok: '确定'});
+                }
+            }).always(function () {
+                //$("#submitBtn").removeClass("disabled");
+            });
+        });
+    },
+
+    /**
+     * 批量修改
+     */
+    batchModify : function(){
+        var ids = "";
+        $("input:checkbox:checked").each(function(){
+            var id = $(this).attr("id");
+            var str = id.split("_")[2];
+            ids +=str+",";
+        });
+        if(ids == ""){
+            $.dialog({title: '提示', content: "请选择需要修改的记录", icon: 'error.gif',lock:true, ok: '确定'});
+            return ;
+        }
+        var url = "/diseaseCase/toBatchEdit?ids=" + ids;
+        $.dialog({
+            id : 'batchModifyDiseaseCase',
+            lock: true,
+            title : "批量修改病例",
+            content : "url:"+url,
+            width: 850,
+            height: 580,
+            drag: true,
+            resize: true,
+            icon: 'alert.gif'
+        });
+    },
+
     add : function(){
         var url = diseaseCaseFacade.addUrl;
         diseaseCaseFacade.showCommonEditDialog(url, "新增病例", 850, 580);
+    },
+
+    viewDetail : function (url, title, width, height){
+        $.dialog({
+            id : 'viewDiseaseCase',
+            lock: true,
+            title : title,
+            content : "url:"+url,
+            width: width,
+            height: height,
+            drag: true,
+            resize: true,
+            icon: 'alert.gif'
+        });
     },
 
     showCommonEditDialog : function(url, title, width, height){

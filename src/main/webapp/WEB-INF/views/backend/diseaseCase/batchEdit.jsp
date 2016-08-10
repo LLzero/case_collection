@@ -56,9 +56,10 @@
     </ul>
   </div>
   <form id="form" class="form-signin" method="post">
+    <input type="hidden" id="ids" value="${ids}" />
     <div class="tab-content">
       <div id="tab1" class="tab-pane fade in active">
-        <div class="row">
+        <%--<div class="row">
           <div class="col-sm-6">
             <label class="form-label">收集单位：</label>
             <c:if test="${diseaseCase.departId == null}">
@@ -75,15 +76,16 @@
             <div class="col-sm-6">
               <label class="form-label">病例号：</label>
               <input type="text" id="id" name="id" value="${diseaseCase.id}" />
-              <font color="red">*</font>
+              
             </div>
           </c:if>
         </div>
+        --%>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">姓名：</label>
             <input type="text" id="name"  name="name" value="${diseaseCase.name}" />
-            <font color="red">*</font>
+            
           </div>
           <div class="col-sm-6">
             <label class="form-label">年龄：</label>
@@ -1241,6 +1243,6 @@
     width: 1500px;
   }
 </style>
-<script src="${ctx}/static/scripts/backend/diseaseCase/edit.js"></script>
+<script src="${ctx}/static/scripts/backend/diseaseCase/bathcEdit.js"></script>
 
 

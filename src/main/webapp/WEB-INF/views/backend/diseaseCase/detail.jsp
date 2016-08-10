@@ -1218,17 +1218,6 @@
   <div class="singleContent">
     <div class="alert alert-danger hidden" role="alert"></div>
   </div>
-  <div class="singleContent">
-    <div class="left"></div>
-    <div class="right">
-      <button id="saveBtn" style="width: 80px; height: 30px;"
-              class="btn btn-xs btn-success bigger" type="button">提交
-      </button>&nbsp;&nbsp;&nbsp;&nbsp;
-      <button id="cancelBtn" style="width: 80px; height: 30px;"
-              class="btn btn-xs btn-success bigger" type="button">取消
-      </button>
-    </div>
-  </div>
 </div>
 <style>
   .form-group {
@@ -1241,6 +1230,10 @@
     width: 1500px;
   }
 </style>
-<script src="${ctx}/static/scripts/backend/diseaseCase/edit.js"></script>
+<script>
+  $(function(){
+    $(':input').attr("disabled", "disabled");
+  });
+</script>
 
 
