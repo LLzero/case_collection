@@ -10,7 +10,6 @@ var diseaseCaseEdit = {
             'singleDatePicker' : true,
             'autoUpdateInput':false,
             'locale' : lan_local,
-            'minDate' : curdate
         }).on('apply.daterangepicker', function(ev, picker){
             $(this).val(picker.startDate.format('YYYY-MM-DD'));
         });
@@ -18,7 +17,6 @@ var diseaseCaseEdit = {
             'singleDatePicker' : true,
             'autoUpdateInput':false,
             'locale' : lan_local,
-            'minDate' : curdate
         }).on('apply.daterangepicker', function(ev, picker){
             $(this).val(picker.startDate.format('YYYY-MM-DD'));
         });
@@ -44,7 +42,7 @@ var diseaseCaseEdit = {
     save : function(){
         formValidate();
         if (validat() == false) {
-            alert("请先填写信息");
+            parent.$.dialog.alert("请先填写必要信息");
             return false;
         }
 
@@ -85,6 +83,22 @@ var diseaseCaseEdit = {
     getParams : function(){
 
         var params = $("#form").serialize();
+
+        var specialExamine1 = $('#specialExamine1').attr("url");
+        var specialExamine2 = $('#specialExamine2').attr("url");
+        var specialExamine3 = $('#specialExamine3').attr("url");
+        var specialExamine5 = $('#specialExamine5').attr("url");
+        var specialExamine7 = $('#specialExamine7').attr("url");
+
+        if(specialExamine1 == null || specialExamine1 == ''){
+            parent.$.dialog.alert("请上传心电图");
+            return false;
+        }
+        if(specialExamine2 == null || specialExamine2 == ''){
+            parent.$.dialog.alert("请上传心脏超声");
+            return false;
+        }
+
 
         //诊断结果
         var diagnoseDetail = diseaseCaseEdit.buildDiagnoseDetail();
@@ -135,6 +149,12 @@ var diseaseCaseEdit = {
         var treatmentMedicine = diseaseCaseEdit.buildTreatmentMedicine();
         params += '&treatmentMedicine='+ treatmentMedicine;
 
+        params += '&specialExamine1='+ specialExamine1;
+        params += '&specialExamine2='+ specialExamine2;
+        params += '&specialExamine3='+ specialExamine3;
+        params += '&specialExamine5='+ specialExamine5;
+        params += '&specialExamine7='+ specialExamine7;
+
         return params;
     },
 
@@ -171,16 +191,16 @@ var diseaseCaseEdit = {
                     dataType : 'json',// depending on your server
                     data : fd,
                     success : function(data) {
-                        if (data && data.retCode == 0) {
-                            _this.parent().find('input[type="file"]').val(data.url);
+                        if (data && data.success) {
+                            _this.parent().find('input[type="file"]').attr("url", data.data.url);
                             _this.parent().parent().parent().find('.attachOperate').remove();
                             var attachOperateHtml = '&nbsp;&nbsp;&nbsp;&nbsp;<span class="attachOperate">';
                             attachOperateHtml += '<a href="javascript:void(0)" onclick="uploadAttach.deleteAttach(this);">';
-                            attachOperateHtml += '<a href="'+ data.url +'">下载</a>';
+                            attachOperateHtml += '<a href="'+ data.data.url +'" target="_blank">下载</a>';
                             attachOperateHtml += '</span>';
                             _this.parent().parent().parent().append(attachOperateHtml);
                         }else{
-                            parent.$.dialog({title: '提示', content: "图片上传失败", icon: 'error.gif',lock:true ,ok: '确定'});
+                            parent.$.dialog({title: '提示', content: data.messgae ||  "图片上传失败", icon: 'error.gif',lock:true ,ok: '确定'});
                         }
                     },
                     error : function(){
@@ -195,8 +215,7 @@ var diseaseCaseEdit = {
     },
 
     deleteAttach : function(target){
-        $(target).parent().prev().find('input[type="file"]').val('');
-        $(target).parent().prev().find('input[type="file"]').val('');
+        $(target).parent().prev().find('input[type="file"]').attr("url", "");
         $(target).parent().next().remove();
         $(target).parent().remove();
     },

@@ -20,7 +20,7 @@ public interface DiseaseCaseMapper {
 
     int deleteById(DiseaseCase diseaseCase);
 
-    int  deleteByIds(List<Long> idList);
+    int  deleteByIds(DiseaseCase diseaseCase);
 
     int batchUpdate(DiseaseCase diseaseCase);
 

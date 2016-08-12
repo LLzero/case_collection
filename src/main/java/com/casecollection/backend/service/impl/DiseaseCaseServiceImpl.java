@@ -35,10 +35,14 @@ public class DiseaseCaseServiceImpl implements DiseaseCaseService {
     @Override
     public Pagination<DiseaseCaseVo> findByPage(DiseaseCaseVo diseaseCaseVo) {
         Pagination<DiseaseCaseVo> pagination = diseaseCaseVo.getPagination();
-        Integer count = diseaseCaseMapper.getCount(diseaseCaseVo);
-        List<DiseaseCaseVo> diseaseCaseVoList = diseaseCaseMapper.findByPage(diseaseCaseVo);
-        pagination.setTotalRows(count);
-        pagination.setData(diseaseCaseVoList);
+        try {
+            Integer count = diseaseCaseMapper.getCount(diseaseCaseVo);
+            List<DiseaseCaseVo> diseaseCaseVoList = diseaseCaseMapper.findByPage(diseaseCaseVo);
+            pagination.setTotalRows(count);
+            pagination.setData(diseaseCaseVoList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return pagination;
     }
@@ -56,11 +60,15 @@ public class DiseaseCaseServiceImpl implements DiseaseCaseService {
                 if(_diseaseCase != null){
                     return ResponseDTO.getFailResult("该病例号已存在");
                 }
+                diseaseCase.setCreateBy(userSession.getName());
+                diseaseCase.setCreateTime(new Date());
                 diseaseCaseMapper.insertSelective(diseaseCase);
             }else{
                 if(_diseaseCase != null && !_diseaseCase.getCode().equals(diseaseCase.getCode())){
                     return ResponseDTO.getFailResult("该病例号已存在");
                 }
+                diseaseCase.setModifyBy(userSession.getName());
+                diseaseCase.setModifyTime(new Date());
                 diseaseCaseMapper.updateByPrimaryKeySelective(diseaseCase);
             }
         } catch (Exception e) {
@@ -96,7 +104,10 @@ public class DiseaseCaseServiceImpl implements DiseaseCaseService {
             for(String str : strs){
                 idList.add(Long.parseLong(str));
             }
-            diseaseCaseMapper.deleteByIds(idList);
+            DiseaseCase diseaseCase = new DiseaseCase();
+            diseaseCase.setIdList(idList);
+            diseaseCase.setModifyBy(userSession.getName());
+            diseaseCaseMapper.deleteByIds(diseaseCase);
             return Response.getResponseOK(Boolean.TRUE);
         }catch (Exception e){
             e.printStackTrace();

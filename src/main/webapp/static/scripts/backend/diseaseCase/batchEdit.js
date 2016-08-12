@@ -127,6 +127,17 @@ var diseaseCaseBatchEdit = {
         var treatmentMedicine = diseaseCaseBatchEdit.buildTreatmentMedicine();
         params += '&treatmentMedicine='+ treatmentMedicine;
 
+        var specialExamine1 = $('#specialExamine1').attr("url");
+        var specialExamine2 = $('#specialExamine2').attr("url");
+        var specialExamine3 = $('#specialExamine3').attr("url");
+        var specialExamine5 = $('#specialExamine5').attr("url");
+        var specialExamine7 = $('#specialExamine7').attr("url");
+
+        params += '&specialExamine1='+ specialExamine1;
+        params += '&specialExamine2='+ specialExamine2;
+        params += '&specialExamine3='+ specialExamine3;
+        params += '&specialExamine5='+ specialExamine5;
+        params += '&specialExamine7='+ specialExamine7;
         return params;
     },
 
@@ -163,8 +174,8 @@ var diseaseCaseBatchEdit = {
                     dataType : 'json',// depending on your server
                     data : fd,
                     success : function(data) {
-                        if (data && data.retCode == 0) {
-                            _this.parent().find('input[type="file"]').val(data.url);
+                        if (data && data.success) {
+                            _this.parent().find('input[type="file"]').attr("url", data.data.url);
                             _this.parent().parent().parent().find('.attachOperate').remove();
                             var attachOperateHtml = '&nbsp;&nbsp;&nbsp;&nbsp;<span class="attachOperate">';
                             attachOperateHtml += '<a href="javascript:void(0)" onclick="uploadAttach.deleteAttach(this);">';
@@ -172,7 +183,7 @@ var diseaseCaseBatchEdit = {
                             attachOperateHtml += '</span>';
                             _this.parent().parent().parent().append(attachOperateHtml);
                         }else{
-                            parent.$.dialog({title: '提示', content: "图片上传失败", icon: 'error.gif',lock:true ,ok: '确定'});
+                            parent.$.dialog({title: '提示', content: data.message || "图片上传失败", icon: 'error.gif',lock:true ,ok: '确定'});
                         }
                     },
                     error : function(){

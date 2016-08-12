@@ -181,8 +181,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="coce != null" >
-        coce,
+      <if test="code != null" >
+        code,
       </if>
       <if test="departId != null" >
         depart_id,
@@ -1433,14 +1433,14 @@
     where id = #{id}
   </update>
 
-  <delete id="deleteByIds" parameterType="java.util.List">
+  <update id="deleteByIds" parameterType="com.casecollection.backend.model.DiseaseCase">
     update t_disease_case
     set is_delete = 1, modify_by=#{modifyBy}, modify_time = now()
     where id IN
-    <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+    <foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
       #{item}
     </foreach>
-  </delete>
+  </update>
 
   <sql id="findWhere">
     where 1=1
@@ -1448,7 +1448,7 @@
       and instr(depart_name,#{departName,jdbcType=VARCHAR})>0
     </if>
     <if test="id != null and id != ''">
-      id = #{id}
+      and id = #{id}
     </if>
     <if test="name != null and name != ''">
       and instr(name,#{name,jdbcType=VARCHAR})>0
@@ -1460,13 +1460,19 @@
       and <![CDATA[ age <= #{ageEnd} ]]>
     </if>
     <if test="sex != null and sex != '-1'">
-        sex = #{sex}
+      and sex = #{sex}
     </if>
-    <if test="startDate != null and startDate != ''">
-      and <![CDATA[ in_hospital_date >= #{sbpStart} ]]>
+    <if test="inStartDate != null and inStartDate != ''">
+      and <![CDATA[ in_hospital_date >= #{inStartDate} ]]>
     </if>
-    <if test="endDate != null and endDate != ''">
-      and <![CDATA[ out_hospital_date <= #{endDate} ]]>
+    <if test="inEndDate != null and inEndDate != ''">
+      and <![CDATA[ in_hospital_date <= #{inEndDate} ]]>
+    </if>
+    <if test="outStartDate != null and outStartDate != ''">
+      and <![CDATA[ out_hospital_date >= #{outStartDate} ]]>
+    </if>
+    <if test="outEndDate != null and outEndDate != ''">
+      and <![CDATA[ out_hospital_date <= #{outEndDate} ]]>
     </if>
     <if test="inDiagnose != null and inDiagnose != ''">
       and instr(in_diagnose,#{inDiagnose,jdbcType=VARCHAR})>0
@@ -1577,7 +1583,7 @@
       and <![CDATA[ blood_routine47 <= #{routine47End} ]]>
     </if>
 
-    <if test="accountType == '1'">
+    <if test="accountType == 1">
       and create_by = #{createBy}
     </if>
 
@@ -1588,388 +1594,388 @@
   <update id="batchUpdate" parameterType="com.casecollection.backend.model.DiseaseCase">
     update t_disease_case
     <set >
-      <if test="departId != null" >
+      <if test="departId != null and departId != ''" >
         depart_id = #{departId,jdbcType=BIGINT},
       </if>
-      <if test="departName != null" >
+      <if test="departName != null and departName != ''" >
         depart_name = #{departName,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
+      <if test="name != null and name != ''" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="age != null" >
+      <if test="age != null and age != ''" >
         age = #{age,jdbcType=INTEGER},
       </if>
-      <if test="sex != null" >
+      <if test="sex != null and sex != '-1'" >
         sex = #{sex,jdbcType=INTEGER},
       </if>
-      <if test="isMarried != null" >
+      <if test="isMarried != null and isMarried != '-1'" >
         is_married = #{isMarried,jdbcType=INTEGER},
       </if>
-      <if test="profession != null" >
+      <if test="profession != null and profession != ''" >
         profession = #{profession,jdbcType=VARCHAR},
       </if>
-      <if test="birthAddress != null" >
+      <if test="birthAddress != null and birthAddress != ''" >
         birth_address = #{birthAddress,jdbcType=VARCHAR},
       </if>
-      <if test="nation != null" >
+      <if test="nation != null and nation != ''" >
         nation = #{nation,jdbcType=VARCHAR},
       </if>
-      <if test="nationality != null" >
+      <if test="nationality != null and nationality != ''" >
         nationality = #{nationality,jdbcType=VARCHAR},
       </if>
-      <if test="identityNumber != null" >
+      <if test="identityNumber != null and identityNumber != ''" >
         identity_number = #{identityNumber,jdbcType=VARCHAR},
       </if>
-      <if test="contactAddress != null" >
+      <if test="contactAddress != null and contactAddress != ''" >
         contact_address = #{contactAddress,jdbcType=VARCHAR},
       </if>
-      <if test="contactName != null" >
+      <if test="contactName != null and contactName != ''" >
         contact_name = #{contactName,jdbcType=VARCHAR},
       </if>
-      <if test="contactPhone != null" >
+      <if test="contactPhone != null and contactPhone != ''" >
         contact_phone = #{contactPhone,jdbcType=VARCHAR},
       </if>
-      <if test="inHospitalDate != null" >
+      <if test="inHospitalDate != null and contactPhone != ''" >
         in_hospital_date = #{inHospitalDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="outHospitalDate != null" >
+      <if test="outHospitalDate != null and outHospitalDate != ''" >
         out_hospital_date = #{outHospitalDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="inHospitalOffice != null" >
+      <if test="inHospitalOffice != null and inHospitalOffice != ''" >
         in_hospital_office = #{inHospitalOffice,jdbcType=VARCHAR},
       </if>
-      <if test="outHospitalOffice != null" >
+      <if test="outHospitalOffice != null and outHospitalOffice != ''" >
         out_hospital_office = #{outHospitalOffice,jdbcType=VARCHAR},
       </if>
-      <if test="hospitalDays != null" >
+      <if test="hospitalDays != null and hospitalDays != ''" >
         hospital_days = #{hospitalDays,jdbcType=INTEGER},
       </if>
-      <if test="inDiagnose != null" >
+      <if test="inDiagnose != null and inDiagnose != ''" >
         in_diagnose = #{inDiagnose,jdbcType=VARCHAR},
       </if>
-      <if test="outDiagnose != null" >
+      <if test="outDiagnose != null and outDiagnose != ''" >
         out_diagnose = #{outDiagnose,jdbcType=VARCHAR},
       </if>
-      <if test="diagnoseDetail != null" >
+      <if test="diagnoseDetail != null and diagnoseDetail != '{}'" >
         diagnose_detail = #{diagnoseDetail,jdbcType=VARCHAR},
       </if>
-      <if test="otherDiagnose1 != null" >
+      <if test="otherDiagnose1 != null and otherDiagnose1 != ''" >
         other_diagnose1 = #{otherDiagnose1,jdbcType=VARCHAR},
       </if>
-      <if test="otherDiagnose2 != null" >
+      <if test="otherDiagnose2 != null and otherDiagnose2 != ''" >
         other_diagnose2 = #{otherDiagnose2,jdbcType=VARCHAR},
       </if>
-      <if test="otherDiagnose3 != null" >
+      <if test="otherDiagnose3 != null and otherDiagnose3 != ''" >
         other_diagnose3 = #{otherDiagnose3,jdbcType=VARCHAR},
       </if>
-      <if test="otherDiagnose4 != null" >
+      <if test="otherDiagnose4 != null and otherDiagnose4 != ''" >
         other_diagnose4 = #{otherDiagnose4,jdbcType=VARCHAR},
       </if>
-      <if test="otherDiagnose5 != null" >
+      <if test="otherDiagnose5 != null and otherDiagnose5 != ''" >
         other_diagnose5 = #{otherDiagnose5,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory != null" >
+      <if test="medicalHistory != null and medicalHistory != ''" >
         medical_history = #{medicalHistory,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory1 != null" >
+      <if test="medicalHistory1 != null and medicalHistory1 != ''" >
         medical_history1 = #{medicalHistory1,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory2 != null" >
+      <if test="medicalHistory2 != null and medicalHistory2 != ''" >
         medical_history2 = #{medicalHistory2,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory3 != null" >
+      <if test="medicalHistory3 != null and medicalHistory3 != ''" >
         medical_history3 = #{medicalHistory3,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory4 != null" >
+      <if test="medicalHistory4 != null and medicalHistory4 != ''" >
         medical_history4 = #{medicalHistory4,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory5 != null" >
+      <if test="medicalHistory5 != null and medicalHistory5 != ''" >
         medical_history5 = #{medicalHistory5,jdbcType=INTEGER},
       </if>
-      <if test="medicalHistory6 != null" >
+      <if test="medicalHistory6 != null and medicalHistory6 != ''" >
         medical_history6 = #{medicalHistory6,jdbcType=INTEGER},
       </if>
-      <if test="medicalHistory7 != null" >
+      <if test="medicalHistory7 != null and medicalHistory7 != ''" >
         medical_history7 = #{medicalHistory7,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory8 != null" >
+      <if test="medicalHistory8 != null and medicalHistory8 != ''" >
         medical_history8 = #{medicalHistory8,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory9 != null" >
+      <if test="medicalHistory9 != null and medicalHistory9 != ''" >
         medical_history9 = #{medicalHistory9,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory10 != null" >
+      <if test="medicalHistory10 != null and medicalHistory10 != ''" >
         medical_history10 = #{medicalHistory10,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory11 != null" >
+      <if test="medicalHistory11 != null and medicalHistory11 != ''" >
         medical_history11 = #{medicalHistory11,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory12 != null" >
+      <if test="medicalHistory12 != null and medicalHistory12 != ''" >
         medical_history12 = #{medicalHistory12,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory13 != null" >
+      <if test="medicalHistory13 != null and medicalHistory13 != ''" >
         medical_history13 = #{medicalHistory13,jdbcType=VARCHAR},
       </if>
-      <if test="medicalHistory14 != null" >
+      <if test="medicalHistory14 != null and medicalHistory14 != ''" >
         medical_history14 = #{medicalHistory14,jdbcType=VARCHAR},
       </if>
-      <if test="physicalExamine1 != null" >
+      <if test="physicalExamine1 != null and physicalExamine1 != ''" >
         physical_examine1 = #{physicalExamine1,jdbcType=VARCHAR},
       </if>
-      <if test="physicalExamine2 != null" >
+      <if test="physicalExamine2 != null and physicalExamine2 != ''" >
         physical_examine2 = #{physicalExamine2,jdbcType=VARCHAR},
       </if>
-      <if test="physicalExamine3 != null" >
+      <if test="physicalExamine3 != null and physicalExamine3 != ''" >
         physical_examine3 = #{physicalExamine3,jdbcType=VARCHAR},
       </if>
-      <if test="physicalExamine4 != null" >
+      <if test="physicalExamine4 != null and physicalExamine4 != ''" >
         physical_examine4 = #{physicalExamine4,jdbcType=VARCHAR},
       </if>
-      <if test="physicalExamine5 != null" >
+      <if test="physicalExamine5 != null and physicalExamine5 != ''" >
         physical_examine5 = #{physicalExamine5,jdbcType=VARCHAR},
       </if>
-      <if test="physicalExamine6 != null" >
+      <if test="physicalExamine6 != null and physicalExamine6 != ''" >
         physical_examine6 = #{physicalExamine6,jdbcType=VARCHAR},
       </if>
-      <if test="physicalExamine7 != null" >
+      <if test="physicalExamine7 != null and physicalExamine7 != ''" >
         physical_examine7 = #{physicalExamine7,jdbcType=VARCHAR},
       </if>
-      <if test="physicalExamine8 != null" >
+      <if test="physicalExamine8 != null and physicalExamine8 != ''" >
         physical_examine8 = #{physicalExamine8,jdbcType=VARCHAR},
       </if>
-      <if test="physicalExamine9 != null" >
+      <if test="physicalExamine9 != null and physicalExamine9 != ''" >
         physical_examine9 = #{physicalExamine9,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine1 != null" >
+      <if test="bloodRoutine1 != null and bloodRoutine1 != ''" >
         blood_routine1 = #{bloodRoutine1,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine2 != null" >
+      <if test="bloodRoutine2 != null and bloodRoutine2 != ''" >
         blood_routine2 = #{bloodRoutine2,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine3 != null" >
+      <if test="bloodRoutine3 != null and bloodRoutine3 != ''" >
         blood_routine3 = #{bloodRoutine3,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine4 != null" >
+      <if test="bloodRoutine4 != null and bloodRoutine4 != ''" >
         blood_routine4 = #{bloodRoutine4,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine5 != null" >
+      <if test="bloodRoutine5 != null and bloodRoutine5 != ''" >
         blood_routine5 = #{bloodRoutine5,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine6 != null" >
+      <if test="bloodRoutine6 != null and bloodRoutine6 != ''" >
         blood_routine6 = #{bloodRoutine6,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine7 != null" >
+      <if test="bloodRoutine7 != null and bloodRoutine7 != ''" >
         blood_routine7 = #{bloodRoutine7,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine8 != null" >
+      <if test="bloodRoutine8 != null and bloodRoutine8 != ''" >
         blood_routine8 = #{bloodRoutine8,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine9 != null" >
+      <if test="bloodRoutine9 != null and bloodRoutine9 != ''" >
         blood_routine9 = #{bloodRoutine9,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine10 != null" >
+      <if test="bloodRoutine10 != null and bloodRoutine10 != ''" >
         blood_routine10 = #{bloodRoutine10,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine11 != null" >
+      <if test="bloodRoutine11 != null and bloodRoutine11 != ''" >
         blood_routine11 = #{bloodRoutine11,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine12 != null" >
+      <if test="bloodRoutine12 != null and bloodRoutine12 != ''" >
         blood_routine12 = #{bloodRoutine12,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine13 != null" >
+      <if test="bloodRoutine13 != null and bloodRoutine13 != ''" >
         blood_routine13 = #{bloodRoutine13,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine14 != null" >
+      <if test="bloodRoutine14 != null and bloodRoutine14 != ''" >
         blood_routine14 = #{bloodRoutine14,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine15 != null" >
+      <if test="bloodRoutine15 != null and bloodRoutine15 != ''" >
         blood_routine15 = #{bloodRoutine15,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine16 != null" >
+      <if test="bloodRoutine16 != null and bloodRoutine16 != ''" >
         blood_routine16 = #{bloodRoutine16,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine17 != null" >
+      <if test="bloodRoutine17 != null and bloodRoutine17 != ''" >
         blood_routine17 = #{bloodRoutine17,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine18 != null" >
+      <if test="bloodRoutine18 != null and bloodRoutine18 != ''" >
         blood_routine18 = #{bloodRoutine18,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine19 != null" >
+      <if test="bloodRoutine19 != null and bloodRoutine19 != ''" >
         blood_routine19 = #{bloodRoutine19,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine20 != null" >
+      <if test="bloodRoutine20 != null and bloodRoutine20 != ''" >
         blood_routine20 = #{bloodRoutine20,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine21 != null" >
+      <if test="bloodRoutine21 != null and bloodRoutine21 != ''" >
         blood_routine21 = #{bloodRoutine21,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine22 != null" >
+      <if test="bloodRoutine22 != null and bloodRoutine22 != ''" >
         blood_routine22 = #{bloodRoutine22,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine23 != null" >
+      <if test="bloodRoutine23 != null and bloodRoutine23 != ''" >
         blood_routine23 = #{bloodRoutine23,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine24 != null" >
+      <if test="bloodRoutine24 != null and bloodRoutine24 != ''" >
         blood_routine24 = #{bloodRoutine24,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine25 != null" >
+      <if test="bloodRoutine25 != null and bloodRoutine25 != ''" >
         blood_routine25 = #{bloodRoutine25,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine26 != null" >
+      <if test="bloodRoutine26 != null and bloodRoutine26 != ''" >
         blood_routine26 = #{bloodRoutine26,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine27 != null" >
+      <if test="bloodRoutine27 != null and bloodRoutine27 != ''" >
         blood_routine27 = #{bloodRoutine27,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine28 != null" >
+      <if test="bloodRoutine28 != null and bloodRoutine28 != ''" >
         blood_routine28 = #{bloodRoutine28,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine29 != null" >
+      <if test="bloodRoutine29 != null and bloodRoutine29 != ''" >
         blood_routine29 = #{bloodRoutine29,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine30 != null" >
+      <if test="bloodRoutine30 != null and bloodRoutine30 != ''" >
         blood_routine30 = #{bloodRoutine30,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine31 != null" >
+      <if test="bloodRoutine31 != null and bloodRoutine31 != ''" >
         blood_routine31 = #{bloodRoutine31,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine32 != null" >
+      <if test="bloodRoutine32 != null and bloodRoutine32 != ''" >
         blood_routine32 = #{bloodRoutine32,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine33 != null" >
+      <if test="bloodRoutine33 != null and bloodRoutine33 != ''" >
         blood_routine33 = #{bloodRoutine33,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine34 != null" >
+      <if test="bloodRoutine34 != null and bloodRoutine34 != ''" >
         blood_routine34 = #{bloodRoutine34,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine35 != null" >
+      <if test="bloodRoutine35 != null and bloodRoutine35 != ''" >
         blood_routine35 = #{bloodRoutine35,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine36 != null" >
+      <if test="bloodRoutine36 != null and bloodRoutine36 != ''" >
         blood_routine36 = #{bloodRoutine36,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine37 != null" >
+      <if test="bloodRoutine37 != null and bloodRoutine37 != ''" >
         blood_routine37 = #{bloodRoutine37,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine38 != null" >
+      <if test="bloodRoutine38 != null and bloodRoutine38 != ''" >
         blood_routine38 = #{bloodRoutine38,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine39 != null" >
+      <if test="bloodRoutine39 != null and bloodRoutine39 != ''" >
         blood_routine39 = #{bloodRoutine39,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine40 != null" >
+      <if test="bloodRoutine40 != null and bloodRoutine40 != ''" >
         blood_routine40 = #{bloodRoutine40,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine41 != null" >
+      <if test="bloodRoutine41 != null and bloodRoutine41 != ''" >
         blood_routine41 = #{bloodRoutine41,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine42 != null" >
+      <if test="bloodRoutine42 != null and bloodRoutine42 != ''" >
         blood_routine42 = #{bloodRoutine42,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine43 != null" >
+      <if test="bloodRoutine43 != null and bloodRoutine43 != ''" >
         blood_routine43 = #{bloodRoutine43,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine44 != null" >
+      <if test="bloodRoutine44 != null and bloodRoutine44 != ''" >
         blood_routine44 = #{bloodRoutine44,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine45 != null" >
+      <if test="bloodRoutine45 != null and bloodRoutine45 != ''" >
         blood_routine45 = #{bloodRoutine45,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine46 != null" >
+      <if test="bloodRoutine46 != null and bloodRoutine46 != ''" >
         blood_routine46 = #{bloodRoutine46,jdbcType=VARCHAR},
       </if>
-      <if test="bloodRoutine47 != null" >
+      <if test="bloodRoutine47 != null and bloodRoutine47 != ''" >
         blood_routine47 = #{bloodRoutine47,jdbcType=VARCHAR},
       </if>
-      <if test="ogit1 != null" >
+      <if test="ogit1 != null and ogit1 != ''" >
         ogit1 = #{ogit1,jdbcType=VARCHAR},
       </if>
-      <if test="ogit2 != null" >
+      <if test="ogit2 != null and ogit2 != ''" >
         ogit2 = #{ogit2,jdbcType=VARCHAR},
       </if>
-      <if test="ogit3 != null" >
+      <if test="ogit3 != null and ogit3 != ''" >
         ogit3 = #{ogit3,jdbcType=VARCHAR},
       </if>
-      <if test="ogit4 != null" >
+      <if test="ogit4 != null and ogit4 != ''" >
         ogit4 = #{ogit4,jdbcType=VARCHAR},
       </if>
-      <if test="ogit5 != null" >
+      <if test="ogit5 != null and ogit5 != ''" >
         ogit5 = #{ogit5,jdbcType=VARCHAR},
       </if>
-      <if test="ogit6 != null" >
+      <if test="ogit6 != null and ogit6 != ''" >
         ogit6 = #{ogit6,jdbcType=VARCHAR},
       </if>
-      <if test="ogit7 != null" >
+      <if test="ogit7 != null and ogit7 != ''" >
         ogit7 = #{ogit7,jdbcType=VARCHAR},
       </if>
-      <if test="ogit8 != null" >
+      <if test="ogit8 != null and ogit8 != ''" >
         ogit8 = #{ogit8,jdbcType=VARCHAR},
       </if>
-      <if test="ogit9 != null" >
+      <if test="ogit9 != null and ogit9 != ''" >
         ogit9 = #{ogit9,jdbcType=VARCHAR},
       </if>
-      <if test="ogit10 != null" >
+      <if test="ogit10 != null and ogit10 != ''" >
         ogit10 = #{ogit10,jdbcType=VARCHAR},
       </if>
-      <if test="ogit11 != null" >
+      <if test="ogit11 != null and ogit11 != ''" >
         ogit11 = #{ogit11,jdbcType=VARCHAR},
       </if>
-      <if test="ogit12 != null" >
+      <if test="ogit12 != null and ogit12 != ''" >
         ogit12 = #{ogit12,jdbcType=VARCHAR},
       </if>
-      <if test="ogit13 != null" >
+      <if test="ogit13 != null and ogit13 != ''" >
         ogit13 = #{ogit13,jdbcType=VARCHAR},
       </if>
-      <if test="ogit14 != null" >
+      <if test="ogit14 != null and ogit14 != ''" >
         ogit14 = #{ogit14,jdbcType=VARCHAR},
       </if>
-      <if test="ogit15 != null" >
+      <if test="ogit15 != null and ogit15 != ''" >
         ogit15 = #{ogit15,jdbcType=VARCHAR},
       </if>
-      <if test="ogit16 != null" >
+      <if test="ogit16 != null and ogit16 != ''" >
         ogit16 = #{ogit16,jdbcType=VARCHAR},
       </if>
-      <if test="urineRoutine1 != null" >
+      <if test="urineRoutine1 != null and urineRoutine1 != '-1'" >
         urine_routine1 = #{urineRoutine1,jdbcType=INTEGER},
       </if>
-      <if test="urineRoutine2 != null" >
+      <if test="urineRoutine2 != null and urineRoutine2 != '-1'" >
         urine_routine2 = #{urineRoutine2,jdbcType=INTEGER},
       </if>
-      <if test="urineRoutine3 != null" >
+      <if test="urineRoutine3 != null and urineRoutine3 != '-1'" >
         urine_routine3 = #{urineRoutine3,jdbcType=INTEGER},
       </if>
-      <if test="urineRoutine4 != null" >
+      <if test="urineRoutine4 != null and urineRoutine4 != ''" >
         urine_routine4 = #{urineRoutine4,jdbcType=VARCHAR},
       </if>
-      <if test="urineRoutine5 != null" >
+      <if test="urineRoutine5 != null and urineRoutine5 != '-1'" >
         urine_routine5 = #{urineRoutine5,jdbcType=INTEGER},
       </if>
-      <if test="specialExamine1 != null" >
+      <if test="specialExamine1 != null and specialExamine1 != ''" >
         special_examine1 = #{specialExamine1,jdbcType=VARCHAR},
       </if>
-      <if test="specialExamine2 != null" >
+      <if test="specialExamine2 != null and specialExamine2 != ''" >
         special_examine2 = #{specialExamine2,jdbcType=VARCHAR},
       </if>
-      <if test="specialExamine3 != null" >
+      <if test="specialExamine3 != null and specialExamine3 != ''" >
         special_examine3 = #{specialExamine3,jdbcType=VARCHAR},
       </if>
-      <if test="specialExamine4 != null" >
+      <if test="specialExamine4 != null and specialExamine4 != ''" >
         special_examine4 = #{specialExamine4,jdbcType=VARCHAR},
       </if>
-      <if test="specialExamine5 != null" >
+      <if test="specialExamine5 != null and specialExamine5 != ''" >
         special_examine5 = #{specialExamine5,jdbcType=VARCHAR},
       </if>
-      <if test="specialExamine6 != null" >
+      <if test="specialExamine6 != null and specialExamine6 != ''" >
         special_examine6 = #{specialExamine6,jdbcType=VARCHAR},
       </if>
-      <if test="specialExamine7 != null" >
+      <if test="specialExamine7 != null and specialExamine7 != ''" >
         special_examine7 = #{specialExamine7,jdbcType=VARCHAR},
       </if>
-      <if test="specialExamine8 != null" >
+      <if test="specialExamine8 != null and specialExamine8 != ''" >
         special_examine8 = #{specialExamine8,jdbcType=VARCHAR},
       </if>
-      <if test="treatmentMedicine != null" >
+      <if test="treatmentMedicine != null and treatmentMedicine != '{}'" >
         treatment_medicine = #{treatmentMedicine,jdbcType=VARCHAR},
       </if>
       <if test="isDelete != null" >
@@ -1995,6 +2001,13 @@
 
   </update>
 
+  <select id="getByCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from t_disease_case
+    where code = #{code,jdbcType=BIGINT}
+    limit 0,1
+  </select>
 
 
 </mapper>

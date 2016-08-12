@@ -13,7 +13,8 @@ var diseaseCaseFacade = {
     exportUrl : "/diseaseCase/export",
 
     init : function(){
-        $.initDatePicker('#dateRange');
+        $.initDatePicker('#dateRange1');
+        $.initDatePicker('#dateRange2');
         diseaseCaseFacade.initOperator();
         inputSelectUtil.init().load("#typeCode");
         inputSelectUtil.init().load("#supplierName");
@@ -79,7 +80,7 @@ var diseaseCaseFacade = {
                 prmNames : {page:'curPage',rows:'pageSize', sort: 'sidx',order: 'sort'},
                 cmTemplate: {sortable:true},
                 colModel : [ {
-                    name : 'id',
+                    name : 'code',
                     align :'center'
                 }, {
                     name : 'departName',
@@ -89,11 +90,13 @@ var diseaseCaseFacade = {
                     align:'center'
                 }, {
                     name : 'age',
-                    align:'center'
+                    align:'center',
+                    width: '80'
 
                 }, {
                     name : 'sex',
                     align:'center',
+                    width: '80',
                     formatter : function(cellvalue, options, rowObject) {
                         if(cellvalue == '0'){
                             return "男";
@@ -103,6 +106,7 @@ var diseaseCaseFacade = {
                 }, {
                     name : 'isMarried',
                     align:'center',
+                    width: '100',
                     formatter : function(cellvalue, options, rowObject) {
                         if(cellvalue == '0'){
                             return "未婚";
@@ -129,16 +133,17 @@ var diseaseCaseFacade = {
                     align:'center'
                 }, {
                     name : 'hospitalDays',
-                    align:'center'
+                    align:'center',
+                    width: '60'
                 }, {
                     name : "id",
                     align:'center',
-                    width:150,
+                    width:200,
                     formatter : function(cellvalue, options, rowObject) {
                         var retVal = '';
-                        retVal = ' <button class="btn btn-minier btn-white btn-warning btn-bold" onclick="diseaseCaseFacade.showCommonEditDialog(\'/diseaseCase/toEdit?id=' + rowObject.id + '\',\'修改详情\',850,580);">' +
+                        retVal += ' <button class="btn btn-minier btn-white btn-warning btn-bold" onclick="diseaseCaseFacade.showCommonEditDialog(\'/diseaseCase/toEdit?id=' + rowObject.id + '\',\'修改详情\',850,580);">' +
                             '<i class="ace-icon fa fa-pencil-square-o orange"></i>修改</button>';
-                        retVal = ' <button class="btn btn-minier btn-white btn-warning btn-bold" onclick="diseaseCaseFacade.viewDetail(\'/diseaseCase/toDetail?id=' + rowObject.id + '\',\'查看详情\',850,580);">' +
+                        retVal += ' <button class="btn btn-minier btn-white btn-warning btn-bold" onclick="diseaseCaseFacade.viewDetail(\'/diseaseCase/toDetail?id=' + rowObject.id + '\',\'查看详情\',850,580);">' +
                             '<i class="ace-icon fa fa-list blue"></i>查看</button>';
                         retVal += ' <button class="btn btn-minier btn-white btn-danger btn-bold"  onclick="diseaseCaseFacade.delete('+ rowObject.id +');">' +
                             '<i class="ace-icon fa fa-trash-o bigger-120 red2"></i>删除</button>';
@@ -196,8 +201,10 @@ var diseaseCaseFacade = {
         var ids = "";
         $("input:checkbox:checked").each(function(){
             var id = $(this).attr("id");
-            var str = id.split("_")[2];
-            ids +=str+",";
+            var str = id.split("_")[6];
+            if(str != undefined && str != null){
+                ids += ids == '' ? str : ','+str;
+            }
         });
         if(ids == ""){
             $.dialog({title: '提示', content: "请选择需要删除的记录", icon: 'error.gif',lock:true, ok: '确定'});
@@ -211,7 +218,7 @@ var diseaseCaseFacade = {
             }).done(function (data) {
                 if (data && data.retCode == 0) {
                     $.dialog({title: '提示', content: "删除成功", icon: 'success.gif',lock:true ,ok: '确定'});
-                    userFacade.query();
+                    diseaseCaseFacade.query();
                 } else {
                     $.dialog({title: '提示', content: "删除失败", icon: 'error.gif',lock:true, ok: '确定'});
                 }
@@ -228,8 +235,10 @@ var diseaseCaseFacade = {
         var ids = "";
         $("input:checkbox:checked").each(function(){
             var id = $(this).attr("id");
-            var str = id.split("_")[2];
-            ids +=str+",";
+            var str = id.split("_")[6];
+            if(str != undefined && str != null){
+                ids += ids == '' ? str : ','+str;
+            }
         });
         if(ids == ""){
             $.dialog({title: '提示', content: "请选择需要修改的记录", icon: 'error.gif',lock:true, ok: '确定'});

@@ -466,7 +466,6 @@ public class DiseaseCaseExportVo {
         return inDiagnose;
     }
 
-    @Export(description="", index="19")
     public void setInDiagnose(String inDiagnose) {
         this.inDiagnose = inDiagnose;
     }

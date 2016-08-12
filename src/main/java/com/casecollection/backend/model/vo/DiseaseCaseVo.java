@@ -11,22 +11,32 @@ public class DiseaseCaseVo extends DiseaseCase {
     /**
      * 年龄段【开始】
      */
-    private Integer startAge;
+    private Integer ageStart;
 
     /**
      * 年龄段【截止】
      */
-    private Integer endAge;
+    private Integer ageEnd;
 
     /**
      * 开始时间【入院】
      */
-    private String startDate;
+    private String inStartDate;
+
+    /**
+     * 结束时间 【入院】
+     */
+    private String inEndDate;
+
+    /**
+     * 开始时间【出院】
+     */
+    private String outStartDate;
 
     /**
      * 结束时间 【出院】
      */
-    private String endDate;
+    private String outEndDate;
 
     /**
      * sbp 【开始】
@@ -201,38 +211,52 @@ public class DiseaseCaseVo extends DiseaseCase {
 
     private Integer accountType;
 
-    public String getStartDate() {
-        return startDate;
+    public String getInStartDate() {
+        return inStartDate;
     }
 
-
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setInStartDate(String inStartDate) {
+        this.inStartDate = inStartDate;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public String getInEndDate() {
+        return inEndDate;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setInEndDate(String inEndDate) {
+        this.inEndDate = inEndDate;
     }
 
-    public Integer getStartAge() {
-        return startAge;
+    public String getOutStartDate() {
+        return outStartDate;
     }
 
-    public void setStartAge(Integer startAge) {
-        this.startAge = startAge;
+    public void setOutStartDate(String outStartDate) {
+        this.outStartDate = outStartDate;
     }
 
-    public Integer getEndAge() {
-        return endAge;
+    public String getOutEndDate() {
+        return outEndDate;
     }
 
-    public void setEndAge(Integer endAge) {
-        this.endAge = endAge;
+    public void setOutEndDate(String outEndDate) {
+        this.outEndDate = outEndDate;
+    }
+
+    public Integer getAgeStart() {
+        return ageStart;
+    }
+
+    public void setAgeStart(Integer ageStart) {
+        this.ageStart = ageStart;
+    }
+
+    public Integer getAgeEnd() {
+        return ageEnd;
+    }
+
+    public void setAgeEnd(Integer ageEnd) {
+        this.ageEnd = ageEnd;
     }
 
     public String getSbpStart() {
