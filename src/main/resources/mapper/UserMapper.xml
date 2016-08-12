@@ -242,4 +242,11 @@
     or report_account = #{account,jdbcType=VARCHAR}
   </select>
 
+  <select id="findAllUser" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where data_level != 0 and status = 0
+  </select>
+
 </mapper>
