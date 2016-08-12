@@ -198,6 +198,9 @@ public class DiseaseCaseVo extends DiseaseCase {
      */
     private String routine47End;
 
+
+    private Integer accountType;
+
     public String getStartDate() {
         return startDate;
     }
@@ -512,5 +515,13 @@ public class DiseaseCaseVo extends DiseaseCase {
 
     public void setPagination(Pagination<DiseaseCaseVo> pagination) {
         this.pagination = pagination;
+    }
+
+    public Integer getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(Integer accountType) {
+        this.accountType = accountType;
     }
 }

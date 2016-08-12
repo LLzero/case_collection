@@ -225,7 +225,9 @@
 
       <div class="col-sm-12 text-left">
         <div class="btn btn-primary btn-sm param_field_btn" id="searchBtn">查询</div>
-        <div class="btn btn-primary btn-sm param_field_btn" id="addBtn">新增</div>
+          <c:if test="${accountType == '0' || accountType == '1'}">
+            <div class="btn btn-primary btn-sm param_field_btn" id="addBtn">新增</div>
+          </c:if>
           <div class="btn btn-primary btn-sm param_field_btn" id="batchModifyBtn">批量修改</div>
           <div class="btn btn-primary btn-sm param_field_btn" id="batchDelBtn">批量删除</div>
           <div class="btn btn-primary btn-sm param_field_btn" id="exportBtn">导出</div>

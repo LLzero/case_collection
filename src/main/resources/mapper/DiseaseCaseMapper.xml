@@ -1567,6 +1567,10 @@
       and <![CDATA[ blood_routine47 <= #{routine47End} ]]>
     </if>
 
+    <if test="accountType == '1'">
+      and create_by = #{createBy}
+    </if>
+
     and is_delete = 0
   </sql>
 
