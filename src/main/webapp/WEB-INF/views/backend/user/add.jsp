@@ -63,7 +63,7 @@
         $("#submitBtn").click(function (e) {
             formValidate();
             if (validat() == false) {
-                alert("清闲填写信息");
+                alert("请先填写信息");
                 return false;
             }
 
