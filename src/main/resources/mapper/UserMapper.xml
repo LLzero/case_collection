@@ -213,6 +213,9 @@
     from t_user
     <include refid="findWhere" />
     order by id desc
+    <if test="pagination.needPage == true">
+      limit #{pagination.start}, #{pagination.pageSize}
+    </if>
   </select>
 
   <sql id="findWhere">

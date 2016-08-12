@@ -44,7 +44,7 @@ var userFacade = {
                 }, {
                     name : 'name',
                     align :'center',
-                    width : 90
+                    width : 180
                 }, {
                     name : 'contact',
                     align :'center',
@@ -89,7 +89,7 @@ var userFacade = {
                         return retVal;
                     }
                 }],
-                rowNum : 20,
+                rowNum : 10,
                 rowList : [ 10, 30, 50 ],
                 pager : pager_selector,
                 pagerpos : 'left',
