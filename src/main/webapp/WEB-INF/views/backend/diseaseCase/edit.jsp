@@ -56,34 +56,33 @@
     </ul>
   </div>
   <form id="form" class="form-signin" method="post">
+    <input type="hidden" name="id" value="${diseaseCase.id}">
     <div class="tab-content">
       <div id="tab1" class="tab-pane fade in active">
-        <input type="hidden" id="id"  name="id" value="${curUser.id}" />
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">收集单位：</label>
             <c:if test="${diseaseCase.id == null}">
               <c:choose>
-              <c:when test="${curUser.accountType == '0'}">
-                <select id="departId" name="departId">
-                  <option value="">请选择</option>
-                  <c:forEach var="user" items="${userList}">
-                    <option value="${user.id}">${user.name}</option>
-                  </c:forEach>
-                </select>
-                <input type="hidden" id="departName" name="departName" value="" />
-              </c:when>
-              <c:otherwise>
-                <input type="hidden" id="departId"  name="departId" value="${curUser.departId}" />
-                <input type="text" id="departName"  name="departName" value="${curUser.name}" readonly="readonly"/>
-              </c:otherwise>
+                <c:when test="${curUser.accountType == '0'}">
+                  <select id="departId" name="departId">
+                    <option value="">请选择</option>
+                    <c:forEach var="user" items="${userList}">
+                      <option value="${user.id}">${user.name}</option>
+                    </c:forEach>
+                  </select>
+                  <input type="hidden" id="departName" name="departName" value="" />
+                </c:when>
+                <c:otherwise>
+                  <input type="hidden" id="departId"  name="departId" value="${curUser.departId}" />
+                  <input type="text" id="departName"  name="departName" value="${curUser.name}" readonly="readonly"/>
+                </c:otherwise>
               </c:choose>
-
             </c:if>
             <c:if test="${diseaseCase.id != null}">
               <input type="hidden" id="departId"  name="departId" value="${diseaseCase.departId}" />
               <input type="text" id="departName"  name="departName" value="${diseaseCase.departName}" readonly="readonly"/>
-            <font color="red">*</font>
+              <font color="red">*</font>
             </c:if>
           </div>
           <c:if test="${diseaseCase != null}">
@@ -97,19 +96,19 @@
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">姓名：</label>
-            <input type="text" id="name"  name="name" value="${diseaseCase.name}" />
+            <input type="text" id="name"  name="name" value="${diseaseCase.name}" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">年龄：</label>
-            <input type="text" id="age" name="age" value="${diseaseCase.age}" />
+            <input type="number" id="age" name="age" value="${diseaseCase.age}" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">性别：</label>
-            <select id="sex" name="sex">
+            <select id="sex" name="sex" isNull="false" checkType="empty">
               <option value="">请选择</option>
               <option value="0" <c:if test="${diseaseCase.sex == 0}">checked</c:if>>男</option>
               <option value="1" <c:if test="${diseaseCase.sex == 1}">checked</c:if>>女</option>
@@ -118,7 +117,7 @@
           </div>
           <div class="col-sm-6">
             <label class="form-label">婚姻：</label>
-            <select id="isMarried" name="isMarried">
+            <select id="isMarried" name="isMarried" isNull="false" checkType="empty">
               <option value="">请选择</option>
               <option value="0" <c:if test="${diseaseCase.isMarried == 0}">checked</c:if>>未婚</option>
               <option value="1" <c:if test="${diseaseCase.isMarried == 1}">checked</c:if>>已婚</option>
@@ -129,24 +128,24 @@
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">职业：</label>
-            <input type="text" id="profession"  name="profession" value="${diseaseCase.profession}" />
+            <input type="text" id="profession"  name="profession" value="${diseaseCase.profession}" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">出生地：</label>
-            <input type="text" id="birthAddress" name="birthAddress" value="${diseaseCase.birthAddress}" />
+            <input type="text" id="birthAddress" name="birthAddress" value="${diseaseCase.birthAddress}" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">民族：</label>
-            <input type="text" id="nation"  name="nation" value="${diseaseCase.nation}" />
+            <input type="text" id="nation"  name="nation" value="${diseaseCase.nation}" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">国籍：</label>
-            <input type="text" id="nationality" name="nationality" value="${diseaseCase.nationality}" />
+            <input type="text" id="nationality" name="nationality" value="${diseaseCase.nationality}" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
         </div>
@@ -157,7 +156,7 @@
           </div>
           <div class="col-sm-6">
             <label class="form-label">通讯地址：</label>
-            <input type="text" id="contactAddress" name="contactAddress" value="${diseaseCase.contactAddress}" maxlength="50"/>
+            <input type="text" id="contactAddress" name="contactAddress" value="${diseaseCase.contactAddress}" maxlength="50" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
         </div>
@@ -174,13 +173,13 @@
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">入院日期：</label>
-            <input type="text" id="inHospitalDate"  name="inHospitalDate"
+            <input type="text" id="inHospitalDate"  name="inHospitalDate" isNull="false" checkType="empty"
                    value="<fmt:formatDate value="${diseaseCase.inHospitalDate}" type="date" pattern="yyyy-MM-dd" />" />
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">出院日期：</label>
-            <input type="text" id="outHospitalDate" name="outHospitalDate"
+            <input type="text" id="outHospitalDate" name="outHospitalDate" isNull="false" checkType="empty"
                    value="<fmt:formatDate value="${diseaseCase.outHospitalDate}" type="date" pattern="yyyy-MM-dd" />" />
             <font color="red">*</font>
           </div>
@@ -188,36 +187,37 @@
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">入院科室：</label>
-            <input type="text" id="inHospitalOffice"  name="inHospitalOffice" value="${diseaseCase.inHospitalOffice}" />
+            <input type="text" id="inHospitalOffice"  name="inHospitalOffice" value="${diseaseCase.inHospitalOffice}" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">出院科室：</label>
-            <input type="text" id="outHospitalOffice" name="outHospitalOffice" value="${diseaseCase.outHospitalOffice}" />
+            <input type="text" id="outHospitalOffice" name="outHospitalOffice" value="${diseaseCase.outHospitalOffice}" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">住院天数：</label>
-            <input type="text" id="hospitalDays"  name="hospitalDays" value="${diseaseCase.hospitalDays}" />
+            <input type="number" id="hospitalDays"  name="hospitalDays" value="${diseaseCase.hospitalDays}" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
         </div>
       </div>
+
       <div id="tab2" class="tab-pane fade in">
         <div class="right" style="font-weight: bold;font-size: larger;">疾病诊断</div>
         <div class="row">
           <div class="col-sm-12">
             <label class="form-label">入院诊断：</label>
-            <input type="text" id="inDiagnose"  name="inDiagnose" value="${diseaseCase.inDiagnose}" />
+            <input type="text" id="inDiagnose"  name="inDiagnose" value="${diseaseCase.inDiagnose}" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
             <label class="form-label">出院主要诊断：</label>
-            <input type="text" id="outDiagnose" name="outDiagnose" value="${diseaseCase.outDiagnose}" />
+            <input type="text" id="outDiagnose" name="outDiagnose" value="${diseaseCase.outDiagnose}" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
         </div>
@@ -412,19 +412,21 @@
           </div>
         </div>
       </div>
+
+
       <div id="tab3" class="tab-pane fade in">
         <div class="right" style="font-weight: bold;font-size: larger;">病史</div>
         <div class="row">
           <div class="col-sm-12">
             <label class="form-label">主诉：</label>
-            <input type="text" id="medicalHistory" name="medicalHistory" value="${diseaseCase.medicalHistory}" maxlength="50"/>
+            <input type="text" id="medicalHistory" name="medicalHistory" value="${diseaseCase.medicalHistory}" maxlength="50" isNull="false" checkType="empty"/>
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
             <label class="form-label">现病史：</label>
-            <textarea id="medicalHistory1" name="medicalHistory1" rows="2" cols="68">${diseaseCase.medicalHistory1}</textarea>
+            <textarea id="medicalHistory1" name="medicalHistory1" rows="2" cols="68" isNull="false" checkType="empty">${diseaseCase.medicalHistory1}</textarea>
             <font color="red">*</font>
           </div>
         </div>
@@ -566,43 +568,43 @@
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">T：</label>
-            <input type="text" id="physicalExamine1"  name="physicalExamine1" value="${diseaseCase.physicalExamine1}" />℃
+            <input type="text" id="physicalExamine1"  name="physicalExamine1" value="${diseaseCase.physicalExamine1}" isNull="false" checkType="empty"/>℃
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">P：</label>
-            <input type="text" id="physicalExamine2" name="physicalExamine2" value="${diseaseCase.physicalExamine2}" />次/分
+            <input type="text" id="physicalExamine2" name="physicalExamine2" value="${diseaseCase.physicalExamine2}" isNull="false" checkType="empty"/>次/分
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">R：</label>
-            <input type="text" id="physicalExamine3" name="physicalExamine3" value="${diseaseCase.physicalExamine3}" />次/分
+            <input type="text" id="physicalExamine3" name="physicalExamine3" value="${diseaseCase.physicalExamine3}" isNull="false" checkType="empty"/>次/分
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">SBP：</label>
-            <input type="text" id="physicalExamine4" name="physicalExamine4" value="${diseaseCase.physicalExamine4}" />mmHg
+            <input type="text" id="physicalExamine4" name="physicalExamine4" value="${diseaseCase.physicalExamine4}" isNull="false" checkType="empty"/>mmHg
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">DBP：</label>
-            <input type="text" id="physicalExamine5"  name="physicalExamine5" value="${diseaseCase.physicalExamine5}" />mmHg
+            <input type="text" id="physicalExamine5"  name="physicalExamine5" value="${diseaseCase.physicalExamine5}" isNull="false" checkType="empty"/>mmHg
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">身高：</label>
-            <input type="text" id="physicalExamine6" name="physicalExamine6" value="${diseaseCase.physicalExamine6}" />cm
+            <input type="text" id="physicalExamine6" name="physicalExamine6" value="${diseaseCase.physicalExamine6}" isNull="false" checkType="empty"/>cm
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">体重：</label>
-            <input type="text" id="physicalExamine7"  name="physicalExamine7" value="${diseaseCase.physicalExamine7}" />kg
+            <input type="text" id="physicalExamine7"  name="physicalExamine7" value="${diseaseCase.physicalExamine7}" isNull="false" checkType="empty"/>kg
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
@@ -619,173 +621,175 @@
           </div>
         </div>
       </div>
+
+
       <div id="tab4" class="tab-pane fade in ">
         <div class="right" style="font-weight: bold;font-size: larger;">血常规</div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">红细胞计数(RBC)：</label>
-            <input type="text" id="bloodRoutine1"  name="bloodRoutine1" value="${diseaseCase.bloodRoutine1}" />X10^12/L
+            <input type="text" id="bloodRoutine1"  name="bloodRoutine1" value="${diseaseCase.bloodRoutine1}" isNull="false" checkType="empty"/>X10^12/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">红细胞压积(HCT)：</label>
-            <input type="text" id="bloodRoutine2" name="bloodRoutine2" value="${diseaseCase.bloodRoutine2}" />%
+            <input type="text" id="bloodRoutine2" name="bloodRoutine2" value="${diseaseCase.bloodRoutine2}" isNull="false" checkType="empty"/>%
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">平均红细胞体积(MCV)：</label>
-            <input type="text" id="bloodRoutine3"  name="bloodRoutine3" value="${diseaseCase.bloodRoutine3}" />fL
+            <input type="text" id="bloodRoutine3"  name="bloodRoutine3" value="${diseaseCase.bloodRoutine3}" isNull="false" checkType="empty"/>fL
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">红细胞分布宽度：</label>
-            <input type="text" id="bloodRoutine4" name="bloodRoutine4" value="${diseaseCase.bloodRoutine4}" />%
+            <input type="text" id="bloodRoutine4" name="bloodRoutine4" value="${diseaseCase.bloodRoutine4}" isNull="false" checkType="empty"/>%
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">血红蛋白浓度(HGB)：</label>
-            <input type="text" id="bloodRoutine5"  name="bloodRoutine5" value="${diseaseCase.bloodRoutine5}" />g/L
+            <input type="text" id="bloodRoutine5"  name="bloodRoutine5" value="${diseaseCase.bloodRoutine5}" isNull="false" checkType="empty"/>g/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">白细胞计数(WBC)：</label>
-            <input type="text" id="bloodRoutine6" name="bloodRoutine6" value="${diseaseCase.bloodRoutine6}" />X10^9/L
+            <input type="text" id="bloodRoutine6" name="bloodRoutine6" value="${diseaseCase.bloodRoutine6}" isNull="false" checkType="empty"/>X10^9/L
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">单核细胞计数(MONO)：</label>
-            <input type="text" id="bloodRoutine7"  name="bloodRoutine7" value="${diseaseCase.bloodRoutine7}" />X10^9/L
+            <input type="text" id="bloodRoutine7"  name="bloodRoutine7" value="${diseaseCase.bloodRoutine7}" isNull="false" checkType="empty"/>X10^9/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">单核细胞比例(MONO%)：</label>
-            <input type="text" id="bloodRoutine8" name="bloodRoutine8" value="${diseaseCase.bloodRoutine8}" />X10^9/L
+            <input type="text" id="bloodRoutine8" name="bloodRoutine8" value="${diseaseCase.bloodRoutine8}" isNull="false" checkType="empty"/>X10^9/L
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">中性粒细胞计数(NEUT)：</label>
-            <input type="text" id="bloodRoutine9"  name="bloodRoutine9" value="${diseaseCase.bloodRoutine9}" />X10^9/L
+            <input type="text" id="bloodRoutine9"  name="bloodRoutine9" value="${diseaseCase.bloodRoutine9}" isNull="false" checkType="empty"/>X10^9/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">中性粒细胞比例(NEUT%)：</label>
-            <input type="text" id="bloodRoutine10" name="bloodRoutine10" value="${diseaseCase.bloodRoutine10}" />X10^9/L
+            <input type="text" id="bloodRoutine10" name="bloodRoutine10" value="${diseaseCase.bloodRoutine10}" isNull="false" checkType="empty"/>X10^9/L
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">淋巴细胞计数(LY)：</label>
-            <input type="text" id="bloodRoutine11"  name="bloodRoutine11" value="${diseaseCase.bloodRoutine11}" />X10^12/L
+            <input type="text" id="bloodRoutine11"  name="bloodRoutine11" value="${diseaseCase.bloodRoutine11}" isNull="false" checkType="empty"/>X10^12/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">淋巴细胞比值(LY%)：</label>
-            <input type="text" id="bloodRoutine12" name="bloodRoutine12" value="${diseaseCase.bloodRoutine12}" />X10^9/L
+            <input type="text" id="bloodRoutine12" name="bloodRoutine12" value="${diseaseCase.bloodRoutine12}" isNull="false" checkType="empty"/>X10^9/L
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">血小板计数(PLT)：</label>
-            <input type="text" id="bloodRoutine13"  name="bloodRoutine13" value="${diseaseCase.bloodRoutine13}" />X10^12/L
+            <input type="text" id="bloodRoutine13"  name="bloodRoutine13" value="${diseaseCase.bloodRoutine13}" isNull="false" checkType="empty"/>X10^12/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">血小板体积分布宽度(PDW)：</label>
-            <input type="text" id="bloodRoutine14" name="bloodRoutine14" value="${diseaseCase.bloodRoutine14}" />%
+            <input type="text" id="bloodRoutine14" name="bloodRoutine14" value="${diseaseCase.bloodRoutine14}" isNull="false" checkType="empty"/>%
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">平均血小板体积(MPV)：</label>
-            <input type="text" id="bloodRoutine15"  name="bloodRoutine15" value="${diseaseCase.bloodRoutine15}" />fL
+            <input type="text" id="bloodRoutine15"  name="bloodRoutine15" value="${diseaseCase.bloodRoutine15}" isNull="false" checkType="empty"/>fL
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">血清丙氨酸氨基转移酶(ALT)：</label>
-            <input type="text" id="bloodRoutine16" name="bloodRoutine16" value="${diseaseCase.bloodRoutine16}" />U/L
+            <input type="text" id="bloodRoutine16" name="bloodRoutine16" value="${diseaseCase.bloodRoutine16}" isNull="false" checkType="empty"/>U/L
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">血清天门冬氨酰基转移酶(AST)：</label>
-            <input type="text" id="bloodRoutine17"  name="bloodRoutine17" value="${diseaseCase.bloodRoutine17}" />U/L
+            <input type="text" id="bloodRoutine17"  name="bloodRoutine17" value="${diseaseCase.bloodRoutine17}" isNull="false" checkType="empty"/>U/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">碱性磷酸酶(ALP)：</label>
-            <input type="text" id="bloodRoutine18" name="bloodRoutine18" value="${diseaseCase.bloodRoutine18}" />U/L
+            <input type="text" id="bloodRoutine18" name="bloodRoutine18" value="${diseaseCase.bloodRoutine18}" isNull="false" checkType="empty"/>U/L
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">血清γ--谷氨酰基转移酶(GGT)：</label>
-            <input type="text" id="bloodRoutine19"  name="bloodRoutine19" value="${diseaseCase.bloodRoutine19}" />IU/L 
+            <input type="text" id="bloodRoutine19"  name="bloodRoutine19" value="${diseaseCase.bloodRoutine19}" isNull="false" checkType="empty"/>IU/L 
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">血清总蛋白测定：</label>
-            <input type="text" id="bloodRoutine20" name="bloodRoutine20" value="${diseaseCase.bloodRoutine20}" />g/L
+            <input type="text" id="bloodRoutine20" name="bloodRoutine20" value="${diseaseCase.bloodRoutine20}" isNull="false" checkType="empty"/>g/L
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">血清白蛋白测定：</label>
-            <input type="text" id="bloodRoutine21"  name="bloodRoutine21" value="${diseaseCase.bloodRoutine21}" />g/L
+            <input type="text" id="bloodRoutine21"  name="bloodRoutine21" value="${diseaseCase.bloodRoutine21}" isNull="false" checkType="empty"/>g/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">球蛋白：</label>
-            <input type="text" id="bloodRoutine22" name="bloodRoutine22" value="${diseaseCase.bloodRoutine22}" />g/L
+            <input type="text" id="bloodRoutine22" name="bloodRoutine22" value="${diseaseCase.bloodRoutine22}" isNull="false" checkType="empty"/>g/L
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">血清总胆红素测定：</label>
-            <input type="text" id="bloodRoutine23"  name="bloodRoutine23" value="${diseaseCase.bloodRoutine23}" />umol/L
+            <input type="text" id="bloodRoutine23"  name="bloodRoutine23" value="${diseaseCase.bloodRoutine23}" isNull="false" checkType="empty"/>umol/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">血清直接胆红素：</label>
-            <input type="text" id="bloodRoutine24" name="bloodRoutine24" value="${diseaseCase.bloodRoutine24}" />umol/L
+            <input type="text" id="bloodRoutine24" name="bloodRoutine24" value="${diseaseCase.bloodRoutine24}" isNull="false" checkType="empty"/>umol/L
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">血清总胆固醇：</label>
-            <input type="text" id="bloodRoutine25"  name="bloodRoutine25" value="${diseaseCase.bloodRoutine25}" />mg/dL
+            <input type="text" id="bloodRoutine25"  name="bloodRoutine25" value="${diseaseCase.bloodRoutine25}" isNull="false" checkType="empty"/>mg/dL
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">血清甘油三酯：</label>
-            <input type="text" id="bloodRoutine26" name="bloodRoutine26" value="${diseaseCase.bloodRoutine26}" />mg/dL
+            <input type="text" id="bloodRoutine26" name="bloodRoutine26" value="${diseaseCase.bloodRoutine26}" isNull="false" checkType="empty"/>mg/dL
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">血清高密度脂蛋白胆固醇：</label>
-            <input type="text" id="bloodRoutine27" name="bloodRoutine27" value="${diseaseCase.bloodRoutine27}" />mg/dL
+            <input type="text" id="bloodRoutine27" name="bloodRoutine27" value="${diseaseCase.bloodRoutine27}" isNull="false" checkType="empty"/>mg/dL
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">血清低密度脂蛋白胆固醇：</label>
-            <input type="text" id="bloodRoutine28" name="bloodRoutine28" value="${diseaseCase.bloodRoutine28}" />mg/dL
+            <input type="text" id="bloodRoutine28" name="bloodRoutine28" value="${diseaseCase.bloodRoutine28}" isNull="false" checkType="empty"/>mg/dL
             <font color="red">*</font>
           </div>
         </div>
@@ -806,19 +810,19 @@
           </div>
           <div class="col-sm-6">
             <label class="form-label">尿素：</label>
-            <input type="text" id="bloodRoutine32" name="bloodRoutine32" value="${diseaseCase.bloodRoutine32}" />mmol/L
+            <input type="text" id="bloodRoutine32" name="bloodRoutine32" value="${diseaseCase.bloodRoutine32}" isNull="false" checkType="empty"/>mmol/L
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">肌酐：</label>
-            <input type="text" id="bloodRoutine33"  name="bloodRoutine33" value="${diseaseCase.bloodRoutine33}" />umol/L
+            <input type="text" id="bloodRoutine33"  name="bloodRoutine33" value="${diseaseCase.bloodRoutine33}" isNull="false" checkType="empty"/>umol/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">尿酸：</label>
-            <input type="text" id="bloodRoutine34" name="bloodRoutine34" value="${diseaseCase.bloodRoutine34}" />umol/L
+            <input type="text" id="bloodRoutine34" name="bloodRoutine34" value="${diseaseCase.bloodRoutine34}" isNull="false" checkType="empty"/>umol/L
             <font color="red">*</font>
           </div>
         </div>
@@ -849,26 +853,26 @@
           </div>
           <div class="col-sm-6">
             <label class="form-label">钾(K)：</label>
-            <input type="text" id="bloodRoutine40" name="bloodRoutine40" value="${diseaseCase.bloodRoutine40}" />mmol/L
+            <input type="text" id="bloodRoutine40" name="bloodRoutine40" value="${diseaseCase.bloodRoutine40}" isNull="false" checkType="empty"/>mmol/L
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">钠(Na)：</label>
-            <input type="text" id="bloodRoutine41"  name="bloodRoutine41" value="${diseaseCase.bloodRoutine41}" />mmol/L
+            <input type="text" id="bloodRoutine41"  name="bloodRoutine41" value="${diseaseCase.bloodRoutine41}" isNull="false" checkType="empty"/>mmol/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
             <label class="form-label">氯(Cl)：</label>
-            <input type="text" id="bloodRoutine42" name="bloodRoutine42" value="${diseaseCase.bloodRoutine42}" />mmol/L
+            <input type="text" id="bloodRoutine42" name="bloodRoutine42" value="${diseaseCase.bloodRoutine42}" isNull="false" checkType="empty"/>mmol/L
             <font color="red">*</font>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">钙(Ca)：</label>
-            <input type="text" id="bloodRoutine43"  name="bloodRoutine43" value="${diseaseCase.bloodRoutine43}" />mmol/L
+            <input type="text" id="bloodRoutine43"  name="bloodRoutine43" value="${diseaseCase.bloodRoutine43}" isNull="false" checkType="empty"/>mmol/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
@@ -879,7 +883,7 @@
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">随机血糖：</label>
-            <input type="text" id="bloodRoutine45"  name="bloodRoutine45" value="${diseaseCase.bloodRoutine45}" />mmol/L
+            <input type="text" id="bloodRoutine45"  name="bloodRoutine45" value="${diseaseCase.bloodRoutine45}" isNull="false" checkType="empty"/>mmol/L
             <font color="red">*</font>
           </div>
           <div class="col-sm-6">
@@ -980,7 +984,7 @@
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">尿糖(GLU)：</label>
-            <select id="urineRoutine1"  name="urineRoutine1" >
+            <select id="urineRoutine1"  name="urineRoutine1" isNull="false" checkType="empty">
               <option value="">请选择</option>
               <option value="0" <c:if test="${diseaseCase.urineRoutine1 == 0}">checked</c:if>>阴</option>
               <option value="1" <c:if test="${diseaseCase.urineRoutine1 == 1}">checked</c:if>>阳</option>
@@ -989,7 +993,7 @@
           </div>
           <div class="col-sm-6">
             <label class="form-label">尿蛋白(PRO)：</label>
-            <select id="urineRoutine2"  name="urineRoutine2" >
+            <select id="urineRoutine2"  name="urineRoutine2" isNull="false" checkType="empty">
               <option value="">请选择</option>
               <option value="0" <c:if test="${diseaseCase.urineRoutine2 == 0}">checked</c:if>>阴</option>
               <option value="1" <c:if test="${diseaseCase.urineRoutine2 == 1}">checked</c:if>>阳</option>
@@ -1000,7 +1004,7 @@
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">尿酮体(KET)：</label>
-            <select id="urineRoutine3"  name="urineRoutine3" >
+            <select id="urineRoutine3"  name="urineRoutine3" isNull="false" checkType="empty">
               <option value="">请选择</option>
               <option value="0" <c:if test="${diseaseCase.urineRoutine3 == 0}">checked</c:if>>阴</option>
               <option value="1" <c:if test="${diseaseCase.urineRoutine3 == 1}">checked</c:if>>阳</option>
@@ -1029,7 +1033,7 @@
           <div class="col-sm-12 file-panel">
             <label class="form-label"><font color="red">*</font>心电图：</label>
             <span class="input-icon input-icon-right" style="width:200px;">
-                <input type="file" id="specialExamine1" name="specialExamine1" class="form-control" />
+                <input type="file" isNull="false" checkType="empty" id="specialExamine1" name="specialExamine1" class="form-control" />
             </span>
 
             <c:if test="${diseaseCase.specialExamine1 != null}">
@@ -1040,14 +1044,14 @@
                   |
                   <a href="${diseaseCase.specialExamine1}">${diseaseCase.specialExamine1}</a>
               </span>
-              </c:if>
+            </c:if>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12 file-panel">
             <label class="form-label"><font color="red">*</font>心脏超声：</label>
             <span class="input-icon input-icon-right" style="width:200px;">
-                <input type="file" id="specialExamine2" name="specialExamine2" class="form-control" />
+                <input type="file" isNull="false" checkType="empty" id="specialExamine2" name="specialExamine2" class="form-control" />
             </span>
           </div>
         </div>
