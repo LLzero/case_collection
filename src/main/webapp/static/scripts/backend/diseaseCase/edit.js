@@ -42,6 +42,12 @@ var diseaseCaseEdit = {
     },
 
     save : function(){
+        formValidate();
+        if (validat() == false) {
+            alert("请先填写信息");
+            return false;
+        }
+
         $('#saveBtn').addClass("disabled");
         $('#saveBtn').attr("disabled", "disabled");
         var params = diseaseCaseEdit.getParams();
