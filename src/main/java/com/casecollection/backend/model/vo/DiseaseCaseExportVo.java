@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class DiseaseCaseExportVo {
 
-    private Long id;
+    private String code;
 
     private Long departId;
 
@@ -270,12 +270,12 @@ public class DiseaseCaseExportVo {
     private String treatmentMedicine;
 
     @Export(description="病例号", index="0")
-    public Long getId() {
-        return id;
+    public String getCode() {
+        return code;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public Long getDepartId() {

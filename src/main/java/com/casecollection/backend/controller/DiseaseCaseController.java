@@ -3,8 +3,10 @@ package com.casecollection.backend.controller;
 import com.alibaba.fastjson.JSON;
 import com.casecollection.backend.framework.bean.UserSession;
 import com.casecollection.backend.model.DiseaseCase;
+import com.casecollection.backend.model.User;
 import com.casecollection.backend.model.vo.DiseaseCaseVo;
 import com.casecollection.backend.service.DiseaseCaseService;
+import com.casecollection.backend.service.UserService;
 import com.casecollection.backend.util.DateUtil;
 import com.casecollection.backend.util.Pagination;
 import com.casecollection.backend.util.ResponseDTO;
@@ -41,6 +43,8 @@ public class DiseaseCaseController {
 
     @Autowired
     private DiseaseCaseService diseaseCaseService;
+    @Autowired
+    private UserService userService;
 
     /**
      * 跳转到病例管理页面
@@ -48,11 +52,13 @@ public class DiseaseCaseController {
      * @return
      */
     @RequestMapping(value="/manage")
-    public String manage(Model model){
+    public String manage(Model model, HttpServletRequest request){
+        UserSession userSession = (UserSession)request.getSession().getAttribute("user");
         String endDate = DateUtil.getDate(new Date(), "yyyy-MM-dd");
         String startDate = DateUtil.getDate(DateUtil.add(new Date(), Calendar.DATE, -30), "yyyy-MM-dd");
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
+        model.addAttribute("accountType", userSession.getAccountType());
         return "/backend/diseaseCase/manage";
     }
 
@@ -64,7 +70,11 @@ public class DiseaseCaseController {
      */
     @RequestMapping(value="/page")
     @ResponseBody
-    public Pagination<DiseaseCaseVo> page(DiseaseCaseVo diseaseCaseVo, Pagination<DiseaseCaseVo> pagination){
+    public Pagination<DiseaseCaseVo> page(DiseaseCaseVo diseaseCaseVo, Pagination<DiseaseCaseVo> pagination,
+                                          HttpServletRequest request){
+        UserSession userSession = (UserSession)request.getSession().getAttribute("user");
+        diseaseCaseVo.setAccountType(userSession.getAccountType());
+        diseaseCaseVo.setCreateBy(userSession.getName());
         diseaseCaseVo.setPagination(pagination);
         return  diseaseCaseService.findByPage(diseaseCaseVo);
 
@@ -80,6 +90,9 @@ public class DiseaseCaseController {
     public String toEdit(@RequestParam(value="id", required=false)Long id,
                          Model model, HttpServletRequest request){
         UserSession userSession = (UserSession)request.getSession().getAttribute("user");
+        if(userSession.getAccountType().equals(0)){//
+//            List<User> userList = userService.
+        }
         model.addAttribute("curUser", userSession);
         if(id!= null){
             DiseaseCase diseaseCase = diseaseCaseService.getById(id);
