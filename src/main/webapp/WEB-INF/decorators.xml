@@ -16,5 +16,6 @@
 
         <!-- 病例信息 -->
         <pattern>/diseaseCase/*</pattern>
+        <pattern>/welcome</pattern>
         </decorator>
 </decorators>

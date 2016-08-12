@@ -34,7 +34,7 @@
                 dataType: "json",
                 success: function (data) {
                     var html = '<li class="hover">';
-                    html += '<a id="indexPage" href="javascript:void(0)" onclick="" >';
+                    html += '<a id="indexPage" href="javascript:void(0)" onclick="toPage(\'/welcome\', null)" >';
                     html += '<i class="menu-icon fa fa-home"></i>';
                     html += '<span class="menu-text">首页</span></a></li>';
                     $.each(data, function (k, v) {
