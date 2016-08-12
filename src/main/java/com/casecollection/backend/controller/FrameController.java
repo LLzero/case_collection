@@ -105,6 +105,11 @@ public class FrameController {
 		return "/frame";
 	}
 
+    @RequestMapping("/welcome")
+    public String welcome(HttpServletRequest request, Model model) {
+        return "/welcome";
+    }
+
     @RequestMapping("/toResetPassword")
     public String toResetPassword(HttpServletRequest request, HttpServletResponse response) {
         //跳转到注册页面
