@@ -3,6 +3,7 @@
 <mapper namespace="com.casecollection.backend.dao.DiseaseCaseMapper" >
   <resultMap id="BaseResultMap" type="com.casecollection.backend.model.DiseaseCase" >
     <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
     <result column="depart_id" property="departId" jdbcType="BIGINT" />
     <result column="depart_name" property="departName" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -139,7 +140,7 @@
   </resultMap>
   <resultMap id="VoResultMap" type="com.casecollection.backend.model.vo.DiseaseCaseVo" extends="BaseResultMap"></resultMap>
   <sql id="Base_Column_List" >
-    id, depart_id, depart_name, name, age, sex, is_married, profession, birth_address, 
+    id, code, depart_id, depart_name, name, age, sex, is_married, profession, birth_address,
     nation, nationality, identity_number, contact_address, contact_name, contact_phone, 
     in_hospital_date, out_hospital_date, in_hospital_office, out_hospital_office, hospital_days, 
     in_diagnose, out_diagnose, diagnose_detail, other_diagnose1, other_diagnose2, other_diagnose3,
@@ -179,6 +180,9 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="coce != null" >
+        coce,
       </if>
       <if test="departId != null" >
         depart_id,
@@ -584,6 +588,9 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
       <if test="departId != null" >
         #{departId,jdbcType=BIGINT},
       </if>
@@ -988,6 +995,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.casecollection.backend.model.DiseaseCase" >
     update t_disease_case
     <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
       <if test="departId != null" >
         depart_id = #{departId,jdbcType=BIGINT},
       </if>

@@ -4,6 +4,7 @@ import com.casecollection.backend.framework.bean.UserSession;
 import com.casecollection.backend.model.DiseaseCase;
 import com.casecollection.backend.model.vo.DiseaseCaseVo;
 import com.casecollection.backend.util.Pagination;
+import com.casecollection.backend.util.ResponseDTO;
 import com.casecollection.common.Response;
 
 import javax.servlet.http.HttpServletResponse;
@@ -34,7 +35,7 @@ public interface DiseaseCaseService {
      * @param diseaseCase
      * @return
      */
-    Response<Boolean> save(DiseaseCase diseaseCase, UserSession userSession);
+    ResponseDTO save(DiseaseCase diseaseCase, UserSession userSession);
 
 
     /**

@@ -30,4 +30,12 @@ public interface DiseaseCaseMapper {
      * @return
      */
     List<DiseaseCase> findDiseaseCaseList(DiseaseCaseVo diseaseCaseVo);
+
+    /**
+     * 根据病例号code查询
+     * @param code
+     * @return
+     */
+    DiseaseCase getByCode(String code);
+
 }

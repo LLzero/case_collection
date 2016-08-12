@@ -91,7 +91,8 @@ public class DiseaseCaseController {
                          Model model, HttpServletRequest request){
         UserSession userSession = (UserSession)request.getSession().getAttribute("user");
         if(userSession.getAccountType().equals(0)){//
-//            List<User> userList = userService.
+            List<User> userList = userService.findAllUser();
+            model.addAttribute("userList", userList);
         }
         model.addAttribute("curUser", userSession);
         if(id!= null){
@@ -130,7 +131,7 @@ public class DiseaseCaseController {
      */
     @RequestMapping(value="/save")
     @ResponseBody
-    public Response<Boolean> save(DiseaseCase diseaseCase, HttpServletRequest request){
+    public ResponseDTO save(DiseaseCase diseaseCase, HttpServletRequest request){
         UserSession userSession = (UserSession)request.getSession().getAttribute("user");
         return diseaseCaseService.save(diseaseCase, userSession);
     }

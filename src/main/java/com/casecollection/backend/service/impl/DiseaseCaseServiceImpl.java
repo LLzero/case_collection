@@ -10,6 +10,7 @@ import com.casecollection.backend.model.vo.DiseaseCaseExportVo;
 import com.casecollection.backend.model.vo.DiseaseCaseVo;
 import com.casecollection.backend.service.DiseaseCaseService;
 import com.casecollection.backend.util.Pagination;
+import com.casecollection.backend.util.ResponseDTO;
 import com.casecollection.common.Response;
 import com.casecollection.common.utils.ExportUtil;
 import org.apache.commons.collections.ListUtils;
@@ -48,19 +49,26 @@ public class DiseaseCaseServiceImpl implements DiseaseCaseService {
     }
 
     @Override
-    public Response<Boolean> save(DiseaseCase diseaseCase, UserSession userSession) {
+    public ResponseDTO save(DiseaseCase diseaseCase, UserSession userSession) {
         try {
+            DiseaseCase _diseaseCase = diseaseCaseMapper.getByCode(diseaseCase.getCode());
             if(diseaseCase.getId() == null){
+                if(_diseaseCase != null){
+                    return ResponseDTO.getFailResult("该病例号已存在");
+                }
                 diseaseCaseMapper.insertSelective(diseaseCase);
             }else{
+                if(_diseaseCase != null && !_diseaseCase.getCode().equals(diseaseCase.getCode())){
+                    return ResponseDTO.getFailResult("该病例号已存在");
+                }
                 diseaseCaseMapper.updateByPrimaryKeySelective(diseaseCase);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Response.getResponseError(Boolean.FALSE, "系统错误");
+            return ResponseDTO.getFailResult("系统异常");
 
         }
-        return Response.getResponseOK(Boolean.TRUE);
+        return ResponseDTO.getSuccessResult();
     }
 
 

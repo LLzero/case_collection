@@ -58,14 +58,29 @@
   <form id="form" class="form-signin" method="post">
     <div class="tab-content">
       <div id="tab1" class="tab-pane fade in active">
+        <input type="hidden" id="id"  name="id" value="${curUser.id}" />
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">收集单位：</label>
-            <c:if test="${diseaseCase.departId == null}">
-              <input type="hidden" id="departId"  name="departId" value="${curUser.id}" />
-              <input type="text" id="departName"  name="departName" value="${curUser.name}" readonly="readonly"/>
+            <c:if test="${diseaseCase.id == null}">
+              <c:choose>
+              <c:when test="${curUser.accountType == '0'}">
+                <select id="departId" name="departId">
+                  <option value="">请选择</option>
+                  <c:forEach var="user" items="${userList}">
+                    <option value="${user.id}">${user.name}</option>
+                  </c:forEach>
+                </select>
+                <input type="hidden" id="departName" name="departName" value="" />
+              </c:when>
+              <c:otherwise>
+                <input type="hidden" id="departId"  name="departId" value="${curUser.departId}" />
+                <input type="text" id="departName"  name="departName" value="${curUser.name}" readonly="readonly"/>
+              </c:otherwise>
+              </c:choose>
+
             </c:if>
-            <c:if test="${diseaseCase.departId != null}">
+            <c:if test="${diseaseCase.id != null}">
               <input type="hidden" id="departId"  name="departId" value="${diseaseCase.departId}" />
               <input type="text" id="departName"  name="departName" value="${diseaseCase.departName}" readonly="readonly"/>
             <font color="red">*</font>
@@ -74,7 +89,7 @@
           <c:if test="${diseaseCase != null}">
             <div class="col-sm-6">
               <label class="form-label">病例号：</label>
-              <input type="text" id="id" name="id" value="${diseaseCase.id}" />
+              <input type="text" id="code" name="code" value="${diseaseCase.code}" />
               <font color="red">*</font>
             </div>
           </c:if>

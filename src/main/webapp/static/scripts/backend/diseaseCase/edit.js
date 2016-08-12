@@ -35,6 +35,10 @@ var diseaseCaseEdit = {
         $('#cancelBtn').click(function(){
             dialog.close();
         });
+
+        $('#departId').change(function(){
+            $('#departName').val($(this).find("option:selected").text());
+        });
     },
 
     save : function(){
@@ -52,14 +56,14 @@ var diseaseCaseEdit = {
             data: params,
             dataType: "json",
             success: function (data) {
-                if (data && data.retCode == 0) {
+                if (data && data.success == true) {
                     parent.$.dialog({title: '提示', content: "保存成功", icon: 'success.gif',lock:true ,ok: '确定'});
                     $('#saveBtn').removeClass("disabled");
                     $('#saveBtn').removeAttr("disabled");
                     dialog.close();
                     parent.diseaseCaseFacade.query();
                 } else {
-                    parent.$.dialog({title: '提示', content:"保存失败", icon: 'error.gif',lock:true ,ok: '确定'});
+                    parent.$.dialog({title: '提示', content:data.message || "保存失败", icon: 'error.gif',lock:true ,ok: '确定'});
                     $('#saveBtn').removeClass("disabled");
                     $('#saveBtn').removeAttr("disabled");
                 }
