@@ -264,4 +264,14 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * 查询用户单位列表
+     *
+     * @return
+     */
+    @Override
+    public List<User> findAllUser() {
+        return userMapper.findAllUser();
+    }
+
 }

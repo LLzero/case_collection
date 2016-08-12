@@ -223,7 +223,7 @@
     </div>
     </form>
 
-      <div class="col-sm-12 text-right">
+      <div class="col-sm-12 text-left">
         <div class="btn btn-primary btn-sm param_field_btn" id="searchBtn">查询</div>
           <c:if test="${accountType == '0' || accountType == '1'}">
             <div class="btn btn-primary btn-sm param_field_btn" id="addBtn">新增</div>

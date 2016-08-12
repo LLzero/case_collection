@@ -1,6 +1,7 @@
 package com.casecollection.backend.service;
 
 import com.casecollection.backend.framework.bean.UserSession;
+import com.casecollection.backend.model.User;
 import com.casecollection.backend.model.vo.UserVo;
 import com.casecollection.backend.util.Pagination;
 import com.casecollection.common.Response;
@@ -66,5 +67,11 @@ public interface UserService {
      * @return
      */
     Response<Boolean> initPassword(UserSession userSession,Long id);
+
+    /**
+     * 查询用户单位列表
+     * @return
+     */
+    List<User> findAllUser();
 
 }

@@ -45,4 +45,10 @@ public interface UserMapper {
      * @return
      */
     List<User> findByAccount(UserVo userVo);
+
+    /**
+     * 查询所有用户
+     * @return
+     */
+    List<User> findAllUser();
 }

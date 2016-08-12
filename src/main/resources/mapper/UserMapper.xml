@@ -213,6 +213,9 @@
     from t_user
     <include refid="findWhere" />
     order by id desc
+    <if test="pagination.needPage == true">
+      limit #{pagination.start}, #{pagination.pageSize}
+    </if>
   </select>
 
   <sql id="findWhere">
@@ -237,6 +240,13 @@
     from t_user
     where query_account = #{account,jdbcType=VARCHAR}
     or report_account = #{account,jdbcType=VARCHAR}
+  </select>
+
+  <select id="findAllUser" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where data_level != 0 and status = 0
   </select>
 
 </mapper>
