@@ -10,6 +10,7 @@ var diseaseCaseEdit = {
             'singleDatePicker' : true,
             'autoUpdateInput':false,
             'locale' : lan_local,
+            'maxDate' : curdate
         }).on('apply.daterangepicker', function(ev, picker){
             $(this).val(picker.startDate.format('YYYY-MM-DD'));
         });
@@ -17,6 +18,7 @@ var diseaseCaseEdit = {
             'singleDatePicker' : true,
             'autoUpdateInput':false,
             'locale' : lan_local,
+            'maxDate' : curdate
         }).on('apply.daterangepicker', function(ev, picker){
             $(this).val(picker.startDate.format('YYYY-MM-DD'));
         });

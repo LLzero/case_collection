@@ -12,9 +12,12 @@ var diseaseCaseFacade = {
     addUrl : "/diseaseCase/toEdit",
     exportUrl : "/diseaseCase/export",
 
+    accountType : null,
+
     init : function(){
         $.initDatePicker('#dateRange1');
         $.initDatePicker('#dateRange2');
+        diseaseCaseFacade.accountType = $('#accountType').val();
         diseaseCaseFacade.initOperator();
         inputSelectUtil.init().load("#typeCode");
         inputSelectUtil.init().load("#supplierName");
@@ -141,12 +144,17 @@ var diseaseCaseFacade = {
                     width:200,
                     formatter : function(cellvalue, options, rowObject) {
                         var retVal = '';
-                        retVal += ' <button class="btn btn-minier btn-white btn-default btn-bold" onclick="diseaseCaseFacade.showCommonEditDialog(\'/diseaseCase/toEdit?id=' + rowObject.id + '\',\'修改详情\',850,580);">' +
-                            '<i class="ace-icon fa fa-pencil-square-o orange"></i>修改</button>';
+                        if(diseaseCaseFacade.accountType == '0' || diseaseCaseFacade.accountType == '1'){
+                            retVal += ' <button class="btn btn-minier btn-white btn-default btn-bold" onclick="diseaseCaseFacade.showCommonEditDialog(\'/diseaseCase/toEdit?id=' + rowObject.id + '\',\'修改详情\',850,580);">' +
+                                '<i class="ace-icon fa fa-pencil-square-o orange"></i>修改</button>';
+                        }
+
                         retVal += ' <button class="btn btn-minier btn-white btn-default btn-bold" onclick="diseaseCaseFacade.viewDetail(\'/diseaseCase/toDetail?id=' + rowObject.id + '\',\'查看详情\',850,580);">' +
                             '<i class="ace-icon fa fa-list blue"></i>查看</button>';
-                        retVal += ' <button class="btn btn-minier btn-white btn-default btn-bold"  onclick="diseaseCaseFacade.delete('+ rowObject.id +');">' +
-                            '<i class="ace-icon fa fa-trash-o bigger-120 red2"></i>删除</button>';
+                        if(diseaseCaseFacade.accountType == '0' || diseaseCaseFacade.accountType == '1'){
+                            retVal += ' <button class="btn btn-minier btn-white btn-default btn-bold"  onclick="diseaseCaseFacade.delete('+ rowObject.id +');">' +
+                                '<i class="ace-icon fa fa-trash-o bigger-120 red2"></i>删除</button>';
+                        }
                         return retVal;
                     }
                 }],

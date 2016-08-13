@@ -1584,7 +1584,7 @@
     </if>
 
     <if test="accountType == 1">
-      and create_by = #{createBy}
+      and depart_name = #{createBy}
     </if>
 
     and is_delete = 0

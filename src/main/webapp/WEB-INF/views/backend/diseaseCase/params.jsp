@@ -17,6 +17,7 @@
 </style>
 <div class="row">
   <div id="brand_params_content">
+      <input type="hidden" id="accountType" value="${accountType}"/>
     <form id="disease_form" method="post" class="form-inline form-query">
     <div class="row form-inline form-query">
       <div class="col-sm-3 param_field" >
@@ -59,7 +60,7 @@
         <label class="text-right form-label" >入院日期：</label>
         <div class="input-group" style="width:170px;">
           <span class="input-group-addon"> <i class="fa fa-calendar bigger-110"></i></span>
-          <input type="text" separator="至" datelimit="90" enddate="" startdate=""
+          <input type="text" separator="至" datelimit="90" enddate="${endDate}" startdate="${startDate}"
                  data-date-format="YYYYMMDD" id="dateRange1" class="form-control">
           <input type="hidden" autocomplete="off" name="inStartDate" id="inStartDateHid" class="startDateHid">
           <input type="hidden" autocomplete="off" name="inEndDate" id="inEndDateHid" class="endDateHid">
@@ -69,7 +70,7 @@
             <label class="text-right form-label" >出院日期：</label>
             <div class="input-group" style="width:170px;">
                 <span class="input-group-addon"> <i class="fa fa-calendar bigger-110"></i></span>
-                <input type="text" separator="至" datelimit="90" enddate="" startdate=""
+                <input type="text" separator="至" datelimit="90" enddate="${endDate}" startdate="${startDate}"
                        data-date-format="YYYYMMDD" id="dateRange2" class="form-control">
                 <input type="hidden" autocomplete="off" name="outStartDate" id="outStartDateHid" class="startDateHid">
                 <input type="hidden" autocomplete="off" name="outEndDate" id="outEndDateHid" class="endDateHid">
@@ -254,9 +255,10 @@
         <div class="btn btn-primary btn-sm param_field_btn" id="searchBtn">查询</div>
           <c:if test="${accountType == '0' || accountType == '1'}">
             <div class="btn btn-primary btn-sm param_field_btn" id="addBtn">新增</div>
+            <div class="btn btn-primary btn-sm param_field_btn" id="batchModifyBtn">批量修改</div>
+            <div class="btn btn-primary btn-sm param_field_btn" id="batchDelBtn">批量删除</div>
           </c:if>
-          <div class="btn btn-primary btn-sm param_field_btn" id="batchModifyBtn">批量修改</div>
-          <div class="btn btn-primary btn-sm param_field_btn" id="batchDelBtn">批量删除</div>
+
           <div class="btn btn-primary btn-sm param_field_btn" id="exportBtn">导出</div>
       </div>
   </div>
