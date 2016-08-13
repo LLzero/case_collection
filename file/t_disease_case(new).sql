@@ -1,9 +1,30 @@
+/*
+ Navicat MySQL Data Transfer
+
+ Source Server         : case_collection
+ Source Server Version : 50710
+ Source Host           : 123.57.51.209
+ Source Database       : casecollection
+
+ Target Server Version : 50710
+ File Encoding         : utf-8
+
+ Date: 08/13/2016 09:28:00 AM
+*/
+
+SET NAMES utf8;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+--  Table structure for `t_disease_case`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_disease_case`;
 CREATE TABLE `t_disease_case` (
-  #一般信息
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '病例号(主键)',
+  `code` varchar(50) NOT NULL COMMENT '病例号',
   `depart_id` bigint(20) DEFAULT NULL COMMENT '收集单位ID',
   `depart_name` varchar(200) DEFAULT NULL COMMENT '收集单位名称',
-  `name` varchar(50)  DEFAULT NULL COMMENT '姓名',
+  `name` varchar(50) DEFAULT NULL COMMENT '姓名',
   `age` int(10) DEFAULT NULL COMMENT '年龄',
   `sex` int(4) DEFAULT '0' COMMENT '性别[0:男;1:女]',
   `is_married` int(4) DEFAULT '0' COMMENT '婚姻[0:否;1:是]',
@@ -15,54 +36,19 @@ CREATE TABLE `t_disease_case` (
   `contact_address` varchar(200) DEFAULT NULL COMMENT '通讯地址',
   `contact_name` varchar(50) DEFAULT '' COMMENT '联系人',
   `contact_phone` varchar(50) DEFAULT '' COMMENT '联系电话',
-  `in_hospital_date` timestamp COMMENT '入院日期',
-  `out_hospital_date` timestamp COMMENT '出院日期',
+  `in_hospital_date` datetime DEFAULT NULL COMMENT '入院时间',
+  `out_hospital_date` datetime DEFAULT NULL COMMENT '出院时间',
   `in_hospital_office` varchar(200) DEFAULT NULL COMMENT '入院科室',
   `out_hospital_office` varchar(200) DEFAULT NULL COMMENT '出院科室',
   `hospital_days` int(10) DEFAULT NULL COMMENT '住院天数',
-
-  #疾病诊断
   `in_diagnose` varchar(500) DEFAULT NULL COMMENT '入院诊断',
   `out_diagnose` varchar(500) DEFAULT NULL COMMENT '出院主要诊断',
   `diagnose_detail` varchar(1000) DEFAULT '' COMMENT '详细诊断信息',
-  /*`diagnose1` varchar() DEFAULT '' COMMENT '糖尿病',
-  `diagnose2` varchar() DEFAULT '' COMMENT 'I型糖尿病',
-  `diagnose3` varchar() DEFAULT '' COMMENT 'II型糖尿病',
-  `diagnose4` varchar() DEFAULT '' COMMENT '肥胖症',
-  `diagnose5` varchar() DEFAULT '' COMMENT '原发高血压',
-  `diagnose6` varchar() DEFAULT '' COMMENT '高血压I级',
-  `diagnose7` varchar() DEFAULT '' COMMENT '高血压II级',
-  `diagnose8` varchar() DEFAULT '' COMMENT '高血压III级',
-  `diagnose9` varchar() DEFAULT '' COMMENT '非酒精性脂肪性肝病（NAFLD）',
-  `diagnose10` varchar() DEFAULT '' COMMENT '单纯性脂肪肝',
-  `diagnose11` varchar() DEFAULT '' COMMENT '非酒精性脂肪性肝炎',
-  `diagnose12` varchar() DEFAULT '' COMMENT '非酒精性脂肪性肝炎相关肝硬化',
-  `diagnose13` varchar() DEFAULT '' COMMENT '冠心病',
-  `diagnose14` varchar() DEFAULT '' COMMENT '冠心病稳定性心绞痛',
-  `diagnose15` varchar() DEFAULT '' COMMENT '冠心病不稳定性心绞痛',
-  `diagnose16` varchar() DEFAULT '' COMMENT '冠心病急性ST段抬高性心梗',
-  `diagnose17` varchar() DEFAULT '' COMMENT '冠心病急性非ST段抬高性心梗',
-  `diagnose18` varchar() DEFAULT '' COMMENT '冠心病陈旧性心肌梗死',
-  `diagnose19` varchar() DEFAULT '' COMMENT '外周动脉粥样硬化症',
-  `diagnose20` varchar() DEFAULT '' COMMENT '心力衰竭',
-  `diagnose21` varchar() DEFAULT '' COMMENT '心衰NYHA I级',
-  `diagnose22` varchar() DEFAULT '' COMMENT '心衰NYHA II级',
-  `diagnose23` varchar() DEFAULT '' COMMENT '心衰NYHA III级',
-  `diagnose24` varchar() DEFAULT '' COMMENT '心衰NYHA IV级',
-  `diagnose25` varchar() DEFAULT '' COMMENT '心房纤颤',
-  `diagnose26` varchar() DEFAULT '' COMMENT '脑卒中',
-  `diagnose27` varchar() DEFAULT '' COMMENT '肿瘤',
-  `diagnose28` varchar() DEFAULT '' COMMENT '血脂异常',
-  `diagnose29` varchar() DEFAULT '' COMMENT '高胆固醇血症',
-  `diagnose30` varchar() DEFAULT '' COMMENT '高甘油三酯血症',
-  `diagnose31` varchar() DEFAULT '' COMMENT '混合型高脂血症',*/
   `other_diagnose1` varchar(200) DEFAULT '' COMMENT '其他诊断1',
   `other_diagnose2` varchar(200) DEFAULT '' COMMENT '其他诊断2',
   `other_diagnose3` varchar(200) DEFAULT '' COMMENT '其他诊断3',
   `other_diagnose4` varchar(200) DEFAULT '' COMMENT '其他诊断4',
   `other_diagnose5` varchar(200) DEFAULT '' COMMENT '其他诊断5',
-
-  #病史
   `medical_history` varchar(500) DEFAULT NULL COMMENT '主诉',
   `medical_history1` varchar(200) DEFAULT NULL COMMENT '现病史',
   `medical_history2` varchar(50) DEFAULT '' COMMENT '既往史[1:高血压、2:冠心病、3:糖尿病、4:肥胖]',
@@ -78,8 +64,6 @@ CREATE TABLE `t_disease_case` (
   `medical_history12` varchar(200) DEFAULT '' COMMENT '其他家族遗传史',
   `medical_history13` varchar(200) DEFAULT '' COMMENT '月经史(女)',
   `medical_history14` varchar(200) DEFAULT '' COMMENT '婚育史',
-
-  #体格检查
   `physical_examine1` varchar(50) DEFAULT NULL COMMENT 'T',
   `physical_examine2` varchar(50) DEFAULT NULL COMMENT 'P',
   `physical_examine3` varchar(50) DEFAULT NULL COMMENT 'R',
@@ -89,8 +73,6 @@ CREATE TABLE `t_disease_case` (
   `physical_examine7` varchar(50) DEFAULT NULL COMMENT '体重',
   `physical_examine8` varchar(50) DEFAULT NULL COMMENT '腹围',
   `physical_examine9` varchar(500) DEFAULT '' COMMENT '体格检查',
-
-  #实验室检查
   `blood_routine1` varchar(50) DEFAULT NULL COMMENT '红细胞计数(RBC)',
   `blood_routine2` varchar(50) DEFAULT NULL COMMENT '红细胞压积(HCT)',
   `blood_routine3` varchar(50) DEFAULT NULL COMMENT '平均红细胞体积(MCV)',
@@ -138,7 +120,6 @@ CREATE TABLE `t_disease_case` (
   `blood_routine45` varchar(50) DEFAULT NULL COMMENT '随机血糖',
   `blood_routine46` varchar(50) DEFAULT '' COMMENT '空腹血糖',
   `blood_routine47` varchar(50) DEFAULT '' COMMENT '餐后2小时血糖',
-
   `ogit1` varchar(50) DEFAULT '' COMMENT '空腹血糖',
   `ogit2` varchar(50) DEFAULT '' COMMENT '30分钟',
   `ogit3` varchar(50) DEFAULT '' COMMENT '1小时',
@@ -155,14 +136,11 @@ CREATE TABLE `t_disease_case` (
   `ogit14` varchar(50) DEFAULT '' COMMENT '促甲状腺激素(TSH)',
   `ogit15` varchar(50) DEFAULT '' COMMENT '皮质醇',
   `ogit16` varchar(50) DEFAULT '' COMMENT 'ATCH',
-
   `urine_routine1` int(4) DEFAULT '0' COMMENT '尿糖（GLU）[0:阴;1:阳]',
   `urine_routine2` int(4) DEFAULT '0' COMMENT '尿蛋白（PRO）[0:阴;1:阳]',
   `urine_routine3` int(4) DEFAULT '0' COMMENT '尿酮体（KET）[0:阴;1:阳]',
   `urine_routine4` varchar(50) DEFAULT '' COMMENT '24小时尿蛋白定量',
   `urine_routine5` int(4) DEFAULT '0' COMMENT '1:是;0:否',
-
-  #特殊检查
   `special_examine1` varchar(200) DEFAULT NULL COMMENT '心电图[图片]',
   `special_examine2` varchar(200) DEFAULT NULL COMMENT '心脏超声[图片]',
   `special_examine3` varchar(200) DEFAULT '' COMMENT '冠状动脉CTA造影[图片/文本]',
@@ -171,52 +149,16 @@ CREATE TABLE `t_disease_case` (
   `special_examine6` varchar(200) DEFAULT '' COMMENT '冠状动脉造影[图片/文本]',
   `special_examine7` varchar(200) DEFAULT '' COMMENT '肝脏超声[图片/文本]',
   `special_examine8` varchar(200) DEFAULT '' COMMENT '肝脏超声[图片/文本]',
-
-  #治疗
   `treatment_medicine` varchar(1000) DEFAULT '' COMMENT '治疗药物',
-  /*`treatment1` int(4) DEFAULT '0' COMMENT '阿司匹林[0:否;1:是]',
-  `treatment2` int(4) DEFAULT '0' COMMENT '氯吡格雷[0:否;1:是]',
-  `treatment3` int(4) DEFAULT '0' COMMENT '替格瑞洛[0:否;1:是]',
-  `treatment4` int(4) DEFAULT '0' COMMENT 'ACEI[0:否;1:是]',
-  `treatment5` int(4) DEFAULT '0' COMMENT 'ARB[0:否;1:是]',
-  `treatment6` int(4) DEFAULT '0' COMMENT '钙离子拮抗剂[0:否;1:是]',
-  `treatment7` int(4) DEFAULT '0' COMMENT '依法布雷定[0:否;1:是]',
-  `treatment8` int(4) DEFAULT '0' COMMENT 'B受体阻滞剂[0:否;1:是]',
-  `treatment9` int(4) DEFAULT '0' COMMENT 'A受体阻滞剂[0:否;1:是]',
-  `treatment10` int(4) DEFAULT '0' COMMENT '醛固酮拮抗剂[0:否;1:是]',
-  `treatment11` int(4) DEFAULT '0' COMMENT '硝酸甘油或硝酸酯类药物[0:否;1:是]',
-  `treatment12` int(4) DEFAULT '0' COMMENT '袢利尿剂[0:否;1:是]',
-  `treatment13` int(4) DEFAULT '0' COMMENT '双氢克尿噻[0:否;1:是]',
-  `treatment14` int(4) DEFAULT '0' COMMENT '二甲双胍类[0:否;1:是]',
-  `treatment15` int(4) DEFAULT '0' COMMENT 'α-葡萄糖苷酶（阿卡波糖、伏格列波糖）[0:否;1:是]',
-  `treatment16` int(4) DEFAULT '0' COMMENT '胰岛素及其类似物[0:否;1:是]',
-  `treatment17` int(4) DEFAULT '0' COMMENT '磺脲类促泌剂（格列吡嗪、格列齐特、格列本脲、格列波脲、格列美脲）[0:否;1:是]',
-  `treatment18` int(4) DEFAULT '0' COMMENT '非磺脲类苯茴酸类衍生物促泌剂（瑞格列奈）[0:否;1:是]',
-  `treatment19` int(4) DEFAULT '0' COMMENT '胰岛素增敏剂（罗格列酮、吡格列酮）[0:否;1:是]',
-  `treatment20` int(4) DEFAULT '0' COMMENT 'GLP-1受体激动剂（利拉鲁肽、艾塞那肽）[0:否;1:是]',
-  `treatment21` int(4) DEFAULT '0' COMMENT 'DPP-4抑制剂（西格列汀、沙格列汀）[0:否;1:是]',
-  `treatment22` int(4) DEFAULT '0' COMMENT 'HMG—CoA还原酶抑制剂（他汀）[0:否;1:是]',
-  `treatment23` int(4) DEFAULT '0' COMMENT '烟酸及其衍生物[0:否;1:是]',
-  `treatment24` int(4) DEFAULT '0' COMMENT '贝特类（非诺贝特、利贝特、苯扎贝特、吉非贝齐、氯贝特）[0:否;1:是]',
-  `treatment25` int(4) DEFAULT '0' COMMENT '胆固醇吸收抑制剂（依折麦布，海折麦布）[0:否;1:是]',*/
-
   `is_delete` int(4) DEFAULT '0' COMMENT '1:是;0:否',
-  `create_time` datetime DEFAULT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_by` varchar(150) DEFAULT NULL COMMENT '创建人',
-  `modify_time` datetime DEFAULT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `modify_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `modify_by` varchar(150) DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`),
   KEY `ix_modify_time` (`modify_time`),
   KEY `ix_create_time` (`create_time`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='病例表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='病例表';
 
-
-
-alter table t_disease_case modify in_hospital_date datetime DEFAULT NULL
-COMMENT '入院时间'
-;
-
-alter table t_disease_case modify out_hospital_date datetime DEFAULT NULL
-COMMENT '出院时间';
-
-
+SET FOREIGN_KEY_CHECKS = 1;

@@ -1195,7 +1195,7 @@ public class DiseaseCaseExportVo {
         this.bloodRoutine44 = bloodRoutine44;
     }
 
-    @Export(description="随机血糖(mmol/L)", index="92")
+    @Export(description="随机血糖(mmol/L)", index="19")
     public String getBloodRoutine45() {
         return bloodRoutine45;
     }

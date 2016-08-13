@@ -1148,7 +1148,7 @@
               <span class="lbl"> 二甲双胍类</span>
             </label>
             <label>
-              <input type="checkbox"  key="treatment15" key="treatment" value="1" class="ace"
+              <input type="checkbox"  id="treatment15" key="treatment" value="1" class="ace"
                       <c:if test="${treatmentMedicine != null && treatmentMedicine.treatment15 == 1}"><c:out value="checked"/></c:if>/>
               <span class="lbl"> α-葡萄糖苷酶(阿卡波糖、伏格列波糖)</span>
             </label>

@@ -88,7 +88,7 @@
           <c:if test="${diseaseCase != null}">
             <div class="col-sm-6">
               <label class="form-label">病例号：</label>
-              <input type="text" id="code" name="code" value="${diseaseCase.code}" />
+              <input type="text" id="code" name="code" value="${diseaseCase.code}" readonly="readonly"/>
               <font color="red">*</font>
             </div>
           </c:if>
@@ -328,7 +328,7 @@
             </label>
             <label>
               <input type="checkbox" id="diagnose20" key="diagnose" value="1" class="ace"
-                      <c:if test="${diagnoseDetail != null && diagnoseDetail.diagnose1 == 1}"><c:out value="checked"/></c:if>/>
+                      <c:if test="${diagnoseDetail != null && diagnoseDetail.diagnose20 == 1}"><c:out value="checked"/></c:if>/>
               <span class="lbl"> 心力衰竭</span>
             </label>
             <label>
@@ -338,7 +338,7 @@
             </label>
             <label>
               <input type="checkbox" id="diagnose22" key="diagnose" value="1" class="ace"
-                      <c:if test="${diagnoseDetail != null && diagnoseDetail.diagnose1 == 1}"><c:out value="checked"/></c:if>/>
+                      <c:if test="${diagnoseDetail != null && diagnoseDetail.diagnose22 == 1}"><c:out value="checked"/></c:if>/>
               <span class="lbl"> 心衰NYHA II级</span>
             </label>
             <label>
@@ -622,8 +622,7 @@
         <div class="row">
           <div class="col-sm-12">
             <label class="form-label">体格检查：</label>
-            <textarea id="physicalExamine9" name="physicalExamine9" cols="80" rows="2">
-              ${diseaseCase.physicalExamine9}
+            <textarea id="physicalExamine9" name="physicalExamine9" cols="80" rows="2">${diseaseCase.physicalExamine9}
             </textarea>
           </div>
         </div>
@@ -1223,7 +1222,7 @@
               <span class="lbl"> 二甲双胍类</span>
             </label>
             <label>
-              <input type="checkbox"  key="treatment15" key="treatment" value="1" class="ace"
+              <input type="checkbox"  id="treatment15" key="treatment" value="1" class="ace"
                       <c:if test="${treatmentMedicine != null && treatmentMedicine.treatment15 == 1}"><c:out value="checked"/></c:if>/>
               <span class="lbl"> α-葡萄糖苷酶(阿卡波糖、伏格列波糖)</span>
             </label>

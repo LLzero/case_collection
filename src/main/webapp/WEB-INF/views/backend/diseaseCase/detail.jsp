@@ -61,11 +61,11 @@
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">收集单位：</label>
-            <c:if test="${diseaseCase.departId == null}">
+            <c:if test="${diseaseCase.id == null}">
               <input type="hidden" id="departId"  name="departId" value="${curUser.id}" />
               <input type="text" id="departName"  name="departName" value="${curUser.name}" readonly="readonly"/>
             </c:if>
-            <c:if test="${diseaseCase.departId != null}">
+            <c:if test="${diseaseCase.id != null}">
               <input type="hidden" id="departId"  name="departId" value="${diseaseCase.departId}" />
               <input type="text" id="departName"  name="departName" value="${diseaseCase.departName}" readonly="readonly"/>
             
@@ -74,7 +74,7 @@
           <c:if test="${diseaseCase != null}">
             <div class="col-sm-6">
               <label class="form-label">病例号：</label>
-              <input type="text" id="id" name="id" value="${diseaseCase.id}" />
+              <input type="text" id="code" name="code" value="${diseaseCase.id}" />
               
             </div>
           </c:if>
@@ -306,7 +306,7 @@
             </label>
             <label>
               <input type="checkbox" id="diagnose20" key="diagnose" value="1" class="ace"
-                      <c:if test="${diagnoseDetail != null && diagnoseDetail.diagnose1 == 1}"><c:out value="checked"/></c:if>/>
+                      <c:if test="${diagnoseDetail != null && diagnoseDetail.diagnose20 == 1}"><c:out value="checked"/></c:if>/>
               <span class="lbl"> 心力衰竭</span>
             </label>
             <label>
@@ -316,7 +316,7 @@
             </label>
             <label>
               <input type="checkbox" id="diagnose22" key="diagnose" value="1" class="ace"
-                      <c:if test="${diagnoseDetail != null && diagnoseDetail.diagnose1 == 1}"><c:out value="checked"/></c:if>/>
+                      <c:if test="${diagnoseDetail != null && diagnoseDetail.diagnose22 == 1}"><c:out value="checked"/></c:if>/>
               <span class="lbl"> 心衰NYHA II级</span>
             </label>
             <label>
@@ -1172,7 +1172,7 @@
               <span class="lbl"> 二甲双胍类</span>
             </label>
             <label>
-              <input type="checkbox"  key="treatment15" key="treatment" value="1" class="ace"
+              <input type="checkbox"  id="treatment15" key="treatment" value="1" class="ace"
                       <c:if test="${treatmentMedicine != null && treatmentMedicine.treatment15 == 1}"><c:out value="checked"/></c:if>/>
               <span class="lbl"> α-葡萄糖苷酶(阿卡波糖、伏格列波糖)</span>
             </label>

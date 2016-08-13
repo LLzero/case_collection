@@ -40,11 +40,11 @@ var diseaseCaseEdit = {
     },
 
     save : function(){
-        formValidate();
+        /*formValidate();
         if (validat() == false) {
             parent.$.dialog.alert("请先填写必要信息");
             return false;
-        }
+        }*/
 
         $('#saveBtn').addClass("disabled");
         $('#saveBtn').attr("disabled", "disabled");
