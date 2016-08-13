@@ -11,6 +11,9 @@
     .form-query .form-label{
         vertical-align: top;
     }
+    .input-icon.input-icon-right>input{
+        padding-right : 10px;
+    }
 </style>
 <div class="row">
   <div id="brand_params_content">

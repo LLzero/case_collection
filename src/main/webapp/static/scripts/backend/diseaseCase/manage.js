@@ -91,12 +91,12 @@ var diseaseCaseFacade = {
                 }, {
                     name : 'age',
                     align:'center',
-                    width: '80'
+                    width: 80
 
                 }, {
                     name : 'sex',
                     align:'center',
-                    width: '80',
+                    width: 80,
                     formatter : function(cellvalue, options, rowObject) {
                         if(cellvalue == '0'){
                             return "男";
@@ -106,7 +106,7 @@ var diseaseCaseFacade = {
                 }, {
                     name : 'isMarried',
                     align:'center',
-                    width: '100',
+                    width: 100,
                     formatter : function(cellvalue, options, rowObject) {
                         if(cellvalue == '0'){
                             return "未婚";
@@ -134,18 +134,18 @@ var diseaseCaseFacade = {
                 }, {
                     name : 'hospitalDays',
                     align:'center',
-                    width: '60'
+                    width: 60
                 }, {
                     name : "id",
                     align:'center',
                     width:200,
                     formatter : function(cellvalue, options, rowObject) {
                         var retVal = '';
-                        retVal += ' <button class="btn btn-minier btn-white btn-warning btn-bold" onclick="diseaseCaseFacade.showCommonEditDialog(\'/diseaseCase/toEdit?id=' + rowObject.id + '\',\'修改详情\',850,580);">' +
+                        retVal += ' <button class="btn btn-minier btn-white btn-default btn-bold" onclick="diseaseCaseFacade.showCommonEditDialog(\'/diseaseCase/toEdit?id=' + rowObject.id + '\',\'修改详情\',850,580);">' +
                             '<i class="ace-icon fa fa-pencil-square-o orange"></i>修改</button>';
-                        retVal += ' <button class="btn btn-minier btn-white btn-warning btn-bold" onclick="diseaseCaseFacade.viewDetail(\'/diseaseCase/toDetail?id=' + rowObject.id + '\',\'查看详情\',850,580);">' +
+                        retVal += ' <button class="btn btn-minier btn-white btn-default btn-bold" onclick="diseaseCaseFacade.viewDetail(\'/diseaseCase/toDetail?id=' + rowObject.id + '\',\'查看详情\',850,580);">' +
                             '<i class="ace-icon fa fa-list blue"></i>查看</button>';
-                        retVal += ' <button class="btn btn-minier btn-white btn-danger btn-bold"  onclick="diseaseCaseFacade.delete('+ rowObject.id +');">' +
+                        retVal += ' <button class="btn btn-minier btn-white btn-default btn-bold"  onclick="diseaseCaseFacade.delete('+ rowObject.id +');">' +
                             '<i class="ace-icon fa fa-trash-o bigger-120 red2"></i>删除</button>';
                         return retVal;
                     }

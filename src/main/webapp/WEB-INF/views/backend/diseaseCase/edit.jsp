@@ -65,7 +65,7 @@
             <c:if test="${diseaseCase.id == null}">
               <c:choose>
                 <c:when test="${curUser.accountType == '0'}">
-                  <select id="departId" name="departId">
+                  <select id="departId" name="departId" isNull="false" checkType="empty">
                     <option value="">请选择</option>
                     <c:forEach var="user" items="${userList}">
                       <option value="${user.id}">${user.name}</option>
@@ -95,7 +95,7 @@
           <c:if test="${diseaseCase == null}">
             <div class="col-sm-6">
               <label class="form-label">病例号：</label>
-              <input type="text" id="code" name="code" value="" />
+              <input type="text" id="code" name="code" value="" isNull="false" checkType="empty" />
               <font color="red">*</font>
             </div>
           </c:if>
@@ -622,8 +622,7 @@
         <div class="row">
           <div class="col-sm-12">
             <label class="form-label">体格检查：</label>
-            <textarea id="physicalExamine9" name="physicalExamine9" cols="80" rows="2">${diseaseCase.physicalExamine9}
-            </textarea>
+            <textarea id="physicalExamine9" name="physicalExamine9" cols="80" rows="2">${diseaseCase.physicalExamine9}</textarea>
           </div>
         </div>
       </div>
@@ -1093,7 +1092,6 @@
           <div class="col-sm-12">
             <label class="form-label">冠状动脉CTA造影(文本)：</label>
             <textarea id="specialExamine4"  name="specialExamine4" rows="2" cols="80">${diseaseCase.specialExamine4}</textarea>
-
           </div>
         </div>
         <div class="row">
@@ -1117,8 +1115,7 @@
         <div class="row">
           <div class="col-sm-12">
             <label class="form-label">冠状动脉造影(文本)：</label>
-            <textarea id="specialExamine6"  name="specialExamine6" rows="2" cols="80">${diseaseCase.specialExamine6}
-            </textarea>
+            <textarea id="specialExamine6"  name="specialExamine6" rows="2" cols="80">${diseaseCase.specialExamine6}</textarea>
           </div>
         </div>
         <div class="row">

@@ -412,7 +412,6 @@
           <div class="col-sm-12">
             <label class="form-label">现病史：</label>
             <textarea id="medicalHistory1" name="medicalHistory1" rows="2" cols="68">${diseaseCase.medicalHistory1}</textarea>
-            
           </div>
         </div>
         <div class="row">
@@ -600,9 +599,7 @@
         <div class="row">
           <div class="col-sm-12">
             <label class="form-label">体格检查：</label>
-            <textarea id="physicalExamine9" name="physicalExamine9" cols="80" rows="2">
-              ${diseaseCase.physicalExamine9}
-            </textarea>
+            <textarea id="physicalExamine9" name="physicalExamine9" cols="80" rows="2">${diseaseCase.physicalExamine9}</textarea>
           </div>
         </div>
       </div>
@@ -1053,8 +1050,7 @@
         <div class="row">
           <div class="col-sm-12">
             <label class="form-label">冠状动脉造影(文本)：</label>
-            <textarea id="specialExamine6"  name="specialExamine6" rows="2" cols="80">${diseaseCase.specialExamine6}
-            </textarea>
+            <textarea id="specialExamine6"  name="specialExamine6" rows="2" cols="80">${diseaseCase.specialExamine6}</textarea>
           </div>
         </div>
         <div class="row">

@@ -1454,10 +1454,10 @@
       and instr(name,#{name,jdbcType=VARCHAR})>0
     </if>
     <if test="ageStart != null and ageStart != ''">
-      and <![CDATA[ age >= #{ageStart} ]]>
+      and <![CDATA[ age >= cast(#{ageStart} as  DECIMAL) ]]>
     </if>
     <if test="ageEnd != null and ageEnd != ''">
-      and <![CDATA[ age <= #{ageEnd} ]]>
+      and <![CDATA[ age <= cast(#{ageEnd} as  DECIMAL) ]]>
     </if>
     <if test="sex != null and sex != '-1'">
       and sex = #{sex}
@@ -1481,106 +1481,106 @@
       and instr(out_diagnose,#{outDiagnose,jdbcType=VARCHAR})>0
     </if>
     <if test="sbpStart != null and sbpStart != ''">
-      and <![CDATA[ physical_examine4 >= #{sbpStart} ]]>
+      and <![CDATA[ physical_examine4 >= cast(#{sbpStart} as  DECIMAL) ]]>
     </if>
     <if test="sbpEnd != null and sbpEnd != ''">
-      and <![CDATA[ physical_examine4 <= #{sbpEnd} ]]>
+      and <![CDATA[ physical_examine4 <= cast(#{sbpEnd} as  DECIMAL) ]]>
     </if>
     <if test="dbpStart != null and dbpStart != ''">
-      and <![CDATA[ physical_examine5 >= #{dbpStart} ]]>
+      and <![CDATA[ physical_examine5 >= cast(#{dbpStart} as  DECIMAL) ]]>
     </if>
     <if test="dbpEnd != null and dbpEnd != ''">
-      and <![CDATA[ physical_examine5 <= #{dbpEnd} ]]>
+      and <![CDATA[ physical_examine5 <= cast(#{dbpEnd} as  DECIMAL) ]]>
     </if>
     <if test="heightStart != null and heightStart != ''">
-      and <![CDATA[ physical_examine6 >= #{heightStart} ]]>
+      and <![CDATA[ physical_examine6 >= cast(#{heightStart} as  DECIMAL) ]]>
     </if>
     <if test="heightEnd != null and heightEnd != ''">
-      and <![CDATA[ physical_examine6 <= #{heightEnd} ]]>
+      and <![CDATA[ physical_examine6 <= cast(#{heightEnd} as  DECIMAL) ]]>
     </if>
     <if test="weightStart != null and weightStart != ''">
-      and <![CDATA[ physical_examine7 >= #{weightStart} ]]>
+      and <![CDATA[ physical_examine7 >= cast(#{weightStart} as  DECIMAL) ]]>
     </if>
     <if test="weightEnd != null and weightEnd != ''">
-      and <![CDATA[ physical_examine7 <= #{weightEnd} ]]>
+      and <![CDATA[ physical_examine7 <= cast(#{weightEnd} as  DECIMAL)]]>
     </if>
     <if test="hgbStart != null and hgbStart != ''">
-      and <![CDATA[ blood_routine5 >= #{hgbStart} ]]>
+      and <![CDATA[ blood_routine5 >= cast(#{hgbStart} as  DECIMAL) ]]>
     </if>
     <if test="hgbEnd != null and hgbEnd != ''">
-      and <![CDATA[ blood_routine5 <= #{hgbEnd} ]]>
+      and <![CDATA[ blood_routine5 <= cast(#{hgbEnd} as  DECIMAL) ]]>
     </if>
     <if test="routine25Start != null and routine25Start != ''">
-      and <![CDATA[ blood_routine25 >= #{routine25Start} ]]>
+      and <![CDATA[ blood_routine25 >= cast(#{routine25Start} as  DECIMAL) ]]>
     </if>
     <if test="routine25End != null and routine25End != ''">
-      and <![CDATA[ blood_routine25 <= #{routine25End} ]]>
+      and <![CDATA[ blood_routine25 <= cast(#{routine25End} as  DECIMAL) ]]>
     </if>
     <if test="routine26Start != null and routine26Start != ''">
-      and <![CDATA[ blood_routine26 >= #{routine26Start} ]]>
+      and <![CDATA[ blood_routine26 >= cast(#{routine26Start} as  DECIMAL)]]>
     </if>
     <if test="routine26End != null and routine26End != ''">
-      and <![CDATA[ blood_routine26 <= #{routine26End} ]]>
+      and <![CDATA[ blood_routine26 <= cast(#{routine26End} as DECIMAL) ]]>
     </if>
     <if test="routine27Start != null and routine27Start != ''">
-      and <![CDATA[ blood_routine27 >= #{routine27Start} ]]>
+      and <![CDATA[ blood_routine27 >= cast(#{routine27Start} as  DECIMAL) ]]>
     </if>
     <if test="routine27End != null and routine27End != ''">
-      and <![CDATA[ blood_routine27 <= #{routine27End} ]]>
+      and <![CDATA[ blood_routine27 <= cast(#{routine27End} as  DECIMAL) ]]>
     </if>
     <if test="routine28Start != null and routine28Start != ''">
-      and <![CDATA[ blood_routine28 >= #{routine28Start} ]]>
+      and <![CDATA[ blood_routine28 >= cast(#{routine28Start} as  DECIMAL) ]]>
     </if>
     <if test="routine28End != null and routine28End != ''">
-      and <![CDATA[ blood_routine28 <= #{routine28End} ]]>
+      and <![CDATA[ blood_routine28 <= cast(#{routine28End} as  DECIMAL) ]]>
     </if>
     <if test="routine33Start != null and routine33Start != ''">
-      and <![CDATA[ blood_routine33 >= #{routine33Start} ]]>
+      and <![CDATA[ blood_routine33 >= cast(#{routine33Start} as  DECIMAL) ]]>
     </if>
     <if test="routine33End != null and routine33End != ''">
-      and <![CDATA[ blood_routine33 <= #{routine33End} ]]>
+      and <![CDATA[ blood_routine33 <= cast(#{routine33End} as  DECIMAL) ]]>
     </if>
     <if test="routine36Start != null and routine36Start != ''">
-      and <![CDATA[ blood_routine36 >= #{routine36Start} ]]>
+      and <![CDATA[ blood_routine36 >= cast(#{routine36Start} as  DECIMAL) ]]>
     </if>
     <if test="routine36End != null and routine36End != ''">
-      and <![CDATA[ blood_routine36 <= #{routine36End} ]]>
+      and <![CDATA[ blood_routine36 <= cast(#{routine36End} as  DECIMAL) ]]>
     </if>
     <if test="routine37Start != null and routine37Start != ''">
-      and <![CDATA[ blood_routine37 >= #{routine37Start} ]]>
+      and <![CDATA[ blood_routine37 >= cast(#{routine37Start} as  DECIMAL) ]]>
     </if>
     <if test="routine37End != null and routine37End != ''">
-      and <![CDATA[ blood_routine37 <= #{routine37End} ]]>
+      and <![CDATA[ blood_routine37 <= cast(#{routine37End} as  DECIMAL) ]]>
     </if>
     <if test="routine38Start != null and routine38Start != ''">
-      and <![CDATA[ blood_routine38 >= #{routine38Start} ]]>
+      and <![CDATA[ blood_routine38 >= cast(#{routine38Start} as  DECIMAL) ]]>
     </if>
     <if test="routine38End != null and routine38End != ''">
-      and <![CDATA[ blood_routine38 <= #{routine38End} ]]>
+      and <![CDATA[ blood_routine38 <= cast(#{routine38End} as  DECIMAL) ]]>
     </if>
     <if test="routine39Start != null and routine39Start != ''">
-      and <![CDATA[ blood_routine39 >= #{routine39Start} ]]>
+      and <![CDATA[ blood_routine39 >= cast(#{routine39Start} as  DECIMAL) ]]>
     </if>
     <if test="routine39End != null and routine39End != ''">
-      and <![CDATA[ blood_routine39 <= #{routine39End} ]]>
+      and <![CDATA[ blood_routine39 <= cast(#{routine39End} as  DECIMAL) ]]>
     </if>
     <if test="routine45Start != null and routine45Start != ''">
-      and <![CDATA[ blood_routine47 >= #{routine47Start} ]]>
+      and <![CDATA[ blood_routine47 >= cast(#{routine47Start} as  DECIMAL) ]]>
     </if>
     <if test="routine45End != null and routine45End != ''">
-      and <![CDATA[ blood_routine45 <= #{routine45End} ]]>
+      and <![CDATA[ blood_routine45 <= cast(#{routine45End} as  DECIMAL) ]]>
     </if>
     <if test="routine46Start != null and routine46Start != ''">
-      and <![CDATA[ blood_routine46 >= #{routine46Start} ]]>
+      and <![CDATA[ blood_routine46 >= cast(#{routine46Start} as  DECIMAL) ]]>
     </if>
     <if test="routine46End != null and routine46End != ''">
-      and <![CDATA[ blood_routine46 <= #{routine46End} ]]>
+      and <![CDATA[ blood_routine46 <= cast(#{routine46End} as  DECIMAL) ]]>
     </if>
     <if test="routine47Start != null and routine47Start != ''">
-      and <![CDATA[ blood_routine47 >= #{routine47Start} ]]>
+      and <![CDATA[ blood_routine47 >= cast(#{routine47Start} as  DECIMAL) ]]>
     </if>
     <if test="routine47End != null and routine47End != ''">
-      and <![CDATA[ blood_routine47 <= #{routine47End} ]]>
+      and <![CDATA[ blood_routine47 <= cast(#{routine47End} as  DECIMAL) ]]>
     </if>
 
     <if test="accountType == 1">
