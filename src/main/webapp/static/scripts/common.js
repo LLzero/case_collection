@@ -91,7 +91,7 @@
 		},
 	    initDatePicker : function(id, callback) {
 	    	if($(id)) {
-	    		var options = {'minDate' : "2015-01-01",
+	    		var options = {'minDate' : "1970-01-01",
 //	    				'locale': lan_local,
 	    				'applyClass' : 'btn-sm btn-success',
 		    			'cancelClass' : 'btn-sm btn-default'};
