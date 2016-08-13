@@ -138,7 +138,7 @@
         <div class="row">
           <div class="col-sm-6">
             <label class="form-label">身份证号：</label>
-            <input type="text" id="identityNumber"  name="identityNumber" value="${diseaseCase.identityNumber}" maxlength="50"/>
+            <input type="text" id="identityNumber"  name="identityNumber" value="*********" maxlength="50"/>
           </div>
           <div class="col-sm-6">
             <label class="form-label">通讯地址：</label>
