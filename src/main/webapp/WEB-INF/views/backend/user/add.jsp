@@ -63,7 +63,7 @@
         $("#submitBtn").click(function (e) {
             formValidate();
             if (validat() == false) {
-                alert("请先填写信息");
+                parent.$.dialog.alert("请先填写必要信息");
                 return false;
             }
 
