@@ -178,8 +178,8 @@ var diseaseCaseBatchEdit = {
                             _this.parent().find('input[type="file"]').attr("url", data.data.url);
                             _this.parent().parent().parent().find('.attachOperate').remove();
                             var attachOperateHtml = '&nbsp;&nbsp;&nbsp;&nbsp;<span class="attachOperate">';
-                            attachOperateHtml += '<a href="javascript:void(0)" onclick="uploadAttach.deleteAttach(this);">';
-                            attachOperateHtml += '<a href="'+ data.url +'">下载</a>';
+                            attachOperateHtml += '<a href="javascript:void(0)" onclick="diseaseCaseBatchEdit.deleteAttach(this);">';
+                            attachOperateHtml += '<a href="'+ data.data.url +'" target="_blank">下载</a>';
                             attachOperateHtml += '</span>';
                             _this.parent().parent().parent().append(attachOperateHtml);
                         }else{
@@ -198,8 +198,7 @@ var diseaseCaseBatchEdit = {
     },
 
     deleteAttach : function(target){
-        $(target).parent().prev().find('input[type="file"]').val('');
-        $(target).parent().prev().find('input[type="file"]').val('');
+        $(target).parent().prev().find('input[type="file"]').attr("url", "");
         $(target).parent().next().remove();
         $(target).parent().remove();
     },
