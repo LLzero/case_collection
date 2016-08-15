@@ -21,6 +21,7 @@
                 <div class="col-xs-12">
                     <table id="disease_case_table_data_list"></table>
                     <div id="disease_case_table_data_list_pager"></div>
+                    <iframe width="0" height="0" id="downloadIfm" src=""></iframe>
                 </div>
             </div>
         </div>
