@@ -158,13 +158,13 @@ var diseaseCaseFacade = {
                         return retVal;
                     }
                 }],
-                rowNum : 30,
+                rowNum : 10,
                 rowList : [ 10, 30, 50 ],
                 pager : pager_selector,
                 pagerpos : 'left',
                 viewrecords : true,
                 multiselect: true,
-                height : 350,
+                height : 'auto',
                 loadComplete : function() {
                     var table = this;
                     setTimeout(function() {
