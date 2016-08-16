@@ -76,7 +76,7 @@ tabbable {
 		<div class="navbar-header pull-left">
 			<!-- #section:basics/navbar.layout.brand -->
 			<a class="navbar-brand" href="#"> <small> <i
-					class="fa fa-leaf"></i>病例收集系统
+					class="fa fa-leaf"></i>中华医学会心血管分会代谢学组病例收集系统
 			</small>
 			</a>
 		</div>

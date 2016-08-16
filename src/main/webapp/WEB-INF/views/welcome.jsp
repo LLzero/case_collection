@@ -15,7 +15,7 @@
                     <span class="blue bigger-125">
                         <i class="ace-icon glyphicon glyphicon-ok green"></i>
                     </span>
-          欢迎进入病例收集系统
+          欢迎进入中华医学会心血管分会代谢学组病例收集系统
         </h1>
       </div>
     </div>

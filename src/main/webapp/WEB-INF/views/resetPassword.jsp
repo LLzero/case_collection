@@ -10,7 +10,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta charset="utf-8"/>
-    <title>病例收集系统</title>
+    <title>中华医学会心血管分会代谢学组病例收集系统</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
     <link rel="stylesheet"
@@ -45,7 +45,7 @@
 <div class="main-container" style="margin-top:15px">
     <div class="main-content">
         <h1 class="row text-center" style="margin-top:50px;">
-            <span class="white" id="id-text2">欢迎进入病例收集系统</span>
+            <span class="white" id="id-text2">欢迎进入中华医学会心血管分会代谢学组病例收集系统</span>
         </h1>
 
         <div class="row" style="margin-top:50px;">

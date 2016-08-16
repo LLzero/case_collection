@@ -15,7 +15,7 @@
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-<title>病例收集系统<sitemesh:title /></title>
+<title>中华医学会心血管分会代谢学组病例收集系统<sitemesh:title /></title>
 
 <style type="text/css">
 .no-skin .nav-list > li.active::after {right: 0px;}
