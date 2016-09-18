@@ -159,7 +159,7 @@ CREATE TABLE `t_disease_case` (
   UNIQUE KEY `code` (`code`),
   KEY `ix_modify_time` (`modify_time`),
   KEY `ix_create_time` (`create_time`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='病例表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='病例表';
 
 -- ----------------------------
 --  Table structure for `t_flag`
@@ -170,7 +170,7 @@ CREATE TABLE `t_flag` (
   `flag` int(4) NOT NULL DEFAULT '0' COMMENT '标识',
   `version` int(4) NOT NULL DEFAULT '0' COMMENT '版本号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `t_flag`
